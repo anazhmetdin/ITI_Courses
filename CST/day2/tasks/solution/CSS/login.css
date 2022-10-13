@@ -1,0 +1,18 @@
+form {
+    width: 20rem;
+    margin: auto;
+    margin-top: 10rem;
+}
+
+form * {
+    margin-bottom: 0.2rem;
+}
+
+legend {
+    color: red;
+    font-size: 2rem;
+}
+
+input[type="submit"] {
+    margin-top: 1rem;
+}

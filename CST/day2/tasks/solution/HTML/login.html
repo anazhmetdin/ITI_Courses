@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/login.css">
+</head>
+<body>
+    <form action="./entertainment.html">
+        <fieldset>
+            <legend>Log In</legend>      
+            <div>    
+                <label for="uname">User Name</label>
+                <input required type="text" id="uname" name="uname" value="Ahmed Negmeldin">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input required value="123" type="password" name="password" id="password">
+            </div>
+            <div>
+                <label for="loc">Select Your Location</label>
+                <select name="loc" id="loc">
+                    <optgroup label="Africa">
+                        <option value="Egypt">Egypt</option>
+                        <option value="Sudan">Sudan</option>
+                        <option value="Namibia">Namibia</option>
+                    </optgroup>
+                    <optgroup label="Europe">
+                        <option value="France">France</option>
+                        <option value="Russia">Russia</option>
+                        <option value="UK">UK</option>
+                    </optgroup>
+                    <optgroup label="North America" disabled>
+                        <option value="Canada">Canada</option>
+                        <option value="Mexico">Mexico</option>
+                        <option value="USA">USA</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div>
+                <input accesskey="m" type="checkbox" id="remember" name="remember">
+                <label for="remember">Remember <u>M</u>e</label>
+            </div>
+            <input type="submit" value="Log In">
+        </fieldset>
+    </form>
+</body>
+</html>

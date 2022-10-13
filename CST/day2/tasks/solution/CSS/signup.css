@@ -1,0 +1,32 @@
+table {
+    border:  1rem solid cadetblue;
+    border-top-color: lavender;
+    border-left-color: lavender;
+    width: 35rem;
+    table-layout: fixed;
+    margin: auto;
+    margin-top: 3rem;
+}
+
+tr td {
+    border:  4px solid lavender;
+    border-top-color: cadetblue;
+    border-left-color: cadetblue;
+}
+
+#gender_label {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+#interests_label {
+    text-decoration: underline;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+#submit {
+    text-align: center;
+}

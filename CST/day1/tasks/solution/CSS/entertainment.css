@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#social {
+    margin: auto;
+}
+
+#google {
+    margin: 4em;
+}
+
+#mail img {
+    height: 3em;
+}
+
+p {
+    margin: 0;
+}

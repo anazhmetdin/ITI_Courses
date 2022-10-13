@@ -1,0 +1,31 @@
+p {
+    background-color: aqua !important; 
+    color: red;
+}
+
+p {
+    background-color: bisque;
+    color: black;
+}
+
+#myh {
+    text-align: center;
+    background-color: bisque;
+}
+
+.myhh {
+    background-color: blue;
+    padding: 2rem;
+}
+
+div.myhh {
+    font-size: 4rem;
+}
+
+div>h4 {
+    border: 2px solid black;
+}
+
+p+h4 {
+    border: 3px dashed olive;
+}
