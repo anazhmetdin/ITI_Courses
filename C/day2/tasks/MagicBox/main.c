@@ -42,7 +42,7 @@ int main()
     // grid size, row index, column index, coordinate position of first column in rows, coordinate position of first row in columns
     int n = 3, row = 0, col = 1, rowStart = 10, colStart = 5;
 
-    for (int i = 1; i <= 9; i++)
+    for (int i = 1; i <= n*n; i++)
     {
         // move cursor to the right position
         gotoxy(rowStart + col * 3, colStart + row * 3);
@@ -50,7 +50,7 @@ int main()
         printf("%d", i);
 
         // move in grid according to the current number
-        if (i % 3 == 0)
+        if (i % n == 0)
         {
             row++;
         }
