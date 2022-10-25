@@ -2,6 +2,7 @@
 
 This repo contains my notes and tasks for the Professional Training Program at ITI
 
-* [CST](./CST/)
 * [C](./C/)
+* [CST](./CST/)
+* [OOP](./OOP/)
 * [Soft Skills](./Soft_Skills/)
