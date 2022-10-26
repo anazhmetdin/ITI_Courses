@@ -137,10 +137,13 @@ int main()
     cout << endl;
 
     cout << "first + second (member function) = ";
-    c1.sum(c2).print();
+    Complex _result = c1.sum(c2);
+    _result.print();
 
     cout << "first - second (outer function) = ";
-    sub(c1, c2).print();
+    Complex _result2 = c1.sum(c2);
+    _result2 = sub(c1, c2);
+    _result2.print();
 
     return 0;
 }
