@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1667133707 source:f:\study\iti\iti_courses\oop\day3\tasks\optimization_stack\main.cpp
+	<iostream>
+	<stdlib.h>
+	<conio.h>
+
