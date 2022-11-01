@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1667305041 source:f:\study\iti\iti_courses\oop\day5\tasks\templatestack\main.cpp
+	<iostream>
+	<stdlib.h>
+	<conio.h>
+
