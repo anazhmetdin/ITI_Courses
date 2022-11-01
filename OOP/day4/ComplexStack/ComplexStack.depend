@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1667223371 source:f:\study\iti\iti_courses\oop\day4\complexstack\main.cpp
+	<iostream>
+	<stdlib.h>
+	<conio.h>
+

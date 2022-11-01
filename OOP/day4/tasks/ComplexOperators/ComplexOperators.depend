@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1667218978 source:f:\study\iti\iti_courses\oop\day4\tasks\complexoperators\main.cpp
+	<iostream>
+	<string.h>
+
