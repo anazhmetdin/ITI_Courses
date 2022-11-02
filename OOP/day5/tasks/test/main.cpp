@@ -3,6 +3,26 @@
 
 using namespace std;
 
+class ShapeColor
+{
+    int color;
+public:
+    ShapeColor(int c = 0)
+    {
+        color = c;
+    }
+
+    void setColor(int c)
+    {
+        color = c;
+    }
+
+    int getColor()
+    {
+        return color;
+    }
+};
+
 class Point
 {
     int x, y;
@@ -34,77 +54,64 @@ public:
     }
 };
 
-class MyRectangle
+class MyRectangle: public ShapeColor
 {
     Point ul, lr;
-    int color;
 public:
     MyRectangle(int p1x, int p1y, int p2x, int p2y, int clr):
-        ul(p1x, p1y), lr(p2x, p2y)
-    {
-        color = clr;
-    }
+        ul(p1x, p1y), lr(p2x, p2y), ShapeColor(clr){}
 
     void draw()
     {
-        setcolor(color);
+        setcolor(getColor());
         rectangle(ul.getX(), ul.getY(), lr.getX(), lr.getY());
     }
 };
 
-class Line
+class Line: public ShapeColor
 {
     Point p1, p2;
-    int color;
 public:
     Line(int p1x, int p1y, int p2x, int p2y, int clr):
-        p1(p1x, p1y), p2(p2x, p2y)
-    {
-        color = clr;
-    }
+        p1(p1x, p1y), p2(p2x, p2y), ShapeColor(clr){}
 
     void draw()
     {
-        setcolor(color);
+        setcolor(getColor());
         line(p1.getX(), p1.getY(), p2.getX(), p2.getY());
     }
 };
 
-class Triangle
+class Triangle: public ShapeColor
 {
     Point p1, p2, p3;
-    int color;
 public:
     Triangle(int p1x, int p1y, int p2x, int p2y, int p3x, int p3y, int clr):
-        p1(p1x, p1y), p2(p2x, p2y), p3(p3x, p3y)
-    {
-        color = clr;
-    }
+        p1(p1x, p1y), p2(p2x, p2y), p3(p3x, p3y), ShapeColor(clr){}
 
     void draw()
     {
-        setcolor(color);
+        setcolor(getColor());
         line(p1.getX(), p1.getY(), p2.getX(), p2.getY());
         line(p1.getX(), p1.getY(), p3.getX(), p3.getY());
         line(p2.getX(), p2.getY(), p3.getX(), p3.getY());
     }
 };
 
-class Circle
+class Circle: public ShapeColor
 {
     Point center;
-    int radius, color;
+    int radius;
 public:
     Circle(int centerX, int centerY, int r, int clr):
-        center(centerX, centerY)
+        center(centerX, centerY), ShapeColor(clr)
     {
         radius = r;
-        color = clr;
     }
 
     void draw()
     {
-        setcolor(color);
+        setcolor(getColor());
         circle(center.getX(), center.getY(), radius);
     }
 };
