@@ -4,6 +4,8 @@
         - int className::variableName = 0;
 
     - static members are similar to global variables except for the scope
+    - static methods: have no access to "this", so it can only access static members of class
+        - however, it can access non-static members through instances of the class (parameters or created within function)
 
     - template functions: functions that works with a general data type
         - the data type is specified later based on the used types while calling
@@ -42,8 +44,8 @@
         - complete dependency on creation and destruction
         - represented by a member object attribute
 
-        - constructor chaining for members object
-            - className(class parameters including member object parameters):
-              objectName(object parameters from class constructor parameters)
-              {class constructor body;}
+    - constructor chaining for members object
+        - className(class parameters including member object parameters):
+            objectName(object parameters from class constructor parameters)
+            {class constructor body;}
 */
