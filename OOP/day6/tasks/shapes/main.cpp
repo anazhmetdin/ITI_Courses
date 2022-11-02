@@ -217,5 +217,10 @@ int main()
     cout << "Sum of Areas = " << getArea(cPtr, cCount, rPtr, rCount,
             sPtr, sCount, tPtr, tCount) << endl;;
 
+    delete []cPtr;
+    delete []sPtr;
+    delete []rPtr;
+    delete []tPtr;
+
     return 0;
 }
