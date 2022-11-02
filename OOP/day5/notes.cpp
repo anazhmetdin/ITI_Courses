@@ -41,4 +41,9 @@
         - unidirectional
         - complete dependency on creation and destruction
         - represented by a member object attribute
+
+        - constructor chaining for members object
+            - className(class parameters including member object parameters):
+              objectName(object parameters from class constructor parameters)
+              {class constructor body;}
 */
