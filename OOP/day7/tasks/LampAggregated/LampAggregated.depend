@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1667481229 source:f:\study\iti\iti_courses\oop\day7\tasks\lampaggregated\main.cpp
+	<iostream>
+	<graphics.h>
+	<conio.h>
+	<windows.h>
+

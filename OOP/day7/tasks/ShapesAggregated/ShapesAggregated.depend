@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1667475102 source:f:\study\iti\iti_courses\oop\day7\tasks\shapesaggregated\main.cpp
+	<iostream>
+	<windows.h>
+
