@@ -1,0 +1,7 @@
+## Databases Fundamentals
+
+1. [Concepts - Design - DB Systems](./day1/)
+2. [Mapping - Schema - RDMBS]()
+3. [Joins - Like - Normalization]()
+4. [Aggregation - Sub-queries -  Grouping - EERD]()
+5. [DB Engine - SQL Server]()
