@@ -1,0 +1,38 @@
+- ARP (address resolution protocol) table stores IP and MAC of devices we communicated with, created by OS
+- packets contain source mac&IP - data - destination IP&mac
+- destination mac is initiall filled with ff:ff:ff:ff:ff:ff in order to be broadcasted in the first time
+
+- ping command communicates with the IP and receives a response to make sure we are both on the same network (echo request)
+- ping TTL: time to live: number of packets hubs before it fails
+- ping number of packets lost: weak network connectivity
+- ping -n count of packets
+- ping -t endless packets
+- DOS attack: denial of service -> when requests fills the network card buffer 
+- ping -l: size of packet
+
+- 127.0.0.1 reserved IP for each card to refer to itself
+
+- tcp/ip protocol: transimision control (full duplex)
+- tcp header: packet information
+- simplex: sending message from one device while all listen
+- half duplex: devices sending and receiving while taking orders
+- full duplex: sending and receiving at the same time
+
+- tcp established with three-way handshake: SYN -> SYN ACK -> EST
+    - sequential and ack increment by 1 after each packet
+
+- ack replies with the smallest seq non-received
+
+- udp: user datagram protocol: connectionless (no notification)
+    - fast transimision, low relibility
+
+- ports: logical address on the network card: each service uses one port, each port is used by one service at most
+
+- application layer: 5th layer in the updated OSI?
+- TLD: top level domains, URL domain under which websited domains are organized
+    - ICAN is responsible for managing registrations
+
+- url to ip is cached in ram
+    - then in hosts file
+
+- nslookup command: use dns to resolve url

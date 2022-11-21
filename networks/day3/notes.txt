@@ -1,0 +1,7 @@
+- transport layer is responsible for acknowledging backets (TCP)
+
+- ftp connection methods:
+    - url: file explorer -> ftp://ip
+    - terminal: ftp -> open ip -> ls -> get ... -> put ...
+    - third party app gui
+
