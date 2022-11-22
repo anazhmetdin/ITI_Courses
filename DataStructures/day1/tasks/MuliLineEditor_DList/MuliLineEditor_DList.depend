@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1669032967 source:c:\users\negm\onedrive\desktop\mulilineeditor_dlist\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<conio.h>
+	<string.h>
+
+1669033609 source:f:\study\iti\iti_courses\datastructures\day1\tasks\mulilineeditor_dlist\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<conio.h>
+	<string.h>
+

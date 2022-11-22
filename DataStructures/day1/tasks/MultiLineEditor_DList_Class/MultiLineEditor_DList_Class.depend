@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1669034765 source:f:\study\iti\iti_courses\datastructures\day1\tasks\multilineeditor_dlist_class\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<conio.h>
+	<string.h>
+

@@ -1,0 +1,7 @@
+- linked list have an overhead of storing pointers and no O(1) indexing -> O(n)
+- a class can't have member attribute of its own type
+- to be albe to insert from back in O(1) we need to store a pointer to tail
+- double linked list is needed to access the previous node easily
+- OS returns NULL in dynamic allocation when there is no memory
+
+- 
