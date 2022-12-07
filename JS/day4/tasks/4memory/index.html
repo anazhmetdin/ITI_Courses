@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+
+    <style>
+        table, #pannel {
+            margin: auto;
+        }
+        
+        #pannel {
+            margin-top: 4rem;
+            width: fit-content;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="pannel">
+        <button id="start" onclick="revealAll()">Start</button>
+        <button id="reset" onclick="reset()" disabled>Reset</button>
+        <p>Trials: <span id="trials">0</span></p>
+        <p>Accuracy: <span id="accuracy">0%</span></p>
+    </div>
+
+    <table>
+        <tbody>
+            <tr>
+                <td> <img id="0" src="./imgs/Moon.gif" onmouseup="reveal(this)" onmouseleave="check()"> </td>
+                <td> <img id="1" src="./imgs/Moon.gif" onmouseup="reveal(this)" onmouseleave="check()"> </td>
+                <td> <img id="2" src="./imgs/Moon.gif" onmouseup="reveal(this)" onmouseleave="check()"> </td>
+                <td> <img id="3" src="./imgs/Moon.gif" onmouseup="reveal(this)" onmouseleave="check()"> </td>
+            </tr>
+            <tr>
+                <td> <img id="4" src="./imgs/Moon.gif" onmouseup="reveal(this)" onmouseleave="check()"> </td>
+                <td> <img id="5" src="./imgs/Moon.gif" onmouseup="reveal(this)" onmouseleave="check()"> </td>
+                <td> <img id="6" src="./imgs/Moon.gif" onmouseup="reveal(this)" onmouseleave="check()"> </td>
+                <td> <img id="7" src="./imgs/Moon.gif" onmouseup="reveal(this)" onmouseleave="check()"> </td>
+            </tr>
+            <tr>
+                <td> <img id="8" src="./imgs/Moon.gif" onmouseup="reveal(this)" onmouseleave="check()"> </td>
+                <td> <img id="9" src="./imgs/Moon.gif" onmouseup="reveal(this)" onmouseleave="check()"> </td>
+                <td> <img id="10" src="./imgs/Moon.gif" onmouseup="reveal(this)" onmouseleave="check()"> </td>
+                <td> <img id="11" src="./imgs/Moon.gif" onmouseup="reveal(this)" onmouseleave="check()"> </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+</html>

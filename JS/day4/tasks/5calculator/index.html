@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS calculator</title>
+    <style>
+        table {
+            margin: auto;
+            border: 3px solid;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        button {
+            width: 100%;
+        }
+        #screen {
+            border: 1px solid;
+            width: 120px;
+            overflow-x: scroll;
+            margin: auto;
+        }
+        #equal {
+            height: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="4">
+                    JavaScript Calculator
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="3"><p id="screen">&nbsp;</p></td>
+                <td><button id="equal">=</button></td>
+            </tr>
+            <tr>
+                <td><button class="number">1</button></td>
+                <td><button class="number">2</button></td>
+                <td><button class="number">3</button></td>
+                <td><button class="operator">+</button></td>
+            </tr>
+            <tr>
+                <td><button class="number">4</button></td>
+                <td><button class="number">5</button></td>
+                <td><button class="number">6</button></td>
+                <td><button class="operator">-</button></td>
+            </tr>
+            <tr>
+                <td><button class="number">7</button></td>
+                <td><button class="number">8</button></td>
+                <td><button class="number">9</button></td>
+                <td><button class="operator">*</button></td>
+            </tr>
+            <tr>
+                <td><button id="clear">C</button></td>
+                <td><button class="number">0</button></td>
+                <td><button class="number">.</button></td>
+                <td><button class="operator">/</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+</html>

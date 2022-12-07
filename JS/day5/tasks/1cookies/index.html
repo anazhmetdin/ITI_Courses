@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+
+    <style>
+        div {
+            margin: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" value="Ahmed">
+    </div>
+
+    <div>
+        <label for="age">Age:</label>
+        <input type="number" id="age" value="24">
+    </div>
+    
+    <div>
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" checked>
+        <label for="male"><img src="./imgs/1.jpg" height="100"></label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female"><img src="./imgs/2.jpg" height="100"></label>
+    </div>
+
+    <div>
+        <label>Favorite color:</label>
+        <select name="color" id="color">
+            <option value="red" selected>red</option>
+            <option value="black">black</option>
+            <option value="blue">blue</option>
+        </select>
+    </div>
+
+    <button onclick="register()">Registr</button>
+
+    <script src="cookies.js"></script>
+    <script src="register.js"></script>
+</body>
+</html>
