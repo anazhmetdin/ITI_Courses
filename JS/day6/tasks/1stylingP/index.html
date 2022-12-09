@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styling Paragraph</title>
+
+    <style>
+        #p, table {
+            margin: auto;
+            margin-top: 2rem;
+        }
+
+        #p {
+            border: 2px solid black;
+            width: fit-content;
+            padding: 1rem;
+            font-family: arial;
+            text-align: center;
+            line-height: normal;
+            letter-spacing: normal;
+            text-transform: none;
+            text-decoration: none;
+        }
+        
+        table, table td { 
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table td {
+            vertical-align: top;
+        }
+
+        th, td {
+            padding: 15px;
+        }
+
+        h3 {
+            margin: 0;
+            margin-bottom: 1rem;
+        }
+
+        table div {
+            margin: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <p id="p">Here is a paragraph of text that has various alignment characteristics that can be changed
+        dynamically. Click the radio buttons below to view of text style settings</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <h3>fontFamily</h3>
+                    <div>
+                        <input type="radio" name="fontFamily" value="arial" id="arial" checked>
+                        <label for="arial">arial</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="fontFamily" value="courier" id="courier">
+                        <label for="courier">courier</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="fontFamily" value="georgia" id="georgia">
+                        <label for="georgia">georgia</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="fontFamily" value="impact" id="impact">
+                        <label for="impact">impact</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="fontFamily" value="times new roman" id="times_new_roman">
+                        <label for="times_new_roman">times new roman</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="fontFamily" value="verdana" id="verdana">
+                        <label for="verdana">verdana</label>
+                    </div>
+                </td>
+
+                <td>
+                    <h3>textAlign</h3>
+                    <div>
+                        <input type="radio" name="textAlign" value="left" id="left" checked>
+                        <label for="left">left</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="textAlign" value="center" id="center">
+                        <label for="center">center</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="textAlign" value="right" id="right">
+                        <label for="right">right</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="textAlign" value="justify" id="justify">
+                        <label for="justify">justify</label>
+                    </div>
+                </td>
+                
+                <td>
+                    <h3>lineHeight</h3>
+                    <div>
+                        <input type="radio" name="lineHeight" value="normal" id="lnormal" checked>
+                        <label for="lnormal">normal</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="lineHeight" value="10px" id="l10">
+                        <label for="l10">10px</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="lineHeight" value="15px" id="l15">
+                        <label for="l15">15px</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="lineHeight" value="1.5px" id="l1_5">
+                        <label for="l1_5">1.5</label>
+                    </div>
+                </td>
+                
+                <td>
+                    <h3>letterSpacing</h3>
+                    <div>
+                        <input type="radio" name="letterSpacing" value="normal" id="snormal" checked>
+                        <label for="snormal">normal</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="letterSpacing" value="-1px" id="_1">
+                        <label for="s_1">-1px</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="letterSpacing" value="2px" id="s2">
+                        <label for="s2">2px</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="letterSpacing" value="3px" id="s3">
+                        <label for="s3">3px</label>
+                    </div>
+                </td>
+                
+                <td>
+                    <h3>textIndent</h3>
+                    <div>
+                        <input type="radio" name="textIndent" value="0px" id="i0" checked>
+                        <label for="i0">0px</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="textIndent" value="5px" id="i5">
+                        <label for="i5">5px</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="textIndent" value="15px" id="i15">
+                        <label for="i15">15px</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="textIndent" value="25px" id="i25">
+                        <label for="i25">25px</label>
+                    </div>
+                </td>
+                
+                <td>
+                    <h3>textTransform</h3>
+                    <div>
+                        <input type="radio" name="textTransform" value="none" id="tnone" checked>
+                        <label for="tnone">none</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="textTransform" value="capitalize" id="capitalize">
+                        <label for="capitalize">capitalize</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="textTransform" value="uppercase" id="uppercase">
+                        <label for="uppercase">uppercase</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="textTransform" value="lowercase" id="lowercase">
+                        <label for="lowercase">lowercase</label>
+                    </div>
+                </td>
+                
+                <td>
+                    <h3>textDecoration</h3>
+                    <div>
+                        <input type="radio" name="textDecoration" value="none" id="dnone" checked>
+                        <label for="dnone">none</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="textDecoration" value="line-through" id="line-through">
+                        <label for="line-through">line-through</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="textDecoration" value="overline" id="overline">
+                        <label for="overline">overline</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="textDecoration" value="underline" id="underline">
+                        <label for="underline">underline</label>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+</html>

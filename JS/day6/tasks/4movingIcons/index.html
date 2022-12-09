@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Icons</title>
+
+    <style>
+        #canvas {
+            border: 2px solid red;
+            width:  30rem;
+            height: 30rem;
+            position: relative;
+        }
+        .icon {
+            position: absolute;
+        }
+        .side {
+            top: 50%;
+        }
+        #left {
+            left: 0;
+        }
+        #right {
+            right: 0;
+        }
+        #bottom {
+            right: 50%;
+            bottom: 0;
+        }
+        button {
+            margin-bottom: 3rem;
+        }
+        p {
+            color: blue;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas">
+        <img id="left"   class="icon side" src="./imgs/icon1.gif">
+        <img id="right"  class="icon side" src="./imgs/icon2.gif">
+        <img id="bottom" class="icon" src="./imgs/TOP.JPG">
+    </div>
+
+    <button id="start" onclick="move()">Go</button>
+    <button id="reset" onclick="reset()">Reset</button>
+
+    <p>
+        &lt;img src="icon1.gif" style="left: <span id="icon1Style">0</span>px"&gt;
+    </p>
+    <p>
+        &lt;img src="icon2.gif" style="left: <span id="icon2Style">0</span>px"&gt;
+    </p>
+    <p>
+        &lt;img src="TOP.JPG" style="top: <span id="topStyle">0</span>px"&gt;
+    </p>
+
+    <script src="app.js"></script>
+</body>
+</html>

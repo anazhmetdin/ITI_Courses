@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Generator</title>
+
+    <style>
+        body {
+            background-image: linear-gradient(antiquewhite, burlywood);
+        }
+        h1, #message {
+            text-align: center;
+            color: darkgreen;
+        }
+        h1 {
+            background-image: linear-gradient(burlywood,blanchedalmond,antiquewhite,blanchedalmond,burlywood);
+            padding: 1rem;
+        }
+        .card {
+            width: 200px;
+            height: 200px;
+        }
+        table {
+            margin: auto;
+        }
+        table td {
+            text-align: center;
+        }
+        #message input{
+            width: 20rem;
+            height: 8rem;
+            margin: auto;
+        }
+        button {
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generate Get Well Soon Card</h1>
+    
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <label for="gws"><img src="./imgs/gws.jpg" class="card"></label>
+                </td>
+                <td>
+                    <label for="gws2"><img src="./imgs/gws2.jpg" class="card"></label>
+                </td>
+                <td>
+                    <label for="gws3"><img src="./imgs/gws3.jpg" class="card"></label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="card" id="gws" value="gws">
+                </td>
+                <td>
+                    <input type="radio" name="card" id="gws2" value="gws2">
+                </td>
+                <td>
+                    <input type="radio" name="card" id="gws3" value="gws3">
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <label for="gwsf"><img src="./imgs/gwsf.jpg" class="card"></label>
+                </td>
+                <td>
+                    <label for="gwsf2"><img src="./imgs/gwsf2.jpg" class="card"></label>
+                </td>
+                <td>
+                    <label for="gwsf3"><img src="./imgs/gwsf3.jpg" class="card"></label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="card" id="gwsf" value="gwsf">
+                </td>
+                <td>
+                    <input type="radio" name="card" id="gwsf2" value="gwsf2">
+                </td>
+                <td>
+                    <input type="radio" name="card" id="gwsf3" value="gwsf3">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="message">
+        <h2>Personal Message</h2>
+        <textarea cols="40" rows="5" style="resize: none;"></textarea>
+    </div>
+    <button onclick="generate()">Generate</button>
+
+    <script src="./app.js"></script>
+</body>
+</html>
