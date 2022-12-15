@@ -1,5 +1,5 @@
 var cards = [], rCards, index, moon = './imgs/Moon.gif';
-var revealed = [], solved = 0, trials = 0, started = false;
+var revealed = [], wrong = [], solved = 0, trials = 0, started = false;
 var trialsElement, accuracyElement, startButton, resetButton;
 
 var rightAudio  = new Audio('audios/aud1.mp3');
@@ -74,8 +74,10 @@ function reveal(event) {
     if (started && solved != 6) {
         // display card
         img.src = rCards[img.id];
-        // add img to revealed array
-        revealed.push(img);
+        // add img to revealed array if empty or img is different from the first clicked
+        if (revealed.length === 0 || revealed[0].id != img.id) {
+            revealed.push(img);
+        }
     }
 
     // if two cards are revealed
@@ -94,8 +96,9 @@ function check() {
             rightAudio.play();
             revealed[0].onmouseup = revealed[1].onmouseup = null;
         } else { // wrong guess, hide cards
-            revealed[0].src = revealed[1].src = moon;
             wrongAudio[Math.floor(Math.random() * wrongAudio.length)].play();
+            wrong = [revealed[0], revealed[1]];
+            revealed[1].onmouseleave = setWrongMoon;
         }
         
         // reset revealed array
@@ -103,4 +106,12 @@ function check() {
         // update accuracy
         accuracyElement.textContent = (solved / trials).toFixed(2) * 100 + '%';
     }
+}
+
+function setWrongMoon() {
+    wrong[0].src = wrong[1].src = moon;
+
+    wrong[0].onmouseleave = wrong[1].onmouseleave = null;
+
+    wrong = [];
 }
