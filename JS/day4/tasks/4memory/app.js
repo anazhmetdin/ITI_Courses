@@ -33,6 +33,7 @@ function revealAll() {
 
             // display card
             document.images[i].src = rCards[i];
+            document.images[i].onmouseup = reveal;
         }
         
         // hide all cards after timeout
@@ -68,7 +69,8 @@ function reset() {
     }
 }
 
-function reveal(img) {
+function reveal(event) {
+    var img = event.target;
     if (started && solved != 6) {
         // display card
         img.src = rCards[img.id];
@@ -80,6 +82,7 @@ function reveal(img) {
     if (revealed.length == 2) {
         trials++;
         trialsElement.textContent = trials;
+        check();
     }
 }
 
@@ -89,6 +92,7 @@ function check() {
         if (revealed[0].src == revealed[1].src) { // corret guess
             solved++;
             rightAudio.play();
+            revealed[0].onmouseup = revealed[1].onmouseup = null;
         } else { // wrong guess, hide cards
             revealed[0].src = revealed[1].src = moon;
             wrongAudio[Math.floor(Math.random() * wrongAudio.length)].play();
