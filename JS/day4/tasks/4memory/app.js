@@ -2,6 +2,11 @@ var cards = [], rCards, index, moon = './imgs/Moon.gif';
 var revealed = [], solved = 0, trials = 0, started = false;
 var trialsElement, accuracyElement, startButton, resetButton;
 
+var rightAudio  = new Audio('audios/aud1.mp3');
+var wrongAudio1 = new Audio('audios/wrong0.mp3');
+var wrongAudio2 = new Audio('audios/wrong1.mp3');
+var wrongAudio = [wrongAudio1, wrongAudio2];
+
 document.addEventListener("DOMContentLoaded", function(event) {
     trialsElement = document.getElementById("trials");
     accuracyElement = document.getElementById("accuracy");
@@ -83,8 +88,10 @@ function check() {
     if (solved != 6 && revealed.length == 2) {
         if (revealed[0].src == revealed[1].src) { // corret guess
             solved++;
+            rightAudio.play();
         } else { // wrong guess, hide cards
             revealed[0].src = revealed[1].src = moon;
+            wrongAudio[Math.floor(Math.random() * wrongAudio.length)].play();
         }
         
         // reset revealed array
