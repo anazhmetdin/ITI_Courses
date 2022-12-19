@@ -6,5 +6,6 @@ This repo contains my notes and tasks for the Professional Training Program at I
 * [CST](./CST/)
 * [Databases Fundamentals](./DatabasesI/)
 * [JS Fundamentals](./JS_I/)
+* [JS Advanced](./JS_advanced)
 * [OOP](./OOP/)
 * [Soft Skills](./Soft_Skills/)
