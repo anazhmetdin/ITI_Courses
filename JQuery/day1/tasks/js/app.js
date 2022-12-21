@@ -16,7 +16,7 @@ $('.arrow').click(function() {
 });
 
 $('#submit').click(function() {
-    hideDisplay('submitted');
+    hideDisplay('submitted', 'show');
     $('#submitted span').text(function() {
         $(this).text($('#'+this.id.substring(1)).val());
     });
@@ -34,7 +34,6 @@ function hideDisplay (toBeDisplayed, fun) {
     if (!!displayed) {
         displayed.hide();
     }
-    console.log(fun);
     displayed = $('#'+toBeDisplayed);
     displayed[fun]();
 }
