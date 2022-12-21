@@ -22,18 +22,11 @@ $('#submit').click(function() {
     });
 });
 
-$('#back').click(function() {
-    hideDisplay('complain','show');
-});
+$('#back').click(function() { hideDisplay('complain','show'); });
 
-$('#btnServices').click(function() {
-    hideDisplay('serviceItems','slideDown');
-})
+$('#btnServices').click(function() { hideDisplay('serviceItems','slideDown'); })
 
 function hideDisplay (toBeDisplayed, fun) {
-    if (!!displayed) {
-        displayed.hide();
-    }
-    displayed = $('#'+toBeDisplayed);
-    displayed[fun]();
+    if (!!displayed) { displayed.hide(); }
+    displayed = $('#'+toBeDisplayed)[fun]();
 }
