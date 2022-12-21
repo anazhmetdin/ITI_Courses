@@ -16,10 +16,10 @@ $('#new').click(function() {
 
     texts.push(newText);
 
-    layers.innerHTML += `
-<pre style="position:absolute; top:50%;
+    layers.insertAdjacentHTML('beforeend',  
+`<pre style="position:absolute; top:50%;
 left:50%; margin:0; font-size:30; user-select: none;
-font-family:Arial;">Hello World!</pre>`;
+font-family:Arial;">Hello World!</pre>`);
 
     selectedText = $(layers.children[textIndex+1]);
 
@@ -65,7 +65,6 @@ function moveText(event) {
     var yOffset = boxYOffset + textHeight + centerYOffset;
 
     $(document).mousemove(function(event) {
-        
         if (maxX > event.clientX && event.clientX > minX)
         {
             text.css('left', event.clientX-xOffset);
