@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div id="content">
+        <div id="buttons">
+            <button class="navButtons" id="btnAbout">About</button>
+            <button class="navButtons" id="btnGallery">Gallery</button>
+            <div id="servicesMenu">
+                <button class="navButtons" id="btnServices">Servies</button>
+                <div id="serviceItems">
+                    <button class="service">item 1</button>
+                    <button class="service">item 2</button>
+                    <button class="service">item 3</button>
+                </div>
+            </div>
+            <button class="navButtons" id="btnComplain">Complain</button>
+        </div>
+        <div id="about" class="section">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe totam, est optio consectetur asperiores beatae aliquid, earum ducimus, dolorum unde laudantium quod illum eligendi excepturi rem quos praesentium facilis similique?</p>
+        </div>
+        <div id="gallery" class="section">
+            <img class="arrow" src="./imgs/left.png" alt="previous image" id="left">
+            <img src="./imgs/1.jpg" alt="selected image" id="image">
+            <img class="arrow" src="./imgs/right.png" alt="next image" id="right">
+        </div>
+        <div id="complain" class="section">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" value="Ahmed">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" value="ahmed@gmail.com">
+            </div>
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" value="0123456789">
+            </div>
+            <div>
+                <label for="complaint">Complaint:</label>
+                <textarea name="complaint" id="complaint"
+                cols="30" rows="10">site is not working</textarea>
+
+                <button id="submit">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="submitted" class="section">
+        <p>Your complain is <span id="_complaint"></span></p>
+        <p>Your name is <span id="_name"></span></p>
+        <p>Your email is <span id="_email"></span></p>
+        <p>Your phone is <span id="_phone"></span></p>
+
+        <button id="back"> Back to edit</button>
+    </div>
+
+    <script src="./js/app.js"></script>
+</body>
+</html>
