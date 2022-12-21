@@ -60,6 +60,7 @@ button:active {
 textarea {
     display: block;
     margin: auto;
+    resize: none;
 }
 
 #submit, #back {
