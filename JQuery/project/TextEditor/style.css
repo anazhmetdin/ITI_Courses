@@ -1,0 +1,11 @@
+canvas {
+    width: 30rem;
+    height: 20rem;
+    border: 3px solid black;
+}
+
+#layers {
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+}
