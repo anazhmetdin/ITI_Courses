@@ -79,11 +79,19 @@ textarea {
 
 .arrow {
     width: 3rem;
-    height: 3rem;
+    height: 100%;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.arrow img {
+    width: 100%;
+    height: fit-content;
 }
 
 .arrow:hover {
-    filter: brightness(1.25);
+    background-color: #05326226;
 }
 .arrow:active {
     filter: brightness(0.5);
