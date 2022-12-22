@@ -68,11 +68,9 @@ font-family:Arial;">${newText}</pre>`);
 // event handler on mouse down to start moving
 function moveText(event) {
 
-    var text = $(event.target);
-    selectedText = text;
-    setTextArea();
+    selectedText = $(event.target);
 
-    highlightList($('#'+transfromID('l')));
+    setTextActive($('#'+transfromID('l')));
 
     // get layers dimensions
     var boxXOffset = layers.offset().left;
@@ -80,15 +78,15 @@ function moveText(event) {
     var boxYOffset = layers.offset().top;
     var boxHeight = Number.parseFloat(layers.css('height'));
 
-    // text dimensions
-    var textWidth = Number.parseFloat(text.css('width'))/2;
-    var textHeight = Number.parseFloat(text.css('height'))/2;
+    // selectedText dimensions
+    var textWidth = Number.parseFloat(selectedText.css('width'))/2;
+    var textHeight = Number.parseFloat(selectedText.css('height'))/2;
     
-    // offset from mousedown position to text center
-    var centerXOffset = event.clientX - text.offset().left - textWidth;
-    var centerYOffset = event.clientY - text.offset().top - textHeight;
+    // offset from mousedown position to selectedText center
+    var centerXOffset = event.clientX - selectedText.offset().left - textWidth;
+    var centerYOffset = event.clientY - selectedText.offset().top - textHeight;
     
-    // offset from mouse to text inside box
+    // offset from mouse to selectedText inside box
     var xOffset = boxXOffset + textWidth + centerXOffset;
     var yOffset = boxYOffset + textHeight + centerYOffset;
 
@@ -99,16 +97,16 @@ function moveText(event) {
     var maxY = boxYOffset + boxHeight + centerYOffset - textHeight;
     var minY = boxYOffset + textHeight + centerYOffset;
     
-    // update text position when mouse moves
+    // update selectedText position when mouse moves
     $(document).mousemove(function(event) {
         if (maxX > event.clientX && event.clientX > minX)
         {
-            text.css('left', event.clientX-xOffset);
+            selectedText.css('left', event.clientX-xOffset);
         }
         
         if (maxY > event.clientY && event.clientY > minY)
         {
-            text.css('top', event.clientY-yOffset);
+            selectedText.css('top', event.clientY-yOffset);
         }
     })
 }
