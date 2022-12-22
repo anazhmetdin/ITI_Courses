@@ -101,6 +101,7 @@ function moveText(event) {
     
     // update selectedText position when mouse moves
     $(document).mousemove(function(event) {
+        
         if (maxX > event.clientX && event.clientX > minX)
         {
             selectedText.css('left', event.clientX-xOffset);
@@ -110,6 +111,9 @@ function moveText(event) {
         {
             selectedText.css('top', event.clientY-yOffset);
         }
+
+        limitTextToBox();
+
     })
 }
 
@@ -118,6 +122,19 @@ textarea.on('input', function() {
     
     selectedText.text($(this).val());
 
+    limitTextToBox();
+
+    // update layer text
+    $('#'+transfromID('l')).text($(this).val());
+})
+
+// set textarea value
+function setTextArea() {
+    textarea.val(selectedText.text());
+}
+
+// make sure selected text doesn't pass the box
+function limitTextToBox() {
     if (Number.parseFloat(selectedText.css('width')) + selectedText.offset().left > 
         layers.offset().left + Number.parseFloat(layers.css('width')))
     {
@@ -128,14 +145,6 @@ textarea.on('input', function() {
     {
         selectedText.css('top', `calc(100% - ${selectedText.css('height')})`);
     }
-
-    // update layer text
-    $('#'+transfromID('l')).text($(this).val());
-})
-
-// set textarea value
-function setTextArea() {
-    textarea.val(selectedText.text());
 }
 
 // extract index and add letter to transfrom ids
