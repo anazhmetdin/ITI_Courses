@@ -28,45 +28,29 @@ $('#new').click(function() {
 
     // make list item selects corresponding text
     textLayer.on('click', function(){
-        highlightText($('#'+transfromID( 't', this.id)));
-        setTextActive($(this));
+        activateTextAndLayer($('#'+transfromID( 't', this.id)), $(this));
     });
 
-    // append text element
-    highlightText( $(
-`<pre id="t${textsCount}" class="text" style="position:absolute; top:50%;
-left:50%; margin:0; font-size:30; user-select: none;
-max-width: ${layers.css('width')}; max-height:${layers.css('height')};
-overflow: hidden; white-space: break-spaces; word-wrap: break-word;
-font-family:Arial;">${newText}</pre>`) );
+    // create new text element
+    var newText = ( $(
+        `<pre id="t${textsCount}" class="text" style="position:absolute; top:50%;
+        left:50%; margin:0; font-size:30; user-select: none;
+        max-width: ${layers.css('width')}; max-height:${layers.css('height')};
+        overflow: hidden; white-space: break-spaces; word-wrap: break-word;
+        font-family:Arial;">${newText}</pre>`) );
+    
+    // set the new added element as the selected text
+    // activate the corresponding layer
+    activateTextAndLayer(newText, textLayer);
 
+    // add new selected text element to HTML
     layers.append(selectedText);
 
-    // set the new added element as the selected text
-    setTextActive(textLayer);
-
     // add event listner to start moving
-    selectedText.mousedown(function(event) {
-        
-        if (event.target.id != selectedText.attr('id') && selectedText.get(0).matches(":hover") ) {
-            
-            const e = $.Event('mousedown', {
-                'clientX' : event.clientX, 
-                'clientY' : event.clientY
-              });
-            
-            selectedText.trigger(e);
-
-            return false;
-        }
-        
-        moveText(event);
-    });
+    selectedText.mousedown(selectingText);
 
     // remove evenet listner
-    var stopMoving = function() {
-        $(document).off('mousemove');
-    };
+    var stopMoving = function() { $(document).off('mousemove'); };
 
     // stop moving when mouse is up or has left the document
     $(document).mouseup(stopMoving);
@@ -80,12 +64,32 @@ font-family:Arial;">${newText}</pre>`) );
     //ctx.fillText(newText.value, newText.x, newText.y);
 })
 
+// event handler to select text on mouse down
+function selectingText(event) {
+    // if target is not the selected text AND mouse is over the selected
+    // in case of overlapping elements -> trigger moving event on the active text
+    if (event.target.id != selectedText.attr('id') && selectedText.get(0).matches(":hover") ) {
+        
+        // create new event with current mouse position
+        const e = $.Event('mousedown', {
+            'clientX' : event.clientX, 
+            'clientY' : event.clientY
+        });
+        
+        // dispatch event on the selected text
+        selectedText.trigger(e);
+    
+    } else { // event has targetted another text OR the mouse is not over the selected text
+
+        // make sure the moving text is the activated one
+        activateTextAndLayer($(event.target), $('#'+transfromID('l')));
+
+        moveText(event);
+    }
+}
+
 // event handler on mouse down to start moving
 function moveText(event) {
-
-    highlightText( $(event.target) );
-
-    setTextActive($('#'+transfromID('l')));
 
     // get layers dimensions
     var boxXOffset = layers.offset().left;
@@ -105,7 +109,7 @@ function moveText(event) {
     var xOffset = boxXOffset + textWidth + centerXOffset;
     var yOffset = boxYOffset + textHeight + centerYOffset;
 
-    // max and min coodinates 
+    // max and min allowed coodinates of the mouse while moving the selected text
     var maxX = boxXOffset + boxWidth + centerXOffset - textWidth;
     var minX = boxXOffset + textWidth + centerXOffset;
     
@@ -169,7 +173,7 @@ function transfromID(letter, id) {
 }
 
 // set text with index as the active text to be controlled
-function setTextActive(Textlayer) {
+function setLayerActive(Textlayer) {
     // update textarea
     setTextArea();
     // set text in layer list as active
@@ -187,7 +191,7 @@ function highlightList(Textlayer) {
 }
 
 // set selected text
-function highlightText(newSelectedText) {
+function setTextActive(newSelectedText) {
     if (!!selectedText) { 
         selectedText.removeClass('selected');
         selectedText.css('z-index', 0);
@@ -197,4 +201,10 @@ function highlightText(newSelectedText) {
 
     selectedText.addClass('selected');
     selectedText.css('z-index', 1);
+}
+
+// activate Text and layer
+function activateTextAndLayer(text, layer) {
+    setTextActive( text );
+    setLayerActive( layer );
 }
