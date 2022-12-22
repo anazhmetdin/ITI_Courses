@@ -72,7 +72,7 @@ function moveText(event) {
     selectedText = text;
     setTextArea();
 
-    highlightList($('#'+transfromID(event.target.id, 'l')));
+    highlightList($('#'+transfromID('l')));
 
     // get layers dimensions
     var boxXOffset = layers.offset().left;
@@ -116,7 +116,7 @@ function moveText(event) {
 // update text when textarea is updated
 textarea.on('input', function() {
     selectedText.text($(this).val());
-    $('#'+transfromID(selectedText.attr('id'), 'l')).text($(this).val());
+    $('#'+transfromID('l')).text($(this).val());
 })
 
 // set textarea value
@@ -125,7 +125,10 @@ function setTextArea() {
 }
 
 // extract index and add letter to transfrom ids
-function transfromID(id, letter) {
+function transfromID(letter, id) {
+    if(arguments.length == 1) {
+        id = selectedText.attr('id');
+    }
     return letter + id.substring(1);
 }
 
