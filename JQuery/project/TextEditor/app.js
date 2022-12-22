@@ -140,7 +140,7 @@ function setTextActive(Textlayer) {
 
 // set text in layer list as active
 function highlightList(Textlayer) {
-    layersList.children().removeClass('active');
+    $('p[class=active]', layersList).removeClass('active');
     if (arguments.length == 1) {
         Textlayer.addClass('active');
     } else {
