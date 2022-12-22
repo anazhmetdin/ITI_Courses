@@ -1,10 +1,10 @@
-// texts: array of layers names
 // textIndex: indext of selected text
 // scale: resolution scale of canvas -> muliples of canvas dimensions
-var texts = [], textIndex, textsCount = 0, scale = 4, selectedText;
+var textIndex, textsCount = 0, scale = 4, selectedText;
 
 var canvas = $('canvas').get(0);
 var layers = $('#layers');
+var layersList = $('#layersList');
 
 var ctx = canvas.getContext("2d");
 
@@ -18,16 +18,16 @@ $('#new').click(function() {
     textsCount++;
 
     // layer name
-    var newText = `untitled ${textsCount}`;
+    var newText = `text ${textsCount}`;
 
-    // push name to layers array
-    texts.push(newText);
+    // push name to layers list element
+    layersList.append(`<p>${newText}</p>`);
 
     // append text element
     layers.append(  
 `<pre style="position:absolute; top:50%;
 left:50%; margin:0; font-size:30; user-select: none;
-font-family:Arial;">Hello World!</pre>`);
+font-family:Arial;">${newText}</pre>`);
 
     // get the new added element
     selectedText = layers.children().eq(textIndex+1);

@@ -9,3 +9,18 @@ canvas {
     height: fit-content;
     position: relative;
 }
+
+#layersList {
+    border: 1px solid black;
+    width: 100px;
+    margin-top: 1rem;
+}
+
+#layersList p {
+    border-bottom: 1px solid black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    padding: 1rem;
+}
