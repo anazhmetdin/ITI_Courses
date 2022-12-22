@@ -24,13 +24,13 @@ $('#new').click(function() {
     texts.push(newText);
 
     // append text element
-    layers.append('beforeend',  
+    layers.append(  
 `<pre style="position:absolute; top:50%;
 left:50%; margin:0; font-size:30; user-select: none;
 font-family:Arial;">Hello World!</pre>`);
 
     // get the new added element
-    selectedText = layers.index(textIndex+1);
+    selectedText = layers.children().eq(textIndex+1);
 
     // add event listner to start moving
     selectedText.mousedown(function(event) {
@@ -44,7 +44,7 @@ font-family:Arial;">Hello World!</pre>`);
 
     // stop moving when mouse is up or has left the document
     $(document).mouseup(stopMoving);
-    $(document).mouseleave(stopMoving);
+    // $(document).mouseleave(stopMoving); // not working as expected
 
     // add text to canvas
     // https://www.w3schools.com/tags/canvas_font.asp
@@ -58,7 +58,6 @@ font-family:Arial;">Hello World!</pre>`);
 function moveText(event) {
 
     var text = $(event.target);
-    var layers = $(layers);
 
     // get layers dimensions
     var boxXOffset = layers.offset().left;
