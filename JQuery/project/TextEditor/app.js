@@ -2,12 +2,12 @@
 // scale: resolution scale of canvas -> muliples of canvas dimensions
 var textsCount = 0, scale = 4, selectedText;
 
-var canvas = $('canvas').get(0);
+var canvas = $('canvas');
 var layers = $('#layers');
 var layersList = $('#layersList');
 var textarea = $('#text');
 
-var ctx = canvas.getContext("2d");
+var ctx = canvas.get(0).getContext("2d");
 
 // set resolution
 canvas.width *= scale;
@@ -28,15 +28,17 @@ $('#new').click(function() {
 
     // make list item selects corresponding text
     textLayer.on('click', function(){
-        selectedText = $('#'+transfromID(this.id, 't'));
+        highlightText($('#'+transfromID( 't', this.id)));
         setTextActive($(this));
     });
 
     // append text element
-    selectedText = $(
+    highlightText( $(
 `<pre id="t${textsCount}" style="position:absolute; top:50%;
 left:50%; margin:0; font-size:30; user-select: none;
-font-family:Arial;">${newText}</pre>`);
+max-width: ${layers.css('width')}; max-height:${layers.css('height')};
+overflow: hidden; white-space: break-spaces; word-wrap: break-word;
+font-family:Arial;">${newText}</pre>`) );
 
     layers.append(selectedText);
 
@@ -68,7 +70,7 @@ font-family:Arial;">${newText}</pre>`);
 // event handler on mouse down to start moving
 function moveText(event) {
 
-    selectedText = $(event.target);
+    highlightText( $(event.target) );
 
     setTextActive($('#'+transfromID('l')));
 
@@ -113,7 +115,21 @@ function moveText(event) {
 
 // update text when textarea is updated
 textarea.on('input', function() {
+    
     selectedText.text($(this).val());
+
+    if (Number.parseFloat(selectedText.css('width')) + selectedText.offset().left > 
+        layers.offset().left + Number.parseFloat(layers.css('width')))
+    {
+        selectedText.css('left', `calc(100% - ${selectedText.css('width')})`);
+    }
+    if (Number.parseFloat(selectedText.css('height')) + selectedText.offset().top > 
+        layers.offset().top + Number.parseFloat(canvas.css('height')))
+    {
+        selectedText.css('top', `calc(100% - ${selectedText.css('height')})`);
+    }
+
+    // update layer text
     $('#'+transfromID('l')).text($(this).val());
 })
 
@@ -146,4 +162,11 @@ function highlightList(Textlayer) {
     } else {
         layers.children().last().addClass('active');
     }
+}
+
+// set selected text
+function highlightText(newSelectedText) {
+    if (!!selectedText) { selectedText.removeClass('selected'); }
+    selectedText = newSelectedText;
+    selectedText.addClass('selected');
 }
