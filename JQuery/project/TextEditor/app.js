@@ -34,7 +34,7 @@ $('#new').click(function() {
 
     // append text element
     highlightText( $(
-`<pre id="t${textsCount}" style="position:absolute; top:50%;
+`<pre id="t${textsCount}" class="text" style="position:absolute; top:50%;
 left:50%; margin:0; font-size:30; user-select: none;
 max-width: ${layers.css('width')}; max-height:${layers.css('height')};
 overflow: hidden; white-space: break-spaces; word-wrap: break-word;
@@ -47,6 +47,19 @@ font-family:Arial;">${newText}</pre>`) );
 
     // add event listner to start moving
     selectedText.mousedown(function(event) {
+        
+        if (event.target.id != selectedText.attr('id') && selectedText.get(0).matches(":hover") ) {
+            
+            const e = $.Event('mousedown', {
+                'clientX' : event.clientX, 
+                'clientY' : event.clientY
+              });
+            
+            selectedText.trigger(e);
+
+            return false;
+        }
+        
         moveText(event);
     });
 
@@ -175,7 +188,13 @@ function highlightList(Textlayer) {
 
 // set selected text
 function highlightText(newSelectedText) {
-    if (!!selectedText) { selectedText.removeClass('selected'); }
+    if (!!selectedText) { 
+        selectedText.removeClass('selected');
+        selectedText.css('z-index', 0);
+    }
+
     selectedText = newSelectedText;
+
     selectedText.addClass('selected');
+    selectedText.css('z-index', 1);
 }
