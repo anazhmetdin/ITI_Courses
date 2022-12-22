@@ -5,6 +5,7 @@ var textIndex, textsCount = 0, scale = 4, selectedText;
 var canvas = $('canvas').get(0);
 var layers = $('#layers');
 var layersList = $('#layersList');
+var textarea = $('#text');
 
 var ctx = canvas.getContext("2d");
 
@@ -20,8 +21,16 @@ $('#new').click(function() {
     // layer name
     var newText = `text ${textsCount}`;
 
+    // create list element
+    var text = $(`<p>${newText}</p>`);
+
     // push name to layers list element
-    layersList.append(`<p>${newText}</p>`);
+    layersList.append(text);
+
+    // make list item selects corresponding text
+    text.on('click', function(){
+        setTextActive($(this).index());
+    });
 
     // append text element
     layers.append(  
@@ -29,8 +38,8 @@ $('#new').click(function() {
 left:50%; margin:0; font-size:30; user-select: none;
 font-family:Arial;">${newText}</pre>`);
 
-    // get the new added element
-    selectedText = layers.children().eq(textIndex+1);
+    // set the new added element as the selected text
+    setTextActive(textIndex);
 
     // add event listner to start moving
     selectedText.mousedown(function(event) {
@@ -58,6 +67,8 @@ font-family:Arial;">${newText}</pre>`);
 function moveText(event) {
 
     var text = $(event.target);
+    selectedText = text;
+    setTextArea(text.text());
 
     // get layers dimensions
     var boxXOffset = layers.offset().left;
@@ -96,4 +107,23 @@ function moveText(event) {
             text.css('top', event.clientY-yOffset);
         }
     })
+}
+
+// update text when textarea is updated
+textarea.on('input', function() {
+    selectedText.text($(this).val());
+})
+
+// set textarea value
+function setTextArea(newText) {
+    textarea.val(newText);
+}
+
+// set text with index as the active text to be controlled
+function setTextActive(index) {
+    textIndex = index;
+    // select text from layers with index
+    selectedText = layers.children().eq(textIndex+1);
+    // update textarea
+    setTextArea(selectedText.text());
 }
