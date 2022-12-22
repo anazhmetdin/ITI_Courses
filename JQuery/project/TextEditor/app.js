@@ -116,6 +116,7 @@ function moveText(event) {
 // update text when textarea is updated
 textarea.on('input', function() {
     selectedText.text($(this).val());
+    $('#'+transfromID(selectedText.attr('id'), 'l')).text($(this).val());
 })
 
 // set textarea value
