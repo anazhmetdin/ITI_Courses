@@ -1,6 +1,6 @@
-// textIndex: indext of selected text
+// textsCount: total count of created and deleted texts
 // scale: resolution scale of canvas -> muliples of canvas dimensions
-var textIndex, textsCount = 0, scale = 4, selectedText;
+var textsCount = 0, scale = 4, selectedText;
 
 var canvas = $('canvas').get(0);
 var layers = $('#layers');
@@ -15,31 +15,33 @@ canvas.height *= scale;
 
 // create new text object when button is clicked
 $('#new').click(function() {
-    textIndex = textsCount;
     textsCount++;
 
     // layer name
     var newText = `text ${textsCount}`;
 
     // create list element
-    var text = $(`<p>${newText}</p>`);
+    var textLayer = $(`<p id="l${textsCount}">${newText}</p>`);
 
     // push name to layers list element
-    layersList.append(text);
+    layersList.append(textLayer);
 
     // make list item selects corresponding text
-    text.on('click', function(){
-        setTextActive($(this).index());
+    textLayer.on('click', function(){
+        selectedText = $('#'+transfromID(this.id, 't'));
+        setTextActive($(this));
     });
 
     // append text element
-    layers.append(  
-`<pre style="position:absolute; top:50%;
+    selectedText = $(
+`<pre id="t${textsCount}" style="position:absolute; top:50%;
 left:50%; margin:0; font-size:30; user-select: none;
 font-family:Arial;">${newText}</pre>`);
 
+    layers.append(selectedText);
+
     // set the new added element as the selected text
-    setTextActive(textIndex);
+    setTextActive(textLayer);
 
     // add event listner to start moving
     selectedText.mousedown(function(event) {
@@ -68,7 +70,9 @@ function moveText(event) {
 
     var text = $(event.target);
     selectedText = text;
-    setTextArea(text.text());
+    setTextArea();
+
+    highlightList($('#'+transfromID(event.target.id, 'l')));
 
     // get layers dimensions
     var boxXOffset = layers.offset().left;
@@ -115,15 +119,29 @@ textarea.on('input', function() {
 })
 
 // set textarea value
-function setTextArea(newText) {
-    textarea.val(newText);
+function setTextArea() {
+    textarea.val(selectedText.text());
+}
+
+// extract index and add letter to transfrom ids
+function transfromID(id, letter) {
+    return letter + id.substring(1);
 }
 
 // set text with index as the active text to be controlled
-function setTextActive(index) {
-    textIndex = index;
-    // select text from layers with index
-    selectedText = layers.children().eq(textIndex+1);
+function setTextActive(Textlayer) {
     // update textarea
-    setTextArea(selectedText.text());
+    setTextArea();
+    // set text in layer list as active
+    highlightList(Textlayer);
+}
+
+// set text in layer list as active
+function highlightList(Textlayer) {
+    layersList.children().removeClass('active');
+    if (arguments.length == 1) {
+        Textlayer.addClass('active');
+    } else {
+        layers.children().last().addClass('active');
+    }
 }

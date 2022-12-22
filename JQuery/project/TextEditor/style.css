@@ -28,3 +28,7 @@ canvas {
 #text {
     resize: none;
 }
+
+.active {
+    background-color: cadetblue;
+}
