@@ -82,7 +82,7 @@ function selectingText(event) {
     } else { // event has targetted another text OR the mouse is not over the selected text
 
         // make sure the moving text is the activated one
-        activateTextAndLayer($(event.target), $('#'+transfromID('l')));
+        activateTextAndLayer($(event.target), $('#'+transfromID('l', event.target.id)));
 
         moveText(event);
     }
