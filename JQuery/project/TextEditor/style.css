@@ -41,6 +41,6 @@ canvas {
 }
 
 .selected {
-    border: 1px solid black;
-    border-bottom: 1px solid white;
+    outline: 2px dashed black;
+    outline-offset: 5px;
 }
