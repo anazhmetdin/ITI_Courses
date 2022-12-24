@@ -68,7 +68,7 @@ $('#new').click(function() {
 function selectingText(event) {
     // if target is not the selected text AND mouse is over the selected
     // in case of overlapping elements -> trigger moving event on the active text
-    if (event.target.id != selectedText.attr('id') && selectedText.get(0).matches(":hover") ) {
+    if (!!selectedText && event.target.id != selectedText.attr('id') && selectedText.get(0).matches(":hover") ) {
         
         // create new event with current mouse position
         const e = $.Event('mousedown', {
@@ -136,6 +136,11 @@ function moveText(event) {
 
 // update text when textarea is updated
 textarea.on('input', function() {
+
+    if (!!selectedText) {
+        return;
+    }
+
     // update select text
     selectedText.text($(this).val());
 
@@ -215,3 +220,12 @@ function activateTextAndLayer(text, layer) {
     setTextActive( text );
     setLayerActive( layer );
 }
+
+// delete the selected text and its layer
+$('#delete').click(function (){
+    if (!!selectedText) {
+        $('#'+transfromID('l')).remove();
+        selectedText.remove();
+        selectedText = null;
+    }
+});
