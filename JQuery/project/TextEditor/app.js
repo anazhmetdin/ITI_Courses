@@ -35,6 +35,9 @@ $('#new').click(function() {
     var newText = ( $(
         `<pre id="t${textsCount}" class="text" style="position:absolute; top:50%;
         left:50%; margin:0; font-size:30; user-select: none;
+        font-weight:${$('#bold').prop('checked') ? 'bold' : 'normal'};
+        font-style:${$('#italic').prop('checked') ? 'italic' : 'normal'};
+        text-decoration:${$('#underline').prop('checked') ? 'underline' : 'normal'};
         max-width: ${layers.css('width')}; max-height:${layers.css('height')};
         overflow: hidden; white-space: break-spaces; word-wrap: break-word;
         font-family:${$('#font-family').val()};">${newText}</pre>`) );
@@ -218,8 +221,26 @@ function setTextActive(newSelectedText) {
 function activateTextAndLayer(text, layer) {
     setTextActive( text );
     setLayerActive( layer );
+    matchSelectedStyle();
+}
+
+// match style options to the selected text
+function matchSelectedStyle() {
     // change font-family select to current font
     $('#font-family').val(selectedText.css('font-family'));
+    
+    // check bold if text is bold
+    if (selectedText.css('font-weight') != 400) {
+        $('#bold').prop('checked', true);
+    } else { $('#bold').prop('checked', false); }
+    // check italic if text is italic
+    if (selectedText.css('font-style') != 'normal') {
+        $('#italic').prop('checked', true); 
+    } else { $('#italic').prop('checked', false); }
+    // check underline if text is underlined
+    if (selectedText.css('text-decoration').split(' ')[0] == 'underline') {
+        $('#underline').prop('checked', true);
+    } else { $('#underline').prop('checked', false); }
 }
 
 // delete the selected text and its layer
@@ -238,7 +259,7 @@ $('.textStyle').click(function() {
     var checkbox = $('#'+this.htmlFor);
     
     // apply font if checkbox is checked
-    if (checkbox[0].checked) { selectedText.css(checkbox.attr('name'), checkbox.val()); }
+    if (!checkbox[0].checked) { selectedText.css(checkbox.attr('name'), checkbox.val()); }
     else { selectedText.css(checkbox.attr('name'), ''); } // else remove style
 });
 

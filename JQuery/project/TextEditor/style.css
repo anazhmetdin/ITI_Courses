@@ -67,4 +67,7 @@ canvas {
     background-color: #b1b1b9;
     border-color: #484851;
 }
- 
+
+.textStyleInput:checked + .textStyle{
+    background-color: darkgrey !important;
+}
