@@ -8,6 +8,7 @@ canvas {
     height: 20rem;
     position: relative;
     border: 3px solid black;
+    overflow: hidden;
 }
 
 #buttons {

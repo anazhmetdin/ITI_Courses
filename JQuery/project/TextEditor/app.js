@@ -1,6 +1,6 @@
 // textsCount: total count of created and deleted texts
 // scale: resolution scale of canvas -> muliples of canvas dimensions
-var textsCount = 0, scale = 4, selectedText;
+var textsCount = 0, scale = 4, selectedText, overflowing = {};
 
 var canvas = $('canvas');
 var layers = $('#layers');
@@ -41,7 +41,6 @@ $('#new').click(function() {
         font-style:${$('#italic').prop('checked') ? 'italic' : 'normal'};
         text-decoration:${$('#underline').prop('checked') ? 'underline' : 'normal'};
         max-width: ${layers.css('width')}; max-height:${layers.css('height')};
-        overflow: hidden; white-space: break-spaces; word-wrap: break-word;
         font-family:${$('#font-family').val()};">${newText}</pre>`) );
     
     // set the new added element as the selected text
@@ -50,6 +49,9 @@ $('#new').click(function() {
 
     // add new selected text element to HTML
     layers.append(selectedText);
+
+    // set text property of overflowing
+    overflowing[selectedText.attr('id')] = $('#overflowing').prop('checked');
 
     // add event listner to start moving
     selectedText.mousedown(selectingText);
@@ -118,26 +120,27 @@ function moveText(event) {
     var xOffset = boxXOffset + textWidth + centerXOffset;
     var yOffset = boxYOffset + textHeight + centerYOffset;
 
-    // max and min allowed coodinates of the mouse while moving the selected text
-    var maxX = boxXOffset + boxWidth + centerXOffset - textWidth;
-    var minX = boxXOffset + textWidth + centerXOffset;
+    // // max and min allowed coodinates of the mouse while moving the selected text
+    // var maxX = boxXOffset + boxWidth + centerXOffset - textWidth;
+    // var minX = boxXOffset + textWidth + centerXOffset;
     
-    var maxY = boxYOffset + boxHeight + centerYOffset - textHeight;
-    var minY = boxYOffset + textHeight + centerYOffset;
+    // var maxY = boxYOffset + boxHeight + centerYOffset - textHeight;
+    // var minY = boxYOffset + textHeight + centerYOffset;
     
     // update selectedText position when mouse moves
     $(document).mousemove(function(event) {
-        // if mouse is within the range of x-axis
-        if (maxX > event.clientX && event.clientX > minX)
-        {
-            selectedText.css('left', event.clientX-xOffset);
-        }
-        // y-axis
-        if (maxY > event.clientY && event.clientY > minY)
-        {
-            selectedText.css('top', event.clientY-yOffset);
-        }
-
+        // var overflow = overflowing[selectedText.attr('id')];
+        // // if mouse is within the range of x-axis
+        // if (overflow || (maxX > event.clientX && event.clientX > minX))
+        // {
+        // }
+        // // y-axis
+        // if (overflow || (maxY > event.clientY && event.clientY > minY))
+        // {
+        // }
+        
+        selectedText.css('top', event.clientY-yOffset);
+        selectedText.css('left', event.clientX-xOffset);
         limitTextToBox();
 
     })
@@ -165,17 +168,29 @@ function setTextArea() {
 
 // make sure selected text doesn't pass the box
 function limitTextToBox() {
+    // if text is allowed to overflow
+    if (overflowing[selectedText.attr('id')]) { return; }
     // check if text exceeds right border
     if (Number.parseFloat(selectedText.css('width')) + selectedText.offset().left > 
         layers.offset().left + Number.parseFloat(layers.css('width')))
     {
         selectedText.css('left', `calc(100% - ${selectedText.css('width')})`);
     }
+    // check if text exceeds left border
+    if (selectedText.offset().left < 0)
+    {
+        selectedText.css('left', `0`);
+    }
     // check if text exceeds bottom border
     if (Number.parseFloat(selectedText.css('height')) + selectedText.offset().top > 
         layers.offset().top + Number.parseFloat(canvas.css('height')))
     {
         selectedText.css('top', `calc(100% - ${selectedText.css('height')})`);
+    }
+    // check if text exceeds top border
+    if (selectedText.offset().top < 0)
+    {
+        selectedText.css('top', `0`);
     }
 }
 
@@ -254,6 +269,9 @@ function matchSelectedStyle() {
     $('.text-color').map(function() {
         this.value = RGB2HEX(selectedText.css(this.name));
     });
+
+    // match overflowing
+    $('#overflowing').prop('checked', overflowing[selectedText.attr('id')]);
 }
 
 // delete the selected text and its layer
@@ -262,6 +280,7 @@ $('#delete').click(function (){
         $('#'+transfromID('l')).remove();
         selectedText.remove();
         selectedText = null;
+        overflowing[selectedText.attr('id')] = undefined;
     }
 });
 
@@ -307,4 +326,12 @@ function RGB2HEX(rgb) {
 $('.text-color').change(function() {
     if (!!! selectedText) { return; }
     selectedText.css(this.name, this.value);
+});
+
+// overflowing checkbox change listener
+$('#overflowing').change(function() {
+    overflowing[selectedText.attr('id')] = this.checked;
+    if (!this.checked) {
+        limitTextToBox();
+    }
 });
