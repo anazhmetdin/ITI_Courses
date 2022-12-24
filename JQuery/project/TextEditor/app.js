@@ -138,9 +138,7 @@ function moveText(event) {
 // update text when textarea is updated
 textarea.on('input', function() {
 
-    if (!!!selectedText) {
-        return;
-    }
+    if (!!!selectedText) { return; }
 
     // update select text
     selectedText.text($(this).val());
@@ -232,14 +230,18 @@ $('#delete').click(function (){
 });
 
 // style font
-$('.textStyle').click(function() {
-    
-    if (!!!selectedText) {
-        return;
-    }
+$('.textStyle').click(function() {  
+    if (!!!selectedText) { return; }
 
     var checkbox = $('#'+this.htmlFor);
     
     if (checkbox[0].checked) { selectedText.css(checkbox.attr('name'), checkbox.val()); }
     else { selectedText.css(checkbox.attr('name'), ''); }
-})
+});
+
+// font family changer
+$('#font-family').change(function() {
+    if (!!! selectedText) { return; }
+
+    selectedText.css('font-family', this.value);
+});
