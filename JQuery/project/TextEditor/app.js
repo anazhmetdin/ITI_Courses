@@ -37,7 +37,7 @@ $('#new').click(function() {
         left:50%; margin:0; font-size:30; user-select: none;
         max-width: ${layers.css('width')}; max-height:${layers.css('height')};
         overflow: hidden; white-space: break-spaces; word-wrap: break-word;
-        font-family:Arial;">${newText}</pre>`) );
+        font-family:${$('#font-family').val()};">${newText}</pre>`) );
     
     // set the new added element as the selected text
     // activate the corresponding layer
@@ -218,6 +218,8 @@ function setTextActive(newSelectedText) {
 function activateTextAndLayer(text, layer) {
     setTextActive( text );
     setLayerActive( layer );
+    // change font-family select to current font
+    $('#font-family').val(selectedText.css('font-family'));
 }
 
 // delete the selected text and its layer
@@ -229,14 +231,15 @@ $('#delete').click(function (){
     }
 });
 
-// style font
+// style font when checkbox label is clicked
 $('.textStyle').click(function() {  
     if (!!!selectedText) { return; }
 
     var checkbox = $('#'+this.htmlFor);
     
+    // apply font if checkbox is checked
     if (checkbox[0].checked) { selectedText.css(checkbox.attr('name'), checkbox.val()); }
-    else { selectedText.css(checkbox.attr('name'), ''); }
+    else { selectedText.css(checkbox.attr('name'), ''); } // else remove style
 });
 
 // font family changer
