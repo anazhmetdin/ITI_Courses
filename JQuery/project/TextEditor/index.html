@@ -19,7 +19,15 @@
     <div id="buttons">
         <button id="new">+</button>
         <button id="delete">x</button>
-        <button id="bold">B</button>
+
+        <label class="textStyle" for="bold"><b>B</b></label>
+        <input id="bold" type="checkbox" name='font-weight' value="bold" hidden>
+
+        <label class="textStyle" for="italic"><i>I</i></label>
+        <input id="italic" type="checkbox" name="font-style" value="italic" hidden>
+
+        <label class="textStyle" for="underline"><u>U</u></label>
+        <input id="underline" type="checkbox"  name="text-decoration" value="underline" hidden>
     </div>
 
     <textarea name="text" id="text" cols="50" rows="5"></textarea>

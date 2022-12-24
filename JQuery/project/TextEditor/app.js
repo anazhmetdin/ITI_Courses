@@ -58,6 +58,7 @@ $('#new').click(function() {
 
     // add text to canvas
     // https://www.w3schools.com/tags/canvas_font.asp
+    // https://stackoverflow.com/questions/4627133/is-it-possible-to-draw-text-decoration-underline-etc-with-html5-canvas-text
     //ctx.font = `${newText.fontSize}px ${newText.fontFamily}`;
     //ctx.fillStyle = "red";
     //ctx.textAlign = "center";
@@ -229,3 +230,16 @@ $('#delete').click(function (){
         selectedText = null;
     }
 });
+
+// style font
+$('.textStyle').click(function() {
+    
+    if (!!!selectedText) {
+        return;
+    }
+
+    var checkbox = $('#'+this.htmlFor);
+    
+    if (checkbox[0].checked) { selectedText.css(checkbox.attr('name'), checkbox.val()); }
+    else { selectedText.css(checkbox.attr('name'), ''); }
+})

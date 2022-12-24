@@ -29,6 +29,7 @@ canvas {
     text-overflow: ellipsis;
     margin: 0;
     padding: 1rem;
+    user-select: none;
 }
 
 #text {
@@ -44,3 +45,26 @@ canvas {
     outline: 2px dashed black;
     outline-offset: 5px;
 }
+
+.textStyle {
+    user-select: none;
+    background-color: #e9e9ed;
+    display: inline-block;
+    border-radius: 0.2rem;
+    border: 1px solid #8f8f9d;
+    padding: 0.13rem 0.2rem;
+    min-width: 0.7rem;
+    text-align: center;
+    height: 1rem;
+}
+
+.textStyle:hover {
+    background-color: #d0d0d7;
+    border-color: #676774;
+}
+
+.textStyle:active {
+    background-color: #b1b1b9;
+    border-color: #484851;
+}
+ 
