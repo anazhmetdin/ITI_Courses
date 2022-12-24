@@ -35,6 +35,7 @@ $('#new').click(function() {
     var newText = ( $(
         `<pre id="t${textsCount}" class="text" style="position:absolute; top:50%;
         left:50%; margin:0; font-size:30; user-select: none;
+        font-size:${$('#font-size').val()}px;
         font-weight:${$('#bold').prop('checked') ? 'bold' : 'normal'};
         font-style:${$('#italic').prop('checked') ? 'italic' : 'normal'};
         text-decoration:${$('#underline').prop('checked') ? 'underline' : 'normal'};
@@ -241,6 +242,7 @@ function matchSelectedStyle() {
     if (selectedText.css('text-decoration').split(' ')[0] == 'underline') {
         $('#underline').prop('checked', true);
     } else { $('#underline').prop('checked', false); }
+
 }
 
 // delete the selected text and its layer
@@ -269,3 +271,13 @@ $('#font-family').change(function() {
 
     selectedText.css('font-family', this.value);
 });
+
+// font size changer
+$('#font-size').change(function() {
+    if (!!! selectedText) { return; }
+
+    selectedText.css('font-size', this.value+'px');
+
+    // make sure text is within the box
+    limitTextToBox();
+})
