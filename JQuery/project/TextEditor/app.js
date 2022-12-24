@@ -36,7 +36,8 @@ $('#new').click(function() {
         `<pre id="t${textsCount}" class="text" style="position:absolute; top:50%;
         left:50%; margin:0; font-size:30; user-select: none;
         color: ${$('#color').val()}; background-color: ${$('#background-color').val()};
-        font-size:${$('#font-size').val()}px;
+        font-size:${$('#font-size').val()}px; padding:${$('#padding').val()}px;
+        border-radius: ${$('#border-radius').val()}px;
         font-weight:${$('#bold').prop('checked') ? 'bold' : 'normal'};
         font-style:${$('#italic').prop('checked') ? 'italic' : 'normal'};
         text-decoration:${$('#underline').prop('checked') ? 'underline' : 'normal'};
@@ -262,8 +263,11 @@ function matchSelectedStyle() {
         $('#underline').prop('checked', true);
     } else { $('#underline').prop('checked', false); }
 
-    // change font size
-    $('#font-size').val(Number.parseInt(selectedText.css('font-size')));
+    // change font size, padding, border-radius
+    $('.pixels').map(function() {
+        var value = Number.parseInt(selectedText.css(this.id));
+        this.value = Number.isFinite(value) ? value : 0;
+    });
 
     // change color pickers to match selected text
     $('.text-color').map(function() {
@@ -308,11 +312,11 @@ $('#font-family').change(function() {
     limitTextToBox();
 });
 
-// font size changer
-$('#font-size').change(function() {
+// font size, padding, border-radius changer
+$('.pixels').change(function() {
     if (!!! selectedText) { return; }
 
-    selectedText.css('font-size', this.value+'px');
+    selectedText.css(this.id, this.value+'px');
 
     // make sure text is within the box
     limitTextToBox();
