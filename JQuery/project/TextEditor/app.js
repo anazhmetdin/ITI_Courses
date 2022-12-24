@@ -118,12 +118,12 @@ function moveText(event) {
     
     // update selectedText position when mouse moves
     $(document).mousemove(function(event) {
-        
+        // if mouse is within the range of x-axis
         if (maxX > event.clientX && event.clientX > minX)
         {
             selectedText.css('left', event.clientX-xOffset);
         }
-        
+        // y-axis
         if (maxY > event.clientY && event.clientY > minY)
         {
             selectedText.css('top', event.clientY-yOffset);
@@ -136,9 +136,10 @@ function moveText(event) {
 
 // update text when textarea is updated
 textarea.on('input', function() {
-    
+    // update select text
     selectedText.text($(this).val());
 
+    // make sure text is within the box
     limitTextToBox();
 
     // update layer text
@@ -152,11 +153,13 @@ function setTextArea() {
 
 // make sure selected text doesn't pass the box
 function limitTextToBox() {
+    // check if text exceeds right border
     if (Number.parseFloat(selectedText.css('width')) + selectedText.offset().left > 
         layers.offset().left + Number.parseFloat(layers.css('width')))
     {
         selectedText.css('left', `calc(100% - ${selectedText.css('width')})`);
     }
+    // check if text exceeds bottom border
     if (Number.parseFloat(selectedText.css('height')) + selectedText.offset().top > 
         layers.offset().top + Number.parseFloat(canvas.css('height')))
     {
@@ -164,8 +167,9 @@ function limitTextToBox() {
     }
 }
 
-// extract index and add letter to transfrom ids
+// transform text id to layer id and vice versa
 function transfromID(letter, id) {
+    // if id is not passed, use id of the selected text
     if(arguments.length == 1) {
         id = selectedText.attr('id');
     }
@@ -182,16 +186,19 @@ function setLayerActive(Textlayer) {
 
 // set text in layer list as active
 function highlightList(Textlayer) {
+    // select active layer
     $('p[class=active]', layersList).removeClass('active');
+    // activate the passed argument
     if (arguments.length == 1) {
         Textlayer.addClass('active');
-    } else {
+    } else { // activates the last added layer
         layers.children().last().addClass('active');
     }
 }
 
 // set selected text
 function setTextActive(newSelectedText) {
+    // if there is a selected text
     if (!!selectedText) { 
         selectedText.removeClass('selected');
         selectedText.css('z-index', 0);
