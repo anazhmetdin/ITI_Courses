@@ -137,7 +137,7 @@ function moveText(event) {
 // update text when textarea is updated
 textarea.on('input', function() {
 
-    if (!!selectedText) {
+    if (!!!selectedText) {
         return;
     }
 
