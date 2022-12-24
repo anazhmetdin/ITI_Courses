@@ -35,7 +35,7 @@ $('#new').click(function() {
     var newText = ( $(
         `<pre id="t${textsCount}" class="text" style="position:absolute; top:50%;
         left:50%; margin:0; font-size:30; user-select: none;
-        color: ${$('#color').val()};
+        color: ${$('#color').val()}; background-color: ${$('#background-color').val()};
         font-size:${$('#font-size').val()}px;
         font-weight:${$('#bold').prop('checked') ? 'bold' : 'normal'};
         font-style:${$('#italic').prop('checked') ? 'italic' : 'normal'};
@@ -250,8 +250,10 @@ function matchSelectedStyle() {
     // change font size
     $('#font-size').val(Number.parseInt(selectedText.css('font-size')));
 
-    // change color picker to match selected text
-    $('#color').val(RGB2HEX(selectedText.css('color')));
+    // change color pickers to match selected text
+    $('.text-color').map(function() {
+        this.value = RGB2HEX(selectedText.css(this.name));
+    });
 }
 
 // delete the selected text and its layer
@@ -302,7 +304,7 @@ function RGB2HEX(rgb) {
 }
 
 // font color changer
-$('#color').change(function() {
+$('.text-color').change(function() {
     if (!!! selectedText) { return; }
-    selectedText.css('color', this.value);
+    selectedText.css(this.name, this.value);
 });
