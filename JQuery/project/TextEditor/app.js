@@ -67,6 +67,9 @@ $('#new').click(function() {
     //ctx.fillStyle = "red";
     //ctx.textAlign = "center";
     //ctx.fillText(newText.value, newText.x, newText.y);
+    
+    // make sure text is within the box
+    limitTextToBox();
 })
 
 // event handler to select text on mouse down
@@ -243,6 +246,8 @@ function matchSelectedStyle() {
         $('#underline').prop('checked', true);
     } else { $('#underline').prop('checked', false); }
 
+    // change font size
+    $('#font-size').val(Number.parseInt(selectedText.css('font-size')));
 }
 
 // delete the selected text and its layer
@@ -263,6 +268,9 @@ $('.textStyle').click(function() {
     // apply font if checkbox is checked
     if (!checkbox[0].checked) { selectedText.css(checkbox.attr('name'), checkbox.val()); }
     else { selectedText.css(checkbox.attr('name'), ''); } // else remove style
+
+    // make sure text is within the box
+    limitTextToBox();
 });
 
 // font family changer
@@ -270,6 +278,9 @@ $('#font-family').change(function() {
     if (!!! selectedText) { return; }
 
     selectedText.css('font-family', this.value);
+
+    // make sure text is within the box
+    limitTextToBox();
 });
 
 // font size changer
