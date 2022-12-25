@@ -171,11 +171,12 @@ function setTextArea() {
 function limitTextToBox() {
     // if text is allowed to overflow
     if (overflowing[selectedText.attr('id')]) { return; }
+    var selectedRect = selectedText[0].getBoundingClientRect();
     // check if text exceeds right border
-    if (Number.parseFloat(selectedText.css('width')) + selectedText.offset().left > 
+    if (selectedRect.width + selectedRect.left > 
         layers.offset().left + Number.parseFloat(layers.css('width')))
     {
-        selectedText.css('left', `calc(100% - ${selectedText.css('width')})`);
+        selectedText.css('left', `calc(100% - ${selectedRect.width}px)`);
     }
     // check if text exceeds left border
     if (selectedText.offset().left < 0)
@@ -183,10 +184,10 @@ function limitTextToBox() {
         selectedText.css('left', `0`);
     }
     // check if text exceeds bottom border
-    if (Number.parseFloat(selectedText.css('height')) + selectedText.offset().top > 
+    if (selectedRect.height + selectedRect.y > 
         layers.offset().top + Number.parseFloat(canvas.css('height')))
     {
-        selectedText.css('top', `calc(100% - ${selectedText.css('height')})`);
+        selectedText.css('top', `calc(100% - ${selectedRect.height}px)`);
     }
     // check if text exceeds top border
     if (selectedText.offset().top < 0)
