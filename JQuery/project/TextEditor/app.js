@@ -110,8 +110,8 @@ function moveText(event) {
     var boxHeight = Number.parseFloat(layers.css('height'));
 
     // selectedText dimensions
-    var textWidth = Number.parseFloat(selectedText.css('width'))/2;
-    var textHeight = Number.parseFloat(selectedText.css('height'))/2;
+    var textWidth = selectedText[0].getBoundingClientRect().width/2;
+    var textHeight = selectedText[0].getBoundingClientRect().height/2;
     
     // offset from mousedown position to selectedText center
     var centerXOffset = event.clientX - selectedText.offset().left - textWidth;
@@ -140,8 +140,8 @@ function moveText(event) {
         // {
         // }
         
-        selectedText.css('top', event.clientY-yOffset);
         selectedText.css('left', event.clientX-xOffset);
+        selectedText.css('top', event.clientY-yOffset);
         limitTextToBox();
 
     })
@@ -168,29 +168,28 @@ function setTextArea() {
 }
 
 // make sure selected text doesn't pass the box
-function limitTextToBox() {
-    // if text is allowed to overflow
+function limitTextToBox() {// if text is allowed to overflow
     if (overflowing[selectedText.attr('id')]) { return; }
+    
     var selectedRect = selectedText[0].getBoundingClientRect();
+    var layersRect   = layers[0].getBoundingClientRect();
     // check if text exceeds right border
-    if (selectedRect.width + selectedRect.left > 
-        layers.offset().left + Number.parseFloat(layers.css('width')))
+    if (selectedRect.right > layersRect.right)
     {
         selectedText.css('left', `calc(100% - ${selectedRect.width}px)`);
     }
     // check if text exceeds left border
-    if (selectedText.offset().left < 0)
+    if (selectedRect.left < layersRect.left)
     {
         selectedText.css('left', `0`);
     }
     // check if text exceeds bottom border
-    if (selectedRect.height + selectedRect.y > 
-        layers.offset().top + Number.parseFloat(canvas.css('height')))
+    if (selectedRect.bottom > layersRect.bottom)
     {
         selectedText.css('top', `calc(100% - ${selectedRect.height}px)`);
     }
     // check if text exceeds top border
-    if (selectedText.offset().top < 0)
+    if (selectedRect.top < layersRect.top)
     {
         selectedText.css('top', `0`);
     }
