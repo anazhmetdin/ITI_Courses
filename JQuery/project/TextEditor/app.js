@@ -87,24 +87,39 @@ $('#new').click(function() {
 
 // event handler to select text on mouse down
 function selectingText(event) {
-    // if target is not the selected text AND mouse is over the selected
-    // in case of overlapping elements -> trigger moving event on the active text
-    if (!!selectedText && event.target.id != selectedText.attr('id') && selectedText.get(0).matches(":hover") ) {
-        
-        // create new event with current mouse position
-        const e = $.Event('mousedown', {
-            'clientX' : event.clientX, 
-            'clientY' : event.clientY
-        });
-        
-        // dispatch event on the selected text
-        selectedText.trigger(e);
-    
-    } else { // event has targetted another text OR the mouse is not over the selected text
+    // if the clicked text is the selected text
+    if (selectedText.attr('id') == this.id) {
+        moveText(event);
+        return;
+    }
 
-        // make sure the moving text is the activated one
+    // get all elemets beneath mouse
+    var pointedElements = document.elementsFromPoint(event.clientX, event.clientY);
+    // is the selectedText beneath mouse
+    var withSelected = false;
+    // search in all targeted elements
+    pointedElements.map(function(element) {
+        // if the selected text is found
+        if (element.id == selectedText.attr('id')) {
+
+            withSelected = true;
+
+            // create new event with current mouse position
+            const e = $.Event('mousedown', {
+                'clientX' : event.clientX, 
+                'clientY' : event.clientY
+            });
+            
+            // dispatch event on the selected text
+            selectedText.trigger(e);
+            return;
+        }
+    });
+
+    // the old selected text is not found beneath mouse
+    if (!withSelected) {
+        // activate the target of this event and move it
         activateTextAndLayer($(event.target), $('#'+transfromID('l', event.target.id)));
-
         moveText(event);
     }
 }
@@ -238,13 +253,13 @@ function setTextActive(newSelectedText) {
     // if there is a selected text
     if (!!selectedText) { 
         selectedText.removeClass('selected');
-        selectedText.css('z-index', 0);
+        //selectedText.css('z-index', 0);
     }
 
     selectedText = newSelectedText;
 
     selectedText.addClass('selected');
-    selectedText.css('z-index', 1);
+    //selectedText.css('z-index', 1);
 }
 
 // activate Text and layer
