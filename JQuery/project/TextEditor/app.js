@@ -35,7 +35,8 @@ $('#new').click(function() {
     var newText = ( $(
         `<pre id="t${textsCount}" class="text" style="position:absolute; top:50%;
         left:50%; margin:0; font-size:30; user-select: none;
-        color: ${$('#color').val()}; background-color: ${$('#background-color').val()};
+        color: ${$('#color').val()};
+        background-color: ${getBackgroundColor()};
         font-size:${$('#font-size').val()}px; padding:${$('#padding').val()}px;
         border-radius: ${$('#border-radius').val()}px;
         font-weight:${$('#bold').prop('checked') ? 'bold' : 'normal'};
@@ -271,8 +272,12 @@ function matchSelectedStyle() {
 
     // change color pickers to match selected text
     $('.text-color').map(function() {
-        this.value = RGB2HEX(selectedText.css(this.name));
+        // get color without the alpha channel
+        this.value = RGB2HEX(selectedText.css(this.name)).substring(0,7);
     });
+
+    // change alph channel range
+    $('#background-color-alpha').val(parseInt(RGB2HEX(selectedText.css('background-color')).substring(7), 16));
 
     // match overflowing
     $('#overflowing').prop('checked', overflowing[selectedText.attr('id')]);
@@ -323,13 +328,33 @@ $('.pixels').change(function() {
 });
 
 function RGB2HEX(rgb) {
-    return `#${rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/).slice(1).map(n => parseInt(n, 10).toString(16).padStart(2, '0')).join('')}`;
+    // if rgb contains alpha channel
+    if (rgb.match('rgba') != null) {
+        // split each channel
+        return `#${rgb.match(/^rgba\((\d+),\s*(\d+),\s*(\d+),\s*([0.]{0,2}\d+)\)$/).slice(1).map(function(n, i) {
+            // multiply alpha[0->1] by 255
+            if (i == 3) {n *= 255}
+            // convert 0->255 to hex
+            return parseInt(n, 10).toString(16).padStart(2, '0');
+        }).join('')}`;
+    } else if (rgb.match('rgb') != null){ // if rgb doesn't have alpha
+        return `#${rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/).slice(1).map(n => parseInt(n, 10).toString(16).padStart(2, '0')).join('')}`;
+    } else {
+        return rgb;
+    }
 }
 
 // font color changer
-$('.text-color').change(function() {
+$('.text-color').on('input', function() {
     if (!!! selectedText) { return; }
-    selectedText.css(this.name, this.value);
+
+    var val = this.value;
+
+    if (this.name == 'background-color') {
+        val = getBackgroundColor();
+    }
+
+    selectedText.css(this.name, val);
 });
 
 // overflowing checkbox change listener
@@ -339,3 +364,19 @@ $('#overflowing').change(function() {
         limitTextToBox();
     }
 });
+
+$('#background-color-alpha').on('input', function() {
+    if (!!! selectedText) { return; }
+
+    selectedText.css('background-color', getBackgroundColor());
+});
+
+// combine background color from input
+function getBackgroundColor() {
+    // get input background color
+    var bgColor = $('#background-color').val();
+    // extract HEX alpha value from input
+    var alphaHex = parseInt($('#background-color-alpha').val()).toString(16).padStart(2, '0');
+
+    return bgColor+alphaHex;
+}
