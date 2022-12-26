@@ -300,7 +300,7 @@ function matchSelectedStyle() {
     });
 
     // change alph channel range
-    $('#background-color-alpha').val(parseInt(RGB2HEX(selectedText.css('background-color')).substring(7), 16));
+    $('#background-color-alpha').val(parseInt(RGB2HEX(selectedText.css('background-color')).substring(7).padStart(2, 'f'), 16));
 
     // match overflowing
     $('#overflowing').prop('checked', isOverflowing());
