@@ -1,6 +1,6 @@
 // textsCount: total count of created and deleted texts
 // scale: resolution scale of canvas -> muliples of canvas dimensions
-var textsCount = 0, scale = 4, selectedText, overflowing = {};
+var textsCount = 0, scale = 4, selectedText;
 
 var canvas = $('canvas');
 var layers = $('#layers');
@@ -35,6 +35,14 @@ $('#new').click(function() {
     var newText = ( $(
         `<pre id="t${textsCount}" class="text" style="position:absolute; top:50%;
         left:50%; margin:0; font-size:30; user-select: none;
+        ${
+            !$('#overflowing').prop('checked') ?
+                
+            `white-space: break-spaces;
+            word-break: break-all;` :
+
+             ""
+        }
         color: ${$('#color').val()};
         background-color: ${getBackgroundColor()};
         font-size:${$('#font-size').val()}px; padding:${$('#padding').val()}px;
@@ -42,7 +50,7 @@ $('#new').click(function() {
         font-weight:${$('#bold').prop('checked') ? 'bold' : 'normal'};
         font-style:${$('#italic').prop('checked') ? 'italic' : 'normal'};
         text-decoration:${$('#underline').prop('checked') ? 'underline' : 'normal'};
-        max-width: ${layers.css('width')}; max-height:${layers.css('height')};
+        max-height:${layers.css('height')};
         font-family:${$('#font-family').val()};">${newText}</pre>`) );
     
     // set the new added element as the selected text
@@ -53,7 +61,7 @@ $('#new').click(function() {
     layers.append(selectedText);
 
     // set text property of overflowing
-    overflowing[selectedText.attr('id')] = $('#overflowing').prop('checked');
+    //overflowing[selectedText.attr('id')] = $('#overflowing').prop('checked');
 
     // add event listner to start moving
     selectedText.mousedown(selectingText);
@@ -170,7 +178,7 @@ function setTextArea() {
 
 // make sure selected text doesn't pass the box
 function limitTextToBox() {// if text is allowed to overflow
-    if (overflowing[selectedText.attr('id')]) { return; }
+    if (isOverflowing()) { return; }
     
     var selectedRect = selectedText[0].getBoundingClientRect();
     var layersRect   = layers[0].getBoundingClientRect();
@@ -280,7 +288,7 @@ function matchSelectedStyle() {
     $('#background-color-alpha').val(parseInt(RGB2HEX(selectedText.css('background-color')).substring(7), 16));
 
     // match overflowing
-    $('#overflowing').prop('checked', overflowing[selectedText.attr('id')]);
+    $('#overflowing').prop('checked', isOverflowing());
 }
 
 // delete the selected text and its layer
@@ -289,7 +297,7 @@ $('#delete').click(function (){
         $('#'+transfromID('l')).remove();
         selectedText.remove();
         selectedText = null;
-        overflowing[selectedText.attr('id')] = undefined;
+        //overflowing[selectedText.attr('id')] = undefined;
     }
 });
 
@@ -359,9 +367,12 @@ $('.text-color').on('input', function() {
 
 // overflowing checkbox change listener
 $('#overflowing').change(function() {
-    overflowing[selectedText.attr('id')] = this.checked;
+    //overflowing[selectedText.attr('id')] = this.checked;
     if (!this.checked) {
+        selectedText.css({'white-space': 'break-spaces', 'word-break': 'break-all'});
         limitTextToBox();
+    } else {
+        selectedText.css({'white-space': '', 'word-break': ''});
     }
 });
 
@@ -379,4 +390,11 @@ function getBackgroundColor() {
     var alphaHex = parseInt($('#background-color-alpha').val()).toString(16).padStart(2, '0');
 
     return bgColor+alphaHex;
+}
+
+// get whether the selected text is overflowing or not
+function isOverflowing() {
+    if (!!! selectedText) { return; }
+
+    return selectedText.css('white-space') != 'break-spaces'
 }
