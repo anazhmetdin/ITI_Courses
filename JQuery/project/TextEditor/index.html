@@ -30,16 +30,16 @@
         <label class="textStyle" for="underline"><u>U</u></label>
 
         <input class="textAlignInput textStyleInput" id="leftAlign" type="checkbox"  name="text-align" value="left" hidden checked>
-        <label class="textAlign textStyle" for="leftAlign"><img src="./icons/leftAlign.png"></label>
+        <label name="text-align" class="textStyle" for="leftAlign"><img src="./icons/leftAlign.png"></label>
 
         <input class="textAlignInput textStyleInput" id="centerAlign" type="checkbox"  name="text-align" value="center" hidden>
-        <label class="textAlign textStyle" for="centerAlign"><img src="./icons/centerAlign.png"></label>
+        <label name="text-align" class="textStyle" for="centerAlign"><img src="./icons/centerAlign.png"></label>
         
         <input class="textAlignInput textStyleInput" id="rightAlign" type="checkbox"  name="text-align" value="right" hidden>
-        <label class="textAlign textStyle" for="rightAlign"><img src="./icons/rightAlign.png"></label>
+        <label name="text-align" class="textStyle" for="rightAlign"><img src="./icons/rightAlign.png"></label>
         
         <input class="textAlignInput textStyleInput" id="justifyAlign" type="checkbox"  name="text-align" value="justify" hidden>
-        <label class="textAlign textStyle" for="justifyAlign"><img src="./icons/justifyAlign.png"></label>
+        <label name="text-align" class="textStyle" for="justifyAlign"><img src="./icons/justifyAlign.png"></label>
 
         <select name="font-family" id="font-family">
             <option disabled>Font Family</option>
@@ -83,6 +83,12 @@
           <input type="number" class="pixels" id="width" value="0">
 
           <input type="number" class="pixels" id="height" value="0">
+
+          <input type="checkbox" name="direction" class="textStyleInput textAlignInput" id="ltr" value="ltr" hidden checked>
+          <label class="textStyle" for="ltr"><img src="./icons/ltr.png"></label>
+
+          <input type="checkbox" name="direction" class="textStyleInput textAlignInput" id="rtl" value="rtl" hidden>
+          <label class="directionInput textStyle" for="rtl"><img src="./icons/rtl.png"></label>
     </div>
 
 

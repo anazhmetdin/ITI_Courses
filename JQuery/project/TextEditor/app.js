@@ -45,12 +45,14 @@ $('#new').click(function() {
         }
         color: ${$('#color').val()}; text-align: ${$('.textAlignInput:checked').val()};
         background-color: ${getBackgroundColor()};
+        width: ${$('#width').val() == 0 ? '' : $('#width').val()}px;
+        height: ${$('#height').val() == 0 ? '' : $('#height').val()}px;
         font-size:${$('#font-size').val()}px; padding:${$('#padding').val()}px;
         border-radius: ${$('#border-radius').val()}px;
         font-weight:${$('#bold').prop('checked') ? 'bold' : 'normal'};
         font-style:${$('#italic').prop('checked') ? 'italic' : 'normal'};
         text-decoration:${$('#underline').prop('checked') ? 'underline' : 'normal'};
-        max-height:${layers.css('height')};
+        direction:${$('input[name=direction]:checked').val()};
         font-family:${$('#font-family').val()};">${newText}</pre>`) );
     
     // add new selected text element to HTML
@@ -129,9 +131,9 @@ function moveText(event) {
 
     // get layers dimensions
     var boxXOffset = layers.offset().left;
-    var boxWidth = Number.parseFloat(layers.css('width'));
+    //var boxWidth = Number.parseFloat(layers.css('width'));
     var boxYOffset = layers.offset().top;
-    var boxHeight = Number.parseFloat(layers.css('height'));
+    //var boxHeight = Number.parseFloat(layers.css('height'));
 
     // selectedText dimensions
     var textWidth = selectedText[0].getBoundingClientRect().width/2;
@@ -297,9 +299,10 @@ function matchSelectedStyle() {
     // match overflowing
     $('#overflowing').prop('checked', isOverflowing());
 
-    // match text-align
+    // match text-align and direction
     $('.textAlignInput').prop('checked', false);
     $('#'+selectedText.css('text-align')+'Align').prop('checked', true);
+    $('#'+selectedText.css('direction')).prop('checked', true);
 }
 
 // delete the selected text and its layer
@@ -411,6 +414,7 @@ function isOverflowing() {
 }
 
 $('.textAlignInput').change(function() {
-    $('.textAlignInput').prop('checked', false);
+    console.log(this)
+    $(`input[name=${this.name}]`).prop('checked', false);
     $(this).prop('checked', true);
 });
