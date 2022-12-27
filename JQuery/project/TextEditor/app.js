@@ -45,8 +45,8 @@ $('#new').click(function() {
         }
         color: ${$('#color').val()}; text-align: ${$('.textAlignInput:checked').val()};
         background-color: ${getBackgroundColor()};
-        width: ${$('#width').val() == 0 ? '' : $('#width').val()}px;
-        height: ${$('#height').val() == 0 ? '' : $('#height').val()}px;
+        width: ${$('#autowidth').prop('checked') ? 'fit-content' : $('#width').val()}px;
+        height: ${$('#autoheight').prop('checked') ? 'fit-content' : $('#height').val()}px;
         font-size:${$('#font-size').val()}px; padding:${$('#padding').val()}px;
         border-radius: ${$('#border-radius').val()}px;
         font-weight:${$('#bold').prop('checked') ? 'bold' : 'normal'};
@@ -186,6 +186,10 @@ textarea.on('input', function() {
 
     // update layer text
     $('#'+transfromID('l')).text($(this).val());
+
+    // update width and height
+    $('#width').val(Number.parseFloat(selectedText.css('width')));
+    $('#height').val(Number.parseFloat(selectedText.css('height')));
 })
 
 // set textarea value
@@ -283,7 +287,7 @@ function matchSelectedStyle() {
 
     // change font size, padding, border-radius, width, height
     $('.pixels').map(function() {
-        var value = Number.parseInt(selectedText.css(this.id));
+        var value = Number.parseFloat(selectedText.css(this.id));
         this.value = Number.isFinite(value) ? value : 0;
     });
 
@@ -339,11 +343,13 @@ $('#font-family').change(function() {
     limitTextToBox();
 });
 
-// font size, padding, border-radius changer
+// font-size, padding, border-radius, width, height changer
 $('.pixels').change(function() {
     if (!!! selectedText) { return; }
 
-    selectedText.css(this.id, this.value+'px');
+    if ((this.id != 'width' && this.id != 'height') || !$('#auto'+this.id).prop('checked')) {
+        selectedText.css(this.id, this.value+'px');
+    }
 
     // make sure text is within the box
     limitTextToBox();
@@ -413,8 +419,26 @@ function isOverflowing() {
     return selectedText.css('white-space') != 'break-spaces'
 }
 
+// text-align and direction
 $('.textAlignInput').change(function() {
-    console.log(this)
+    // cancel all related buttons
     $(`input[name=${this.name}]`).prop('checked', false);
-    $(this).prop('checked', true);
+    // activate this button only
+    this.checked = true;
+});
+
+$('.autoDimension').change(function() {
+    
+    if (!!! selectedText) { return; }
+
+    if (this.checked) {
+        selectedText.css(this.value, 'fit-content');
+        $('#'+this.value).val(Number.parseFloat(selectedText.css(this.value)));
+    }
+    else {
+        selectedText.css(this.value, $('#'+this.value).val()+'px');
+    }
+
+    // make sure text is within the box
+    limitTextToBox();
 });
