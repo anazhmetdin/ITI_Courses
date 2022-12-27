@@ -21,10 +21,10 @@ $('#new').click(function() {
     var newText = `text ${textsCount}`;
 
     // create list element
-    var textLayer = $(`<p id="l${textsCount}">${newText}</p>`);
+    var textLayer = $(`<li class="text" id="l${textsCount}">${newText}</li>`);
 
     // push name to layers list element
-    layersList.append(textLayer);
+    layersList.prepend(textLayer);
 
     // make list item selects corresponding text
     textLayer.on('click', function(){
@@ -34,7 +34,7 @@ $('#new').click(function() {
     // create new text element
     var newText = ( $(
         `<pre id="t${textsCount}" class="text" style="position:absolute; top:50%;
-        left:50%; margin:0; font-size:30; user-select: none;
+        left:50%; margin:0; user-select: none;
         ${
             !$('#overflowing').prop('checked') ?
                 
@@ -45,13 +45,13 @@ $('#new').click(function() {
         }
         color: ${$('#color').val()}; text-align: ${$('.textAlignInput:checked').val()};
         background-color: ${getBackgroundColor()};
-        width: ${$('#autowidth').prop('checked') ? 'fit-content' : $('#width').val()}px;
-        height: ${$('#autoheight').prop('checked') ? 'fit-content' : $('#height').val()}px;
+        width: ${$('#autowidth').prop('checked') ? 'fit-content' : $('#width').val()+'px'};
+        height: ${$('#autoheight').prop('checked') ? 'fit-content' : $('#height').val()+'px'};
         font-size:${$('#font-size').val()}px; padding:${$('#padding').val()}px;
         border-radius: ${$('#border-radius').val()}px;
         font-weight:${$('#bold').prop('checked') ? 'bold' : 'normal'};
         font-style:${$('#italic').prop('checked') ? 'italic' : 'normal'};
-        text-decoration:${$('#underline').prop('checked') ? 'underline' : 'normal'};
+        ${$('#underline').prop('checked') ? 'text-decoration: underline' : ''};
         direction:${$('input[name=direction]:checked').val()};
         font-family:${$('#font-family').val()};">${newText}</pre>`) );
     
@@ -123,7 +123,7 @@ function selectingText(event) {
     // the old selected text is not found beneath mouse
     if (!withSelected) {
         // activate the target of this event and move it
-        activateTextAndLayer($(event.target), $('#'+transfromID('l', event.target.id)));
+        activateTextAndLayer($(event.target), getSelectedLayer(event.target.id));
         moveText(event);
     }
 }
@@ -189,7 +189,7 @@ textarea.on('input', function() {
     var text = this.value;
 
     // update layer text
-    $('#'+transfromID('l')).map(function() {
+    getSelectedLayer().map(function() {
         this.innerText = text === '' ? 'text #'+this.id.substring(1) : text;
     });
 })
@@ -237,22 +237,22 @@ function transfromID(letter, id) {
 }
 
 // set text with index as the active text to be controlled
-function setLayerActive(Textlayer) {
+function setLayerActive(textLayer) {
     // update textarea
     setTextArea();
     // set text in layer list as active
-    highlightList(Textlayer);
+    highlightList(textLayer);
 }
 
 // set text in layer list as active
-function highlightList(Textlayer) {
+function highlightList(textLayer) {
     // select active layer
-    $('p[class=active]', layersList).removeClass('active');
+    $('li[class~=active_layer]', layersList).removeClass('active_layer');
     // activate the passed argument
     if (arguments.length == 1) {
-        Textlayer.addClass('active');
+        textLayer.addClass('active_layer');
     } else { // activates the last added layer
-        layers.children().last().addClass('active');
+        layers.children().last().addClass('active_layer');
     }
 }
 
@@ -260,13 +260,13 @@ function highlightList(Textlayer) {
 function setTextActive(newSelectedText) {
     // if there is a selected text
     if (!!selectedText) { 
-        selectedText.removeClass('selected');
+        selectedText.removeClass('selected_text');
         //selectedText.css('z-index', 0);
     }
 
     selectedText = newSelectedText;
 
-    selectedText.addClass('selected');
+    selectedText.addClass('selected_text');
     //selectedText.css('z-index', 1);
 }
 
@@ -314,7 +314,7 @@ function matchSelectedStyle() {
 // delete the selected text and its layer
 $('#delete').click(function (){
     if (!!selectedText) {
-        $('#'+transfromID('l')).remove();
+        getSelectedLayer().remove();
         selectedText.remove();
         selectedText = null;
         //overflowing[selectedText.attr('id')] = undefined;
@@ -349,6 +349,7 @@ $('#font-family').change(function() {
 $('.pixels').change(function() {
     if (!!! selectedText) { return; }
 
+    // change any css except for width and height when auto dimension is checked
     if ((this.id != 'width' && this.id != 'height') || !$('#auto'+this.id).prop('checked')) {
         selectedText.css(this.id, this.value+'px');
     }
@@ -378,8 +379,10 @@ function RGB2HEX(rgb) {
 $('.text-color').on('input', function() {
     if (!!! selectedText) { return; }
 
+    // chosen color
     var val = this.value;
 
+    // chosen color plus alpha channel
     if (this.name == 'background-color') {
         val = getBackgroundColor();
     }
@@ -390,17 +393,21 @@ $('.text-color').on('input', function() {
 // overflowing checkbox change listener
 $('#overflowing').change(function() {
     //overflowing[selectedText.attr('id')] = this.checked;
+    // if not overflowing
     if (!this.checked) {
+        // make selected text wrapped
         selectedText.css({'white-space': 'break-spaces', 'word-break': 'break-all'});
         limitTextToBox();
     } else {
+        // make text not wrapable
         selectedText.css({'white-space': '', 'word-break': ''});
     }
 });
 
+// when alpha channel changes
 $('#background-color-alpha').on('input', function() {
     if (!!! selectedText) { return; }
-
+    // update background color with the selected color
     selectedText.css('background-color', getBackgroundColor());
 });
 
@@ -429,6 +436,7 @@ $('.textAlignInput').change(function() {
     this.checked = true;
 });
 
+// auto-dimension checkbox
 $('.autoDimension').change(function() {
     
     if (!!! selectedText) { return; }
@@ -454,3 +462,6 @@ const resizeObserver = new ResizeObserver(() => {
     $('#height').val(Number.parseFloat(selectedText.css('height')));
 });
   
+function getSelectedLayer(id) {
+    return $('#'+transfromID('l', id));
+}

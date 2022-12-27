@@ -15,7 +15,7 @@ canvas {
     margin-top: 1rem;
 }
 
-#layersList {
+#layersListContainer {
     border: 1px solid black;
     width: 100px;
     margin-top: 1rem;
@@ -23,7 +23,13 @@ canvas {
     overflow-y: scroll;
 }
 
-#layersList p {
+#layersList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#layersList li, #layersListContainer .fixed_layer {
     border-bottom: 1px solid black;
     white-space: nowrap;
     overflow: hidden;
@@ -38,11 +44,11 @@ canvas {
     margin-top: 1rem
 }
 
-.active {
+.active_layer {
     background-color: cadetblue;
 }
 
-.selected {
+.selected_text {
     outline: 2px dashed black;
     outline-offset: 5px;
 }
