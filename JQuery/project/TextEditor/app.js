@@ -89,36 +89,48 @@ $('#new').click(function() {
     limitTextToBox();
 })
 
+// unselect text when canvas or non_text layer is clicked without a text being hovered
+$('.non_textLayer, #layers').click(function() {
+    if (!!selectedText && $('.text:hover').length === 0) {
+        getSelectedLayer().removeClass('active_layer');
+        selectedText.removeClass('selected_text');
+        selectedText = null;
+    }
+});
+
 // event handler to select text on mouse down
 function selectingText(event) {
-    // if the clicked text is the selected text
-    if (selectedText.attr('id') == this.id) {
-        moveText(event);
-        return;
-    }
 
-    // get all elemets beneath mouse
-    var pointedElements = document.elementsFromPoint(event.clientX, event.clientY);
-    // is the selectedText beneath mouse
-    var withSelected = false;
-    // search in all targeted elements
-    pointedElements.map(function(element) {
-        // if the selected text is found
-        if (element.id == selectedText.attr('id')) {
-
-            withSelected = true;
-
-            // create new event with current mouse position
-            const e = $.Event('mousedown', {
-                'clientX' : event.clientX, 
-                'clientY' : event.clientY
-            });
-            
-            // dispatch event on the selected text
-            selectedText.trigger(e);
+    if (!!selectedText) {
+        // if the clicked text is the selected text
+        if (!!selectedText && selectedText.attr('id') == this.id) {
+            moveText(event);
             return;
         }
-    });
+    
+        // get all elemets beneath mouse
+        var pointedElements = document.elementsFromPoint(event.clientX, event.clientY);
+        // is the selectedText beneath mouse
+        var withSelected = false;
+        // search in all targeted elements
+        pointedElements.map(function(element) {
+            // if the selected text is found
+            if (element.id == selectedText.attr('id')) {
+    
+                withSelected = true;
+    
+                // create new event with current mouse position
+                const e = $.Event('mousedown', {
+                    'clientX' : event.clientX, 
+                    'clientY' : event.clientY
+                });
+                
+                // dispatch event on the selected text
+                selectedText.trigger(e);
+                return;
+            }
+        });
+    }
 
     // the old selected text is not found beneath mouse
     if (!withSelected) {
@@ -230,7 +242,7 @@ function limitTextToBox() {// if text is allowed to overflow
 // transform text id to layer id and vice versa
 function transfromID(letter, id) {
     // if id is not passed, use id of the selected text
-    if(arguments.length == 1) {
+    if(!!!id) {
         id = selectedText.attr('id');
     }
     return letter + id.substring(1);
@@ -252,7 +264,7 @@ function highlightList(textLayer) {
     if (arguments.length == 1) {
         textLayer.addClass('active_layer');
     } else { // activates the last added layer
-        layers.children().last().addClass('active_layer');
+        layers.children().first().addClass('active_layer');
     }
 }
 
