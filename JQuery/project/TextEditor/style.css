@@ -59,6 +59,10 @@ canvas {
     height: 1rem;
 }
 
+.textStyle img {
+    height: 1rem;
+}
+
 .textStyle:hover {
     background-color: #d0d0d7;
     border-color: #676774;

@@ -413,3 +413,9 @@ function isOverflowing() {
 
     return selectedText.css('white-space') != 'break-spaces'
 }
+
+$('.textAlignInput').change(function() {
+    console.log('changing');
+    $('.textAlignInput').prop('checked', false);
+    $(this).prop('checked', true);
+});
