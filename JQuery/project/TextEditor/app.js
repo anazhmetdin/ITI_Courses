@@ -181,13 +181,17 @@ textarea.on('input', function() {
     if (!!!selectedText) { return; }
 
     // update select text
-    selectedText.text($(this).val());
+    selectedText.text(this.value);
 
     // make sure text is within the box
     limitTextToBox();
 
+    var text = this.value;
+
     // update layer text
-    $('#'+transfromID('l')).text($(this).val());
+    $('#'+transfromID('l')).map(function() {
+        this.innerText = text === '' ? 'text #'+this.id.substring(1) : text;
+    });
 })
 
 // set textarea value
