@@ -21,14 +21,14 @@ $('#new').click(function() {
     var newText = `text ${textsCount}`;
 
     // create list element
-    var textLayer = $(`<li class="text" id="l${textsCount}">${newText}</li>`);
+    var textLayer = $(`<li class="textLayer" id="l${textsCount}">${newText}</li>`);
 
     // push name to layers list element
     layersList.prepend(textLayer);
 
     // make list item selects corresponding text
     textLayer.on('click', function(){
-        activateTextAndLayer($('#'+transfromID( 't', this.id)), $(this));
+        activateTextAndLayer(getSelectedText(this.id), $(this));
     });
 
     // create new text element
@@ -461,7 +461,36 @@ const resizeObserver = new ResizeObserver(() => {
     $('#width').val(Number.parseFloat(selectedText.css('width')));
     $('#height').val(Number.parseFloat(selectedText.css('height')));
 });
-  
+
+// make layers list sortable
+$("#layersList").sortable({
+    placeholder: "active_layer", // styling class for placeholder
+    
+    stop: function(event, ui) { // callback when sorting finishes
+        
+        var parent = $(ui.item[0].parentElement);
+        var length = parent.children().length
+        
+        // change z-index of corresponding layer
+        parent.children().map(function(index, element) {
+            var newIndex = length - index + 1;
+            var corresponding;
+            if (element.classList.contains('textLayer')) {
+                // if this elelemnt is text
+                corresponding = getSelectedText(element.id);
+            } else {
+                corresponding = canvas;
+            }
+            corresponding.css('z-index', newIndex);
+        });
+    }
+});
+$("#layersList").disableSelection();
+
 function getSelectedLayer(id) {
     return $('#'+transfromID('l', id));
+}
+
+function getSelectedText(id) {
+    return $('#'+transfromID('t', id));
 }
