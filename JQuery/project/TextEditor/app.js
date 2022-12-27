@@ -61,6 +61,8 @@ $('#new').click(function() {
     // set the new added element as the selected text
     // activate the corresponding layer
     activateTextAndLayer(newText, textLayer);
+  
+    resizeObserver.observe(selectedText[0]);
 
     // set text property of overflowing
     //overflowing[selectedText.attr('id')] = $('#overflowing').prop('checked');
@@ -186,10 +188,6 @@ textarea.on('input', function() {
 
     // update layer text
     $('#'+transfromID('l')).text($(this).val());
-
-    // update width and height
-    $('#width').val(Number.parseFloat(selectedText.css('width')));
-    $('#height').val(Number.parseFloat(selectedText.css('height')));
 })
 
 // set textarea value
@@ -431,14 +429,24 @@ $('.autoDimension').change(function() {
     
     if (!!! selectedText) { return; }
 
+    // if auto dimension is checked
     if (this.checked) {
+        // set the checked dimension as fit-content
         selectedText.css(this.value, 'fit-content');
-        $('#'+this.value).val(Number.parseFloat(selectedText.css(this.value)));
     }
     else {
+        // else, update the dimension of the selected text 
         selectedText.css(this.value, $('#'+this.value).val()+'px');
     }
 
     // make sure text is within the box
     limitTextToBox();
 });
+
+// change width and height input automatically when the selected text is updated
+const resizeObserver = new ResizeObserver(() => {
+    // update width and height
+    $('#width').val(Number.parseFloat(selectedText.css('width')));
+    $('#height').val(Number.parseFloat(selectedText.css('height')));
+});
+  
