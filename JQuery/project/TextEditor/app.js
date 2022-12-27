@@ -53,12 +53,12 @@ $('#new').click(function() {
         max-height:${layers.css('height')};
         font-family:${$('#font-family').val()};">${newText}</pre>`) );
     
+    // add new selected text element to HTML
+    layers.append(newText);
+
     // set the new added element as the selected text
     // activate the corresponding layer
     activateTextAndLayer(newText, textLayer);
-
-    // add new selected text element to HTML
-    layers.append(selectedText);
 
     // set text property of overflowing
     //overflowing[selectedText.attr('id')] = $('#overflowing').prop('checked');
@@ -279,7 +279,7 @@ function matchSelectedStyle() {
     $('#italic').prop('checked', selectedText.css('font-style') != 'normal'); 
     $('#underline').prop('checked', selectedText.css('text-decoration').split(' ')[0] == 'underline');
 
-    // change font size, padding, border-radius
+    // change font size, padding, border-radius, width, height
     $('.pixels').map(function() {
         var value = Number.parseInt(selectedText.css(this.id));
         this.value = Number.isFinite(value) ? value : 0;
