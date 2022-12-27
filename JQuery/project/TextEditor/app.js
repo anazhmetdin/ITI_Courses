@@ -43,7 +43,7 @@ $('#new').click(function() {
 
              ""
         }
-        color: ${$('#color').val()};
+        color: ${$('#color').val()}; text-align: ${$('.textAlignInput:checked').val()};
         background-color: ${getBackgroundColor()};
         font-size:${$('#font-size').val()}px; padding:${$('#padding').val()}px;
         border-radius: ${$('#border-radius').val()}px;
@@ -275,17 +275,9 @@ function matchSelectedStyle() {
     $('#font-family').val(selectedText.css('font-family'));
     
     // check bold if text is bold
-    if (selectedText.css('font-weight') != 400) {
-        $('#bold').prop('checked', true);
-    } else { $('#bold').prop('checked', false); }
-    // check italic if text is italic
-    if (selectedText.css('font-style') != 'normal') {
-        $('#italic').prop('checked', true); 
-    } else { $('#italic').prop('checked', false); }
-    // check underline if text is underlined
-    if (selectedText.css('text-decoration').split(' ')[0] == 'underline') {
-        $('#underline').prop('checked', true);
-    } else { $('#underline').prop('checked', false); }
+    $('#bold').prop('checked', selectedText.css('font-weight') != 400);
+    $('#italic').prop('checked', selectedText.css('font-style') != 'normal'); 
+    $('#underline').prop('checked', selectedText.css('text-decoration').split(' ')[0] == 'underline');
 
     // change font size, padding, border-radius
     $('.pixels').map(function() {
@@ -304,6 +296,10 @@ function matchSelectedStyle() {
 
     // match overflowing
     $('#overflowing').prop('checked', isOverflowing());
+
+    // match text-align
+    $('.textAlignInput').prop('checked', false);
+    $('#'+selectedText.css('text-align')+'Align').prop('checked', true);
 }
 
 // delete the selected text and its layer
@@ -415,7 +411,6 @@ function isOverflowing() {
 }
 
 $('.textAlignInput').change(function() {
-    console.log('changing');
     $('.textAlignInput').prop('checked', false);
     $(this).prop('checked', true);
 });
