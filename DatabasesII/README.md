@@ -1,5 +1,5 @@
 1. [Construction Rules and Optimization](./day1/)
 2. [PL-SQL](./day2/)
-3. [Index, Views, Pivoting, and Merges]()
-4. [Procedures, Triggers, Output, and XML]()
+3. [Index, Views, Pivoting, and Merges](./day3)
+4. [Procedures, Triggers, Output, and XML](./day4/)
 5. [Cursor, Sequence, Backups, and Availabilty]()
