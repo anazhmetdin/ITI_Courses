@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Color</title>
+
+    <style>
+        input {
+            position: absolute;
+            right: 0;
+        }
+
+        div {
+            margin-top  : 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 12rem; position: relative;">
+        <div>
+            <label for="red">Red</label>
+            <input type="range" class="color" id="red" min="0" value="0" max="255">
+        </div>
+        <div>
+            <label for="green">Green</label>
+            <input type="range" class="color" id="green" min="0" value="0" max="255">
+        </div>
+        <div>
+            <label for="blue">Blue</label>
+            <input type="range" class="color" id="blue" min="0" value="0" max="255">
+        </div>
+    </div>
+
+    <p id="text">Change the 3 Color Ranges above and observe my color Change</p>
+
+    <script src="app.js"></script>
+</body>
+</html>
