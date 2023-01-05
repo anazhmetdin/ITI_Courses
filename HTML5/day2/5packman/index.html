@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packman</title>
+
+    <style>
+        @keyframes mouth {
+            to {
+                clip-path: polygon(50% 50%, 100% 50%, 100% 50%);
+            }
+        }
+
+        #packman {
+            width: 10rem;
+            height: 10rem;
+            border-radius: 50%;
+            background-color: yellow;
+            margin: auto;
+            margin-top: 4rem;
+            overflow: hidden;
+        }
+
+        #mouth {
+            width: 100%;
+            height: 100%;
+            background: rgb(249, 249, 249);
+            clip-path: polygon(50% 50%, 100% 100%, 100% 0%);
+            animation-name: mouth;
+            animation-duration: 0.5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+    </style>
+</head>
+<body>
+    <div id="packman">
+        <div id="mouth"></div>
+    </div>
+</body>
+</html>

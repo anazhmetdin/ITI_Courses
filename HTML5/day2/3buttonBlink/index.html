@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blinking</title>
+
+    <style>
+        @keyframes blinking {
+            to {
+                background-color: lightcoral;
+                border-color: blueviolet;
+                box-shadow: 0 0 40px blue;
+            }
+        }
+
+        button {
+            padding: 0.5rem 3rem;
+            font-size: large;
+            text-shadow: 2px 2px 20px;
+            display: block;
+            margin: auto;
+            margin-top: 10rem;
+            border-radius: 2rem;
+            background-color: lightblue;
+            border: 3px solid darkblue;
+        }
+
+        button:hover {
+            animation-name: blinking;
+            animation-duration: 1s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+    </style>
+</head>
+<body>
+    <button> Hover to Blink </button>
+</body>
+</html>
