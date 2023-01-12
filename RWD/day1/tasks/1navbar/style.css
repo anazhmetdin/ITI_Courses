@@ -1,0 +1,58 @@
+p {
+    padding: 0.5rem;
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    background-color: lightgray;
+}
+
+nav li {
+    padding: 1rem;
+    flex: 1;
+    text-align: center;
+    border: 1px solid black;
+}
+
+nav li:hover {
+    background-color: rgb(193, 193, 193);
+}
+
+#main {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    height: 10rem;
+    flex: 1;
+}
+
+.content {
+    text-align: center;
+    flex: 1;
+}
+
+.footer {
+    padding-bottom: 0.5rem;
+    text-align: center;
+    background-color: lightgray;
+}
+
+@media screen and (max-width: 600px) {
+    nav ul, #main {
+        flex-direction: column;
+    }
+
+    .section {
+        flex: unset;
+    }
+} 

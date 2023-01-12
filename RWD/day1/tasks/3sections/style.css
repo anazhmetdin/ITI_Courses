@@ -1,0 +1,43 @@
+p {
+    color: white;
+    text-align: center;
+}
+
+html, body {
+    height: 100%;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    height: 100%;
+    min-width: 15rem;
+}
+
+#content {
+    display: flex;
+    flex: 1;
+    gap: 2px;
+}
+
+#center-content {
+    background-color: olive;
+    flex: 2;
+}
+
+.sidenav {
+    background-color: darkorange;
+    flex: 1;
+}
+
+header, footer {
+    background-color: rgb(86, 86, 220);
+}
+
+@media screen and (max-width: 600px) {
+    #content {
+        flex-direction: column;
+    }
+}

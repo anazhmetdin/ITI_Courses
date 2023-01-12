@@ -1,0 +1,21 @@
+body, html {
+    height: 100%;
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 15rem;
+    height: 100%;
+    
+    border: 5px solid black;
+    margin: 0.5rem;
+}
+
+#item {
+    width: 10rem;
+    height: 7rem;
+    border: 3px solid orange;
+}
