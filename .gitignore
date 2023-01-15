@@ -4,3 +4,4 @@
 *.exe
 .vscode/settings.json
 Soft_Skills/HIP/presentation/*
+node_modules

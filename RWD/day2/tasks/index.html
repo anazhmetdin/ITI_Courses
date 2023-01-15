@@ -1,0 +1,352 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Website created by Mads Kjaer - www.madskjaer.dk -->
+
+    <title>The Flower Blog</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <style type="text/css">
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none; /* Safari and Chrome */
+        }
+
+        .no-scrollbar::-webkit-scrollbar, .no-scrollbar {
+            -ms-overflow-style: none;  /* Internet Explorer 10+ */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        /* alternate coloring for comments */
+        #comments article:nth-child(odd)
+        {
+            background: #e3e3e3;
+        }
+
+        /* gradients for sidebar */
+        #asideCol {
+            background-image: linear-gradient(90deg, var(--bs-gray-200), var(--bs-tertiary-bg)) !important;
+        }
+        
+        #asideCol section {
+            background-image: linear-gradient(180deg, var(--bs-gray-300), var(--bs-gray-200)) !important;
+        }
+
+        /* styling side bar sections */
+        aside li {
+            list-style: none;
+        }
+
+        aside section ul
+        {
+            list-style: none;
+            font-size: smaller;
+        }
+        
+        aside section ul li a
+        {
+            display: block;
+            text-decoration: none;
+            color: #000;
+        }
+        
+        aside section ul li a:hover
+        {
+            text-decoration: underline;
+        }
+
+        /* footer links */
+        footer a {
+            --bs-text-opacity: 0.7 !important;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container-fluid p-0 bg-body-tertiary">
+
+        <div class="container-fluid bg-body">
+            <header class="container px-5">
+                <h1 class="py-4 fs-4 fw-bolder">
+                    The Flower Blog
+                </h1>
+            </header>
+        </div>
+    
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient container-fluid p-0">
+            <div class="container px-5">
+                <button class="navbar-toggler btn-l" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav d-flex flex-fill justify-content-center">
+                        <li class="nav-item mx-4 px-md-3 px-4"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
+                        <li class="nav-item mx-4 px-4 px-md-3"><a class="nav-link" href="#">About</a></li>
+                        <li class="nav-item mx-4 px-4 px-md-3"><a class="nav-link" href="#">Archives</a></li>
+                        <li class="nav-item mx-4 px-4 px-md-3"><a class="nav-link" href="#">Contact</a></li>
+                        <li class="nav-item mx-4 px-4 px-md-3"><a class="nav-link " href="#"><i class="bi bi-rss-fill text-warning"></i> Subscribe via. RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    
+        <div class="container px-5 pt-4">
+
+            <div class="card rounded-4">
+                <div class="row g-0 text-light bg-success rounded-4" style="height:15rem">
+                    <div>
+                        <div class="card-img-overlay col-md-8 col-lg-6 p-4 overflow-auto no-scrollbar">
+                            <h2 class="card-title p-2 fs-3">Do you love flowers as much as we do?</h2>
+                            <p class="card-text p-2" style="font-size: smaller;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex h-100">
+                      <img src="images/intro_flower.png" alt="Flower" class="img-fluid rounded-4 ms-auto object-fit-cover">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row flex-column-reverse flex-lg-row px-3 px-lg-0">
+                <div class="col-12 col-lg-8 p-3">
+                    <section class="py-4">
+                        <article>
+                            <header>
+                                <h2 class="fw-bold fs-4">
+                                    This is the title of a blog post
+                                </h2>
+                                <p class="fst-italic text-secondary" style="font-size: small;">
+                                    Posted on June 29th 2009 by
+                                    <a class="text-secondary text-nowrap" href="#">Mads Kjaer</a>
+                                     - 
+                                    <a class="text-secondary text-nowrap" href="#comments">3 comments</a>
+                                </p>
+                            </header>
+                            <div style="font-size: small;">
+                                <p>
+                                
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod tellus eu
+                                    orci imperdiet nec rutrum lacus blandit. Cras enim nibh, sodales ultricies elementum
+                                    vel, fermentum id tellus. Proin metus odio, ultricies eu pharetra dictum, laoreet
+                                    id odio. Curabitur in odio augue. Morbi congue auctor interdum. Phasellus sit amet
+                                    metus justo. Phasellus vitae tellus orci, at elementum ipsum. In in quam eget diam
+                                    adipiscing condimentum. Maecenas gravida diam vitae nisi convallis vulputate quis
+                                    sit amet nibh. Nullam ut velit tortor. Curabitur ut elit id nisl volutpat consectetur
+                                    ac ac lorem. Quisque non elit et elit lacinia lobortis nec a velit. Sed ac nisl
+                                    sed enim consequat porttitor.
+                                </p>
+                                
+                                <figure>
+                                    <img src="images/flower.png" alt="Flower" class="img-fluid shadow-lg my-4"/>
+                                    <figcaption><i>This is a beautiful flower</i></figcaption>
+                                </figure>
+
+                                <br/>
+                                <p>
+                                    Pellentesque ut sapien arcu, egestas mollis massa. Fusce lectus leo, fringilla at
+                                    aliquet sit amet, volutpat non erat. Aenean molestie nibh vitae turpis venenatis
+                                    vel accumsan nunc tincidunt. Suspendisse id purus vel felis auctor mattis non ac
+                                    erat. Pellentesque sodales venenatis condimentum. Aliquam sit amet nibh nisi, ut
+                                    pulvinar est. Sed ullamcorper nisi vel tortor volutpat eleifend. Vestibulum iaculis
+                                    ullamcorper diam consectetur sagittis. Quisque vitae mauris ut elit semper condimentum
+                                    varius nec nisl. Nulla tempus porttitor dolor ac eleifend. Proin vitae purus lectus,
+                                    a hendrerit ipsum. Aliquam mattis lacinia risus in blandit.</p>
+                                <p>
+                                    Vivamus vitae nulla dolor. Suspendisse eu lacinia justo. Vestibulum a felis ante,
+                                    non aliquam leo. Aliquam eleifend, est viverra semper luctus, metus purus commodo
+                                    elit, a elementum nisi lectus vel magna. Praesent faucibus leo sit amet arcu vehicula
+                                    sed facilisis eros aliquet. Etiam sodales, enim sit amet mollis vestibulum, ipsum
+                                    sapien accumsan lectus, eget ultricies arcu velit ut diam. Aenean fermentum luctus
+                                    nulla, eu malesuada urna consequat in. Pellentesque habitant morbi tristique senectus
+                                    et netus et malesuada fames ac turpis egestas. Pellentesque massa lacus, sodales
+                                    id facilisis ac, lobortis sed arcu. Donec hendrerit fringilla ligula, ac rutrum
+                                    nulla bibendum id. Cras sapien ligula, tincidunt eget euismod nec, ultricies eu
+                                    augue. Nulla vitae velit sollicitudin magna mattis eleifend. Nam enim justo, vulputate
+                                    vitae pretium ac, rutrum at turpis. Aenean id magna neque. Sed rhoncus aliquet viverra.</p>
+                            </div>
+                        </article>
+                    </section>
+
+                    <section id="comments" class="border-top py-4">
+                        <h3 class="fw-bold fs-6">
+                            Comments
+                        </h3>
+                        <article class="d-flex flex-column flex-md-row rounded p-3" style="font-size: smaller;">
+                            <header class="d-flex flex-column col-md-5 pb-4"> 
+                                <a class="fw-bold text-dark" href="#">George Washington</a> on June 29th 2009 at 23:35
+                            </header>
+                            <p class="p-1">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut.
+                            </p>
+                        </article>
+                        <article class="d-flex flex-column flex-md-row rounded p-3" style="font-size: smaller;">
+                            <header class="d-flex flex-column col-md-5 pb-4"> 
+                                <a class="fw-bold text-dark" href="#">Benjamin Franklin</a> on June 29th 2009 at 23:40
+                            </header>
+                            <p class="p-1">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut.</p>
+                        </article>
+                        <article class="d-flex flex-column flex-md-row rounded p-3" style="font-size: smaller;">
+                            <header class="d-flex flex-column col-md-5 pb-4"> 
+                                <a class="fw-bold text-dark" href="#">Barack Obama</a> on June 29th 2009 at 23:59
+                            </header>
+                            <p class="p-1">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut.</p>
+                        </article>
+                    </section>
+
+                    <form action="#" method="post" class="border-top py-4 row">
+                        <h3 class="fw-bold fs-6">
+                            Post a comment
+                        </h3>
+
+                        <div class="row gy-3 justify-content-center">
+                            <div class="col-3">
+                                <label for="name" class="col-form-label">Name</label>
+                            </div>
+                            <div class="col-7 p-0">
+                                <input type="text" class="form-control" id="name" aria-describedby="name">
+                            </div>
+                        </div>
+
+                        <div class="row gy-3 justify-content-center">
+                            <div class="col-3">
+                                <label for="email" class="col-form-label">E-mail</label>
+                            </div>
+                            <div class="col-7 p-0">
+                                <input type="email" class="form-control" id="email" aria-describedby="email">
+                            </div>
+                        </div>
+
+                        <div class="row gy-3 justify-content-center">
+                            <div class="col-3">
+                                <label for="website" class="col-form-label">Website</label>
+                            </div>
+                            <div class="col-7 p-0">
+                                <input type="text" class="form-control" id="website" aria-describedby="website">
+                            </div>
+                        </div>
+
+                        <div class="row gy-3 justify-content-center">
+                            <div class="col-3">
+                                <label for="comment" class="col-form-label">Comment</label>
+                            </div>
+                            <div class="col-7 p-0">
+                                <textarea class="form-control" id="comment" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <p class="d-flex justify-content-center py-3">
+                            <input type="submit" value="Post comment" />
+                        </p>
+                    </form>
+                </div>
+
+                <div id="asideCol" class="col-12 col-lg-4 p-0 border-start">
+                    <aside>
+                        <section class="p-3 m-4 rounded-3">
+                            <header>
+                                <h3 class="fw-bold fs-6">
+                                    Categories
+                                </h3>
+                            </header>
+                            <ul>
+                                <li><a href="#">Lorem ipsum dolor</a></li>
+                                <li><a href="#">Sit amet consectetur</a></li>
+                                <li><a href="#">Adipisicing elit sed</a></li>
+                                <li><a href="#">Do eiusmod tempor</a></li>
+                                <li><a href="#">Incididunt ut labore</a></li>
+                            </ul>
+                        </section>
+
+                        <section class="p-3 m-4 rounded-3">
+                            <header>
+                                <h3 class="fw-bold fs-6">
+                                    Archives
+                                </h3>
+                            </header>
+                            <ul>
+                                <li><a href="#">December 2008</a></li>
+                                <li><a href="#">January 2009</a></li>
+                                <li><a href="#">February 2009</a></li>
+                                <li><a href="#">March 2009</a></li>
+                                <li><a href="#">April 2009</a></li>
+                                <li><a href="#">May 2009</a></li>
+                                <li><a href="#">June 2009</a></li>
+                            </ul>
+                        </section>
+                    </aside>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-dark">
+          
+            <!-- Section: Links  -->
+            <section class="container-md text-light text-center text-lg-start p-5 d-flex justify-content-center">
+                <div class="row g-4">
+                    <section id="about" class="col-lg-4">
+                        <header>
+                            <h3 class="fs-6 fw-bold pb-3">
+                                About
+                            </h3>
+                        </header>
+                        <p class="text-white-50 text-center text-lg-start" style="font-size: smaller;">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco <a class="text-light" href="#">laboris nisi ut aliquip</a> ex ea commodo consequat.
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                            qui officia deserunt mollit anim id est laborum.</p>
+                    </section>
+    
+                    <section id="blogroll" class="col-lg-4">
+                        <header>
+                            <h3 class="fs-6 fw-bold pb-3">
+                                Blogroll
+                            </h3>
+                        </header>
+                        <ul class="text-white-50 text-start col-3 mx-auto col-lg-auto mx-lg-0" style="font-size: smaller;">
+                            <li><a class="text-light" href="#">NETTUTS+</a></li>
+                            <li><a class="text-light" href="#">FreelanceSwitch</a></li>
+                            <li><a class="text-light" href="#">In The Woods</a></li>
+                            <li><a class="text-light" href="#">Netsetter</a></li>
+                            <li><a class="text-light" href="#">PSDTUTS+</a></li>
+                        </ul>
+                    </section>
+
+                    <section id="popular" class="col-lg-4">
+                        <header>
+                            <h3 class="fs-6 fw-bold pb-3">
+                                Popular</h3>
+                        </header>
+                        <ul class="text-white-50 text-start col-6 mx-auto col-lg-auto mx-lg-0" style="font-size: smaller;">
+                            <li><a class="text-light" href="#">This is the title of a blog post</a></li>
+                            <li><a class="text-light" href="#">Lorem ipsum dolor sit amet</a></li>
+                            <li><a class="text-light" href="#">Consectetur adipisicing elit, sed do eiusmod</a></li>
+                            <li><a class="text-light" href="#">Duis aute irure dolor</a></li>
+                            <li><a class="text-light" href="#">Excepteur sint occaecat cupidatat</a></li>
+                            <li><a class="text-light" href="#">Reprehenderit in voluptate velit</a></li>
+                            <li><a class="text-light" href="#">Officia deserunt mollit anim id est laborum</a></li>
+                            <li><a class="text-light" href="#">Lorem ipsum dolor sit amet</a></li>
+                        </ul>
+                    </section>
+                </div>
+            </section>
+            <!-- Section: Links  -->
+          </footer>
+          <!-- Footer -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>    
+</body>
+</html>
