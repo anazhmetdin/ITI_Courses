@@ -3,6 +3,7 @@
 This repo contains my notes and tasks for the Professional Training Program at ITI
 
 * [C](./C/)
+* [C#](./C#)
 * [CST](./CST/)
 * [Databases Fundamentals](./DatabasesI/)
 * [Databases Advanced](./DatabasesII/)
