@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        p{
+            margin: 0;
+        }
+
+        #graph {
+            width: 15rem;
+            position: relative;
+            margin-top: 5rem;
+        }
+
+        #triangle{
+            clip-path: polygon(100% 0, 100% 100%, 0 100%);
+            width: 5rem;
+            height: 12rem;
+            background-color: red;
+            margin: auto;
+        }
+
+        #a{
+            width: 100%;
+            text-align: center;
+        }
+
+        #b{
+            position: absolute;
+            right: 25%;
+            top: 50%;
+        }
+
+        #c{
+            position: absolute;
+            right: 60%;
+            top: 50%;
+        }
+
+        #theorom {
+            color: red;
+            font-size: xx-large;
+        }
+
+        #theorom * {
+            margin: 0.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="graph">
+        <div id="triangle"></div>
+        <p id="a">a</p>
+        <p id="b">b</p>
+        <p id="c">c</p>
+    </div>
+
+    <h1>According to pythogras theorom</h1>
+
+    <math id="theorom" display="inline">
+        <mn>c</mn>
+        <mn>=</mn>
+        <msqrt>
+            <msup>
+                <mi>a</mi>
+                <mn>2</mn>
+            </msup>
+            <mn>+</mn>
+            <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+            </msup>
+        </msqrt>
+    </math>
+</body>
+</html>
