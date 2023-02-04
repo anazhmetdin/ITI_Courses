@@ -3,7 +3,6 @@
 This repo contains my notes and tasks for the Professional Training Program at ITI
 
 * [C](./C/)
-* [C#](./C#)
 * [CST](./CST/)
 
   * [HTML5](./CST/HTML5/)
@@ -13,7 +12,11 @@ This repo contains my notes and tasks for the Professional Training Program at I
   * [Responsive Web Design](./CST/RWD/)
 * [Databases Fundamentals](./DatabasesI/)
 * [Databases Advanced](./DatabasesII/)
-* [OOP](./OOP/)
+* [.NET](./DOTNET)
+
+  * [C#](./DOTNET/C#)
+  * [WPF](./DOTNET/WPF)
 * [Networks](./network/)
+* [OOP](./OOP/)
 * [Soft Skills](./Soft_Skills/)
 * [XML](./XML/)
