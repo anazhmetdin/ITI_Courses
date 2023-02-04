@@ -1,0 +1,59 @@
+﻿<Window x:Class="ContactInfo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContactInfo"
+        mc:Ignorable="d"
+        MinWidth="300"
+        MinHeight="300"
+        Title="Personal Information" Height="470" Width="400">
+    <ScrollViewer>
+        <Grid Name="Grid" Margin="15" Height="400" VerticalAlignment="Top" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+
+            <Label FontSize="20" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Content="FirstName"/>
+            <TextBox x:Name="FirstName" TextWrapping="Wrap" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" FontSize="24"/>
+
+            <Label FontSize="20" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Content="LastName"/>
+            <TextBox x:Name="LastName" TextWrapping="Wrap" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" FontSize="24"/>
+
+            <Label FontSize="20" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Content="Gender"/>
+            <TextBox x:Name="Gender" TextWrapping="Wrap" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" FontSize="24"/>
+
+            <Label FontSize="20" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Content="Address"/>
+            <TextBox x:Name="Address" TextWrapping="Wrap" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" FontSize="24"/>
+
+            <Label FontSize="20" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" Content="Phone"/>
+            <TextBox x:Name="Phone" TextWrapping="Wrap" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" FontSize="24"/>
+
+            <Label FontSize="20" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" Content="Mobile"/>
+            <TextBox x:Name="Mobile" TextWrapping="Wrap" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" FontSize="24"/>
+
+            <Label FontSize="20" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" Content="Email"/>
+            <TextBox x:Name="Email" TextWrapping="Wrap" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" FontSize="24"/>
+
+            <Label FontSize="20" Grid.Column="0" Grid.Row="7" VerticalAlignment="Center" Content="Job Title"/>
+            <TextBox x:Name="Job_Title" TextWrapping="Wrap" Grid.Column="1" Grid.Row="7" VerticalAlignment="Center" FontSize="24"/>
+
+            <StackPanel Grid.Row="8" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40">
+                <Button Content="OK" Margin="0,0,10,0" Width="80" FontSize="20" Click="Submit"/>
+                <Button Content="Cancel" Margin="10,0,0,0" Width="80" FontSize="20" Click="Cancel"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Window>

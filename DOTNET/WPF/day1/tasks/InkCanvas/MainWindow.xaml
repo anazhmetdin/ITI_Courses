@@ -1,0 +1,69 @@
+﻿<Window x:Class="InkCanvas.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InkCanvas"
+        mc:Ignorable="d" MinHeight="500" MinWidth="900"
+        Title="MainWindow" Height="520" Width="950">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="185"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="145"/>
+            <ColumnDefinition Width="185"/>
+            <ColumnDefinition Width="145"/>
+            <ColumnDefinition Width="135"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border BorderThickness="5" Grid.ColumnSpan="5" Margin="10" CornerRadius="10" Background="#FF00EDFF" BorderBrush="Red">
+            <InkCanvas Name="Canvas" Margin="5"/>
+        </Border>
+
+        <GroupBox Grid.Column="0" Name="Colors" Header="Colors" Grid.Row="1" Margin="10" Padding="5,10" FontSize="16">
+            <StackPanel>
+                <RadioButton GroupName="Color" Content="Black" IsChecked="True" Click="BrushColor" FontSize="18" VerticalContentAlignment="Center"/>
+                <RadioButton GroupName="Color" Content="Red" Click="BrushColor" FontSize="18" VerticalContentAlignment="Center"/>
+                <RadioButton GroupName="Color" Content="Green" Click="BrushColor" FontSize="18" VerticalContentAlignment="Center"/>
+                <RadioButton GroupName="Color" Content="Blue" Click="BrushColor" FontSize="18" VerticalContentAlignment="Center"/>
+                <RadioButton GroupName="Color" Content="Magenta" Click="BrushColor" FontSize="18" VerticalContentAlignment="Center"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="1" Name="Modes" Header="Modes" Grid.Row="1" Margin="10" Padding="5,10" FontSize="16">
+            <StackPanel>
+                <RadioButton GroupName="Mode" Content="Ink" IsChecked="True" Click="BrushMode" FontSize="18" VerticalContentAlignment="Center"/>
+                <RadioButton GroupName="Mode" Content="Select" Click="BrushMode" FontSize="18" VerticalContentAlignment="Center"/>
+                <RadioButton GroupName="Mode" Content="Erase" Click="BrushMode" FontSize="18" VerticalContentAlignment="Center"/>
+                <RadioButton GroupName="Mode" Content="Erase by stroke" Click="BrushMode" FontSize="18" VerticalContentAlignment="Center"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="2" Name="Shapes" Header="Drawing Shape" Grid.Row="1" Margin="10" Padding="5,10" FontSize="16">
+            <StackPanel>
+                <RadioButton GroupName="Shapes" Content="Ellipse" IsChecked="True" Click="BrushShape" FontSize="18" VerticalContentAlignment="Center"/>
+                <RadioButton GroupName="Shapes" Content="Rectangle" FontSize="18" Click="BrushShape" VerticalContentAlignment="Center"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="3" Name="Brush" Header="Brush Size" Grid.Row="1" Margin="10" Padding="5,10" FontSize="16">
+            <StackPanel>
+                <RadioButton GroupName="Brush" Content="Small" Checked="BrushSize" FontSize="18" VerticalContentAlignment="Center"/>
+                <RadioButton GroupName="Brush" Content="Normal" IsChecked="True" Checked="BrushSize" FontSize="18" VerticalContentAlignment="Center"/>
+                <RadioButton GroupName="Brush" Content="Large" Checked="BrushSize" FontSize="18" VerticalContentAlignment="Center"/>
+            </StackPanel>
+        </GroupBox>
+
+        <UniformGrid Grid.Row="1" Grid.Column="4" Rows="2" Columns="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Content="New" Click="New" Width="80" Height="40" Margin="10" FontSize="18"/>
+            <Button Content="Save" Click="Save" Margin="10" FontSize="18"/>
+            <Button Content="Load" Click="Load" Margin="10" FontSize="18"/>
+            <Button Content="Copy" Click="Copy" Margin="10" FontSize="18"/>
+            <Button Content="Cut"  Click="Cut" Margin="10" FontSize="18"/>
+            <Button Content="Paste" Click="Paste" Margin="10" FontSize="18"/>
+        </UniformGrid>
+    </Grid>
+</Window>
