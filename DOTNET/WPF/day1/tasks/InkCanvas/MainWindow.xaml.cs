@@ -51,13 +51,13 @@ namespace InkCanvas
 
         private void Load(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "isf files (*.isf)|*.isf";
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "isf files (*.isf)|*.isf";
 
-            if (saveFileDialog1.ShowDialog() == true)
+            if (openFileDialog.ShowDialog() == true)
             {
-                FileStream fs = new FileStream(saveFileDialog1.FileName,
-                                               FileMode.Create);
+                FileStream fs = new FileStream(openFileDialog.FileName,
+                                               FileMode.Open);
                 Canvas.Strokes = new StrokeCollection(fs);
                 fs.Close();
             }
