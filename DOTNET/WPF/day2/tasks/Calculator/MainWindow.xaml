@@ -1,0 +1,65 @@
+﻿<Window x:Class="Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator"
+        mc:Ignorable="d"
+        MinWidth="480" MinHeight="550"
+        Title="Simple Calculator" Height="550" Width="480">
+
+    <Window.Resources>
+        <ResourceDictionary Source="/ButtonStyle.xaml"/>
+    </Window.Resources>
+    
+    <Grid Background="#FF454545">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer Grid.ColumnSpan="4" Margin="10"
+                          HorizontalScrollBarVisibility="Visible"
+                          VerticalScrollBarVisibility="Disabled">
+
+            <TextBlock Background="#FFF6F6F6"
+                           Text="" FontSize="48" VerticalAlignment="Center" Padding="5"
+                           FontFamily="OCR A Extended" Name="Screen"/>
+
+        </ScrollViewer>
+
+        <UniformGrid Rows="5" Columns="3" Grid.Row="1" Grid.RowSpan="4" Grid.ColumnSpan="3">
+            <Button Content="C" Click="Clear" Background="#FFED7046"/>
+            <Button Content="(" Click="AddOperator"/>
+            <Button Content=")" Click="AddOperator"/>
+            <Button Content="7" Click="EditNumber"/>
+            <Button Content="8" Click="EditNumber"/>
+            <Button Content="9" Click="EditNumber"/>
+            <Button Content="4" Click="EditNumber"/>
+            <Button Content="5" Click="EditNumber"/>
+            <Button Content="6" Click="EditNumber"/>
+            <Button Content="1" Click="EditNumber"/>
+            <Button Content="2" Click="EditNumber"/>
+            <Button Content="3" Click="EditNumber"/>
+            <Button Content="." Click="EditNumber"/>
+            <Button Content="0" Click="EditNumber"/>
+            <Button Content="+" Click="AddOperator"/>
+        </UniformGrid>
+
+        <DockPanel Grid.Row="1" Grid.Column="3" Grid.RowSpan="4">
+            <Button DockPanel.Dock="Top" Content="÷" Click="AddOperator"/>
+            <Button DockPanel.Dock="Top" Content="x" Click="AddOperator"/>
+            <Button DockPanel.Dock="Top" Content="-" Click="AddOperator"/>
+            <Button Content="=" Background="Orange" Click="Calculate"/>
+        </DockPanel>
+    </Grid>
+</Window>

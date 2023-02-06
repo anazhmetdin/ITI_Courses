@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlinkingBtn", "BlinkingBtn.csproj", "{2C0B2958-8857-4A48-A66A-C0F1D969E094}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextFields", "..\TextFields\TextFields.csproj", "{4CBF19E1-9FB2-4948-93D6-128591CAB236}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "..\Calculator\Calculator.csproj", "{64009A29-36C1-4C13-931C-81DEA6E14DD3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C0B2958-8857-4A48-A66A-C0F1D969E094}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C0B2958-8857-4A48-A66A-C0F1D969E094}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C0B2958-8857-4A48-A66A-C0F1D969E094}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C0B2958-8857-4A48-A66A-C0F1D969E094}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CBF19E1-9FB2-4948-93D6-128591CAB236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CBF19E1-9FB2-4948-93D6-128591CAB236}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CBF19E1-9FB2-4948-93D6-128591CAB236}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CBF19E1-9FB2-4948-93D6-128591CAB236}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64009A29-36C1-4C13-931C-81DEA6E14DD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64009A29-36C1-4C13-931C-81DEA6E14DD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64009A29-36C1-4C13-931C-81DEA6E14DD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64009A29-36C1-4C13-931C-81DEA6E14DD3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B1414FA6-B1C1-41F8-A591-2DE75B0E7590}
+	EndGlobalSection
+EndGlobal
