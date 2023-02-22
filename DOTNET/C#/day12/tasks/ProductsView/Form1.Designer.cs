@@ -28,38 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.GridView = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.GridView)).BeginInit();
-            this.SuspendLayout();
+            GridView = new DataGridView();
+            menuStrip1 = new MenuStrip();
+            saveToolStripMenuItem = new ToolStripMenuItem();
+            ((System.ComponentModel.ISupportInitialize)GridView).BeginInit();
+            menuStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // GridView
             // 
-            this.GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridView.Location = new System.Drawing.Point(0, 0);
-            this.GridView.Name = "GridView";
-            this.GridView.RowHeadersWidth = 51;
-            this.GridView.RowTemplate.Height = 29;
-            this.GridView.Size = new System.Drawing.Size(800, 450);
-            this.GridView.TabIndex = 0;
-            this.GridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridView_CellEndEdit);
+            GridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            GridView.Dock = DockStyle.Fill;
+            GridView.Location = new Point(0, 28);
+            GridView.Name = "GridView";
+            GridView.RowHeadersWidth = 51;
+            GridView.RowTemplate.Height = 29;
+            GridView.Size = new Size(800, 422);
+            GridView.TabIndex = 0;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { saveToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(800, 28);
+            menuStrip1.TabIndex = 1;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // saveToolStripMenuItem
+            // 
+            saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            saveToolStripMenuItem.Size = new Size(52, 24);
+            saveToolStripMenuItem.Text = "save";
+            saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // FrmGridView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.GridView);
-            this.Name = "FrmGridView";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.FrmGridView_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.GridView)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(GridView);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
+            Name = "FrmGridView";
+            Text = "Form1";
+            Load += FrmGridView_Load;
+            ((System.ComponentModel.ISupportInitialize)GridView).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView GridView;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem saveToolStripMenuItem;
     }
 }
