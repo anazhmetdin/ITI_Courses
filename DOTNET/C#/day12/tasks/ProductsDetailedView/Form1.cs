@@ -44,11 +44,11 @@ namespace ProductsDetailedView
             lblPrdID.DataBindings.Add("Text", PrdBindingSource, "ProductID");
             txtPrdName.DataBindings.Add("Text", PrdBindingSource, "ProductName");
             txtQuantity.DataBindings.Add("Text", PrdBindingSource, "QuantityPerUnit");
-            checkDiscontinued.DataBindings.Add("Text", PrdBindingSource, "Discontinued");
-            numStock.DataBindings.Add("Text", PrdBindingSource, "UnitsInStock");
-            numPrice.DataBindings.Add("Text", PrdBindingSource, "UnitPrice");
-            numOrder.DataBindings.Add("Text", PrdBindingSource, "UnitsOnOrder");
-            numReorder.DataBindings.Add("Text", PrdBindingSource, "ReorderLevel");
+            checkDiscontinued.DataBindings.Add("Checked", PrdBindingSource, "Discontinued", true, DataSourceUpdateMode.OnPropertyChanged);
+            numStock.DataBindings.Add("Value", PrdBindingSource, "UnitsInStock", true, DataSourceUpdateMode.OnPropertyChanged);
+            numPrice.DataBindings.Add("Value", PrdBindingSource, "UnitPrice", true, DataSourceUpdateMode.OnPropertyChanged);
+            numOrder.DataBindings.Add("Value", PrdBindingSource, "UnitsOnOrder", true, DataSourceUpdateMode.OnPropertyChanged);
+            numReorder.DataBindings.Add("Value", PrdBindingSource, "ReorderLevel", true, DataSourceUpdateMode.OnPropertyChanged);
 
             BindingNavigator bindingNavigator = new BindingNavigator(PrdBindingSource);
             this.Controls.Add(bindingNavigator);
@@ -74,20 +74,7 @@ namespace ProductsDetailedView
             cmbSupplier.ValueMember = "SID";
             cmbSupplier.DataBindings.Add("SelectedValue", PrdBindingSource, "SupplierID");
 
-            bindingNavigator.DeleteItem.Click += DeleteItem_Click;
-        }
-
-        private void DeleteItem_Click(object? sender, EventArgs e)
-        {
-            try
-            {
-                sqlDA.Update(DtPrds);
-            }
-            catch
-            {
-                MessageBox.Show("Couldn't delete data");
-                PrdBindingSource.ResetBindings(true);
-            }
+            //bindingNavigator.DeleteItem.Click += (s, e) => BtnSave.PerformClick();
         }
 
         private void BtnSave_Click(object sender, EventArgs e)

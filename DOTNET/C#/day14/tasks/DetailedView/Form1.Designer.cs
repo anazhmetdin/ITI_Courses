@@ -43,12 +43,16 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtType = new System.Windows.Forms.TextBox();
             this.txtNotes = new System.Windows.Forms.TextBox();
-            this.numPrice = new System.Windows.Forms.TextBox();
-            this.numAdvance = new System.Windows.Forms.TextBox();
-            this.numSales = new System.Windows.Forms.TextBox();
-            this.numRoyality = new System.Windows.Forms.TextBox();
             this.lblID = new System.Windows.Forms.TextBox();
-            this.datePub = new System.Windows.Forms.TextBox();
+            this.numSales = new System.Windows.Forms.NumericUpDown();
+            this.numPrice = new System.Windows.Forms.NumericUpDown();
+            this.numRoyality = new System.Windows.Forms.NumericUpDown();
+            this.numAdvance = new System.Windows.Forms.NumericUpDown();
+            this.datePub = new System.Windows.Forms.DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)(this.numSales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRoyality)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAdvance)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnSave
@@ -182,34 +186,6 @@
             this.txtNotes.Size = new System.Drawing.Size(317, 150);
             this.txtNotes.TabIndex = 56;
             // 
-            // numPrice
-            // 
-            this.numPrice.Location = new System.Drawing.Point(131, 194);
-            this.numPrice.Name = "numPrice";
-            this.numPrice.Size = new System.Drawing.Size(317, 27);
-            this.numPrice.TabIndex = 57;
-            // 
-            // numAdvance
-            // 
-            this.numAdvance.Location = new System.Drawing.Point(131, 227);
-            this.numAdvance.Name = "numAdvance";
-            this.numAdvance.Size = new System.Drawing.Size(317, 27);
-            this.numAdvance.TabIndex = 58;
-            // 
-            // numSales
-            // 
-            this.numSales.Location = new System.Drawing.Point(131, 293);
-            this.numSales.Name = "numSales";
-            this.numSales.Size = new System.Drawing.Size(317, 27);
-            this.numSales.TabIndex = 60;
-            // 
-            // numRoyality
-            // 
-            this.numRoyality.Location = new System.Drawing.Point(131, 260);
-            this.numRoyality.Name = "numRoyality";
-            this.numRoyality.Size = new System.Drawing.Size(317, 27);
-            this.numRoyality.TabIndex = 61;
-            // 
             // lblID
             // 
             this.lblID.Location = new System.Drawing.Point(131, 61);
@@ -217,12 +193,60 @@
             this.lblID.Size = new System.Drawing.Size(317, 27);
             this.lblID.TabIndex = 62;
             // 
+            // numSales
+            // 
+            this.numSales.Location = new System.Drawing.Point(131, 294);
+            this.numSales.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numSales.Name = "numSales";
+            this.numSales.Size = new System.Drawing.Size(317, 27);
+            this.numSales.TabIndex = 64;
+            // 
+            // numPrice
+            // 
+            this.numPrice.Location = new System.Drawing.Point(131, 195);
+            this.numPrice.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numPrice.Name = "numPrice";
+            this.numPrice.Size = new System.Drawing.Size(317, 27);
+            this.numPrice.TabIndex = 65;
+            // 
+            // numRoyality
+            // 
+            this.numRoyality.Location = new System.Drawing.Point(131, 261);
+            this.numRoyality.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numRoyality.Name = "numRoyality";
+            this.numRoyality.Size = new System.Drawing.Size(317, 27);
+            this.numRoyality.TabIndex = 66;
+            // 
+            // numAdvance
+            // 
+            this.numAdvance.Location = new System.Drawing.Point(131, 228);
+            this.numAdvance.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numAdvance.Name = "numAdvance";
+            this.numAdvance.Size = new System.Drawing.Size(317, 27);
+            this.numAdvance.TabIndex = 67;
+            // 
             // datePub
             // 
-            this.datePub.Location = new System.Drawing.Point(131, 325);
+            this.datePub.Location = new System.Drawing.Point(131, 327);
             this.datePub.Name = "datePub";
             this.datePub.Size = new System.Drawing.Size(317, 27);
-            this.datePub.TabIndex = 63;
+            this.datePub.TabIndex = 68;
             // 
             // Form1
             // 
@@ -230,11 +254,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(491, 583);
             this.Controls.Add(this.datePub);
-            this.Controls.Add(this.lblID);
-            this.Controls.Add(this.numRoyality);
-            this.Controls.Add(this.numSales);
             this.Controls.Add(this.numAdvance);
+            this.Controls.Add(this.numRoyality);
             this.Controls.Add(this.numPrice);
+            this.Controls.Add(this.numSales);
+            this.Controls.Add(this.lblID);
             this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.txtType);
             this.Controls.Add(this.label10);
@@ -253,6 +277,10 @@
             this.Name = "Form1";
             this.Text = "Titles Detailed View";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numSales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRoyality)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAdvance)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,11 +303,11 @@
         private Label label10;
         private TextBox txtType;
         private TextBox txtNotes;
-        private TextBox numPrice;
-        private TextBox numAdvance;
-        private TextBox numSales;
-        private TextBox numRoyality;
         private TextBox lblID;
-        private TextBox datePub;
+        private NumericUpDown numSales;
+        private NumericUpDown numPrice;
+        private NumericUpDown numRoyality;
+        private NumericUpDown numAdvance;
+        private DateTimePicker datePub;
     }
 }

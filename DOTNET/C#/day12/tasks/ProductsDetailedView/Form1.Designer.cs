@@ -43,12 +43,16 @@
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.BtnSave = new System.Windows.Forms.Button();
-            this.numPrice = new System.Windows.Forms.TextBox();
-            this.numStock = new System.Windows.Forms.TextBox();
-            this.numOrder = new System.Windows.Forms.TextBox();
-            this.numReorder = new System.Windows.Forms.TextBox();
-            this.checkDiscontinued = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.numPrice = new System.Windows.Forms.NumericUpDown();
+            this.numStock = new System.Windows.Forms.NumericUpDown();
+            this.numOrder = new System.Windows.Forms.NumericUpDown();
+            this.numReorder = new System.Windows.Forms.NumericUpDown();
+            this.checkDiscontinued = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.numPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numStock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numReorder)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPrdName
@@ -182,41 +186,6 @@
             this.BtnSave.UseVisualStyleBackColor = true;
             this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
-            // numPrice
-            // 
-            this.numPrice.Location = new System.Drawing.Point(188, 206);
-            this.numPrice.Name = "numPrice";
-            this.numPrice.Size = new System.Drawing.Size(317, 27);
-            this.numPrice.TabIndex = 32;
-            // 
-            // numStock
-            // 
-            this.numStock.Location = new System.Drawing.Point(188, 238);
-            this.numStock.Name = "numStock";
-            this.numStock.Size = new System.Drawing.Size(317, 27);
-            this.numStock.TabIndex = 33;
-            // 
-            // numOrder
-            // 
-            this.numOrder.Location = new System.Drawing.Point(188, 270);
-            this.numOrder.Name = "numOrder";
-            this.numOrder.Size = new System.Drawing.Size(317, 27);
-            this.numOrder.TabIndex = 34;
-            // 
-            // numReorder
-            // 
-            this.numReorder.Location = new System.Drawing.Point(188, 302);
-            this.numReorder.Name = "numReorder";
-            this.numReorder.Size = new System.Drawing.Size(317, 27);
-            this.numReorder.TabIndex = 35;
-            // 
-            // checkDiscontinued
-            // 
-            this.checkDiscontinued.Location = new System.Drawing.Point(188, 335);
-            this.checkDiscontinued.Name = "checkDiscontinued";
-            this.checkDiscontinued.Size = new System.Drawing.Size(317, 27);
-            this.checkDiscontinued.TabIndex = 37;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -226,17 +195,54 @@
             this.label10.TabIndex = 36;
             this.label10.Text = "Discontinued";
             // 
+            // numPrice
+            // 
+            this.numPrice.Location = new System.Drawing.Point(188, 206);
+            this.numPrice.Name = "numPrice";
+            this.numPrice.Size = new System.Drawing.Size(317, 27);
+            this.numPrice.TabIndex = 38;
+            // 
+            // numStock
+            // 
+            this.numStock.Location = new System.Drawing.Point(188, 239);
+            this.numStock.Name = "numStock";
+            this.numStock.Size = new System.Drawing.Size(317, 27);
+            this.numStock.TabIndex = 39;
+            // 
+            // numOrder
+            // 
+            this.numOrder.Location = new System.Drawing.Point(188, 270);
+            this.numOrder.Name = "numOrder";
+            this.numOrder.Size = new System.Drawing.Size(317, 27);
+            this.numOrder.TabIndex = 40;
+            // 
+            // numReorder
+            // 
+            this.numReorder.Location = new System.Drawing.Point(188, 303);
+            this.numReorder.Name = "numReorder";
+            this.numReorder.Size = new System.Drawing.Size(317, 27);
+            this.numReorder.TabIndex = 41;
+            // 
+            // checkDiscontinued
+            // 
+            this.checkDiscontinued.AutoSize = true;
+            this.checkDiscontinued.Location = new System.Drawing.Point(188, 341);
+            this.checkDiscontinued.Name = "checkDiscontinued";
+            this.checkDiscontinued.Size = new System.Drawing.Size(18, 17);
+            this.checkDiscontinued.TabIndex = 42;
+            this.checkDiscontinued.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 433);
             this.Controls.Add(this.checkDiscontinued);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.numReorder);
             this.Controls.Add(this.numOrder);
             this.Controls.Add(this.numStock);
             this.Controls.Add(this.numPrice);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.BtnSave);
             this.Controls.Add(this.txtQuantity);
             this.Controls.Add(this.cmbCategory);
@@ -255,6 +261,10 @@
             this.Name = "Form1";
             this.Text = "Products";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numStock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numReorder)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -276,11 +286,11 @@
         private ComboBox cmbCategory;
         private TextBox txtQuantity;
         private Button BtnSave;
-        private TextBox numPrice;
-        private TextBox numStock;
-        private TextBox numOrder;
-        private TextBox numReorder;
-        private TextBox checkDiscontinued;
         private Label label10;
+        private NumericUpDown numPrice;
+        private NumericUpDown numStock;
+        private NumericUpDown numOrder;
+        private NumericUpDown numReorder;
+        private CheckBox checkDiscontinued;
     }
 }

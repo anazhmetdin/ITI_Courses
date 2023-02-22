@@ -30,12 +30,12 @@ namespace DetailedView
             lblID.DataBindings.Add("Text", bs, "title_id");
             txtTitle.DataBindings.Add("Text", bs, "title1");
             txtType.DataBindings.Add("Text", bs, "type");
-            numPrice.DataBindings.Add("Text", bs, "price");
-            numAdvance.DataBindings.Add("Text", bs, "advance");
-            numRoyality.DataBindings.Add("Text", bs, "royalty");
-            numSales.DataBindings.Add("Text", bs, "ytd_sales");
+            numPrice.DataBindings.Add("Value", bs, "price", true, DataSourceUpdateMode.OnPropertyChanged);
+            numAdvance.DataBindings.Add("Value", bs, "advance", true, DataSourceUpdateMode.OnPropertyChanged);
+            numRoyality.DataBindings.Add("Value", bs, "royalty", true, DataSourceUpdateMode.OnPropertyChanged);
+            numSales.DataBindings.Add("Value", bs, "ytd_sales", true, DataSourceUpdateMode.OnPropertyChanged);
             txtNotes.DataBindings.Add("Text", bs, "notes");
-            datePub.DataBindings.Add("Text", bs, "pubdate");
+            datePub.DataBindings.Add("Value", bs, "pubdate", true, DataSourceUpdateMode.OnPropertyChanged);
 
             bindingNavigator = new BindingNavigator(bs);
             this.Controls.Add(bindingNavigator);
@@ -48,13 +48,14 @@ namespace DetailedView
             bs.AddingNew += (sender, e) =>
                 e.NewObject = new title() { title_id = ""};
 
-            bindingNavigator.DeleteItem.Click += (s, e) => BtnSave.PerformClick();
+            //bindingNavigator.DeleteItem.Click += (s, e) => BtnSave.PerformClick();
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
             try
             {
+                bs.EndEdit();
                 Context.SaveChanges();
             }
             catch
