@@ -1,4 +1,4 @@
-namespace tasks
+namespace Pubs_App
 {
     internal static class Program
     {
@@ -11,7 +11,7 @@ namespace tasks
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new FrmDetailed());
         }
     }
 }
