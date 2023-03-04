@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    @{
+        var employees = new List<_1welcom.Employee>()
+    {
+            new _1welcom.Employee() {ID = 1,  name = "Ahmed", age = 26},
+            new _1welcom.Employee() {ID = 2,  name = "Ali", age = 28},
+            new _1welcom.Employee() {ID = 3,  name = "Anas", age = 25},
+            new _1welcom.Employee() {ID = 4,  name = "Amjad", age = 25}
+        };
+
+        WebGrid gridEmps = new WebGrid(employees);
+
+        WebCache.Set("employees", employees);
+    }
+
+    @gridEmps.GetHtml()
+
+    @if (WebCache.Get("employees") is List<_1welcom.Employee> emps)
+    {
+        <p>@emps.Count()</p>
+    }
+</body>
+</html>

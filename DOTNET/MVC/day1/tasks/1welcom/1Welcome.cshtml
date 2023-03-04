@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+
+    @section form
+    {
+        <form method="post">
+            <div>
+                <label for="name">Name:</label>
+                <input id="name" name="name" type="text" value="Ahmed" />
+            </div>
+            <div>
+                <label for="bdate">Birthdate:</label>
+                <input id="bdate" name="bdate" type="date" value="1998-01-14" />
+            </div>
+
+            <button type="submit">Go</button>
+            <input type="checkbox" name="graduated" id="graduated" checked="checked" />
+            <label for="graduated">Graduated</label>
+        </form>
+    }
+
+    @if (IsPost)
+    {
+    <p style="color:red">Hello @Request.Form["name"]</p>
+    <p style="color:blue">your Birthdate is @Request.Form["bdate"]</p>
+        if (Request.Form["graduated"] == "on")
+        {
+    <p>YESSSSS, I am graduated</p>
+        }
+    }
+</body>
+</html>

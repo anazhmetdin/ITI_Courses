@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Card Maker</title>
+    @{
+        var label = new Dictionary<string, string>() {
+            { "1", "Happy Birthday!" },
+            { "2", "Blessings!" },
+            { "3", "Love is in the air!" },
+            { "4", "Well done!" },
+        };
+    }
+    <style>
+        p {
+            margin: 0;
+        }
+
+        /*#content_ {
+            display: grid;
+            grid-template-areas: "designer card";
+            grid-template-columns: 1fr 1fr;
+        }
+
+        #designer {
+            grid-area: designer;
+            background-color: beige;
+        }
+
+        #card {
+            grid-area: card;
+            background-color: gainsboro;
+            height: 100%;
+        }*/
+
+        #designer > form > div {
+            margin-bottom: 1rem
+        }
+
+        select {
+            display: block;
+            width: 100%;
+            /*width: 15rem;*/
+        }
+
+        .question {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        #bgImg {
+            width: 100%;
+        }
+
+        #cardPreview {
+            position: relative;
+        }
+
+        #cardImgContainer {
+            top: 30%;
+            height: 40%;
+            position: absolute;
+            width: 100%;
+        }
+
+        #cardImg {
+            margin: auto;
+            height: 100%;
+            display: block;
+        }
+
+        #label {
+            position: absolute;
+            font-size: 2vw;
+            top: 15%;
+            text-align: center !important;
+            width: 100%;
+        }
+
+        #message {
+            position: absolute;
+            font-size: 2vw;
+            bottom: 15%;
+            text-align: center !important;
+            width: 100%;
+        }
+
+        textarea {
+            width: 95%;
+            resize: none;
+        }
+
+        /*@@media screen and (max-width: 680px) {
+            #content {
+                grid-template-areas:
+                    "card"
+                    "designer";
+                grid-template-columns: 1fr;
+            }
+
+            #label {
+                font-size: 4vw;
+            }
+
+            #message {
+                font-size: 4vw;
+            }
+        }*/
+    </style>
+</head>
+<body>
+    <div id="content_">
+        <div id="designer">
+            @section form
+            {
+                <form method="post">
+                    <div>
+                        <label class="question" for="background">Choose a background</label>
+                        <select name="background" id="background">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="question" for="fontcolor">Choose font color</label>
+                        <select name="fontcolor" id="fontcolor">
+                            <option value="black">Black</option>
+                            <option value="red">Red</option>
+                            <option value="green">Green</option>
+                            <option value="blue">Blue</option>
+                            <option value="yellow">Yellow</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="question">Choose a greeting type</label>
+
+                        <div>
+                            <input type="radio" name="greeting" value="1" id="birthday" checked="checked" />
+                            <label for="birthday">Birthday</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" name="greeting" value="2" id="getwellsoon" />
+                            <label for="getwellsoon">Get well soon</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" name="greeting" value="3" id="valentine" />
+                            <label for="valentine">Valentine</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" name="greeting" value="4" id="congrats" />
+                            <label for="congrats">Congratulations</label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" checked="checked" id="picture" name="picture" />
+                        <label for="picture">Add a picture</label>
+                    </div>
+
+                    <div>
+                        <label class="question">Enter your message below:</label>
+                        <textarea rows="8" name="message"></textarea>
+                    </div>
+
+                    <div>
+                        <button type="submit">Preview</button>
+                    </div>
+                </form>   
+            }
+            
+        </div>
+
+        <div id="card">
+
+            @if (IsPost)
+            {
+                string background = "images/backgrounds/" + @Request.Form["background"] + ".jpg";
+                string image = "images/" + Request.Form["greeting"] + ".png";
+
+                <div id="cardPreview">
+                    <img id="bgImg" src="@background" />
+                    <p style="color: @Request.Form["fontcolor"]" id="label">@label[Request.Form["greeting"]]</p>
+                    @if (@Request.Form["picture"] == "on")
+                    {
+                        <div id="cardImgContainer">
+                            <img id="cardImg" src="@image" />
+                        </div>
+                    }
+                    <p style="color: @Request.Form["fontcolor"]" id="message">@Request.Form["message"]</p>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
