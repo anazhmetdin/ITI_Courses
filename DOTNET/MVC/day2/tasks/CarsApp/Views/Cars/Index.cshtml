@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Num
+        </th>
+        <th>
+            Color
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Manufacture
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var car in ViewBag.cars)
+    {
+        <tr>
+            <td>
+                @car.Num
+            </td>
+            <td>
+                @car.Color
+            </td>
+            <td>
+                @car.Model
+            </td>
+            <td>
+                @car.Manufacture
+            </td>
+            <td>
+                <a href="/Cars/Edit/@car.Num">Edit</a> |
+                <a href="/Cars/Details/@car.Num">Details</a> |
+                <a href="/Cars/Delete/@car.Num">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>

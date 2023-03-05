@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarsApp", "CarsApp\CarsApp.csproj", "{B6F40FB8-E9A1-4C16-BCE8-937C166E597E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "image", "image\image.csproj", "{999F3A72-39AC-472A-A30D-8A10EE514B88}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6F40FB8-E9A1-4C16-BCE8-937C166E597E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6F40FB8-E9A1-4C16-BCE8-937C166E597E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6F40FB8-E9A1-4C16-BCE8-937C166E597E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6F40FB8-E9A1-4C16-BCE8-937C166E597E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{999F3A72-39AC-472A-A30D-8A10EE514B88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{999F3A72-39AC-472A-A30D-8A10EE514B88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{999F3A72-39AC-472A-A30D-8A10EE514B88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{999F3A72-39AC-472A-A30D-8A10EE514B88}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {58A64C4A-1EC8-40F7-BB94-A38E2164B836}
+	EndGlobalSection
+EndGlobal
