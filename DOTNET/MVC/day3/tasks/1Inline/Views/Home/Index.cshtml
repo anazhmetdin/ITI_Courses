@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@helper MyHelper(string text, string color)
+{
+    <p style="color: @color">@text</p>
+}
+
+<main>
+    @MyHelper("Test", "Red")
+    @MyHelper("Test 2", "Blue")
+</main>
