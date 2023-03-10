@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CustomerOrders.Areas.Orders.Data.Order>
+
+@{
+    ViewBag.Title = "Index";
+    List<CustomerOrders.Areas.Customers.Data.Customer> customers = ViewBag.customers;
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.Label("Customer", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("id", new SelectList(customers, "Id", "Email"), htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Filter" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink(item.Customer.Name, "Details", "Customers", new { area = "Customers", id = item.Customer.Id }, new { })
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
