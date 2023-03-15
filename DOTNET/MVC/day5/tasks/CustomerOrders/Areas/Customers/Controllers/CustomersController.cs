@@ -8,12 +8,14 @@ using System.Web;
 using System.Web.Mvc;
 using CustomerOrders.Areas.Customers.Data;
 using CustomerOrders.Data;
+using CustomerOrders.Models;
 
 namespace CustomerOrders.Areas.Customers.Controllers
 {
     [RouteArea("Customers", AreaPrefix = "")]
     [RoutePrefix("c")]
     [Route("{action}/{id:int:min(1)}")]
+    [MyExceptionHandler]
     public class CustomersController : Controller
     {
         private CustomerOrdersContext db = new CustomerOrdersContext();
@@ -35,7 +37,7 @@ namespace CustomerOrders.Areas.Customers.Controllers
             Customer customer = db.Customers.Find(id);
             if (customer == null)
             {
-                return HttpNotFound();
+                throw new UserNotFoundException();
             }
             return View(customer);
         }
@@ -75,7 +77,7 @@ namespace CustomerOrders.Areas.Customers.Controllers
             Customer customer = db.Customers.Find(id);
             if (customer == null)
             {
-                return HttpNotFound();
+                throw new UserNotFoundException();
             }
             return View(customer);
         }
@@ -106,7 +108,7 @@ namespace CustomerOrders.Areas.Customers.Controllers
             Customer customer = db.Customers.Find(id);
             if (customer == null)
             {
-                return HttpNotFound();
+                throw new UserNotFoundException();
             }
             return View(customer);
         }
