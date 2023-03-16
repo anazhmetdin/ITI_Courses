@@ -11,12 +11,7 @@ namespace Cars
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<CarsContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("CarsContext") ?? throw new InvalidOperationException("Connection string 'CarsContext' not found.")));
-
-                /*services.AddTransient<ITagHelperComponent,
-        AddressScriptTagHelperComponent>();
-            services.AddTransient<ITagHelperComponent,
-                AddressStyleTagHelperComponent>();*/
+                options.UseSqlServer(builder.Configuration.GetConnectionString("CarsContext")));
 
             builder.Services.AddControllersWithViews();
 
