@@ -1,0 +1,52 @@
+﻿@model TraineesITI.Areas.TraineeCourses.Models.TraineeCourse
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<a asp-action="Details" asp-controller="Trainee"
+   asp-route-id="@ViewBag.Trainee.Id">
+    <h3>@ViewBag.Trainee.Name</h3>
+</a>
+
+<div>
+    <h4>TraineeCourse</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Trainee)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Trainee.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Trainee.Track)
+        </dt>
+        <dd class="col-sm-10">
+            <a asp-action="Details" asp-controller="Tracks"
+            asp-route-id="@Model.Trainee.TrackId">
+                @Html.DisplayFor(model => model.Trainee.Track.Name)
+            </a>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Course)
+        </dt>
+        <dd class="col-sm-10">
+            <a asp-action="Details" asp-controller="Courses"
+               asp-route-id="@Model.CourseId">
+                @Html.DisplayFor(model => model.Course.Topic)
+            </a>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Grade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Grade)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
