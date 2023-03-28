@@ -1,0 +1,46 @@
+input {
+    display: inline-block;
+    width: 20rem;
+}
+
+label {
+    display: inline-block;
+    width: 5rem;
+}
+
+form, input[type="submit"], form button, table {
+    width: fit-content;
+    margin: auto;
+    display: block;
+}
+
+form, table, #content {
+    margin: auto;
+    margin-top: 5rem;
+    width: fit-content;
+
+    padding: 2rem;
+    border: 2px solid seagreen;
+    border-radius: 1rem;
+}
+
+table {
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+}
+  
+table td, table th {
+    border: 1px solid lightgray;
+    padding: 8px;
+}
+
+table tr:nth-child(even){background-color: lightgray;}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: seagreen;
+    color: white;
+}

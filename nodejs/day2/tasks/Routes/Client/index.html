@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="./style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    
+    <div id="main">
+        <form method="post" id="ClientInfo">
+            <div>
+                <label for="name">Name</label>
+                <input id="name" type="text" name="name" placeholder="Name">
+            </div>
+            <div>
+                <label for="phone">Phone</label>
+                <input id="phone" type="text" name="phone" placeholder="01000000000">
+            </div>
+            <div>
+                <label for="address">Address</label>
+                <input id="address" type="text" name="address" placeholder="Adress">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input id="email" type="text" name="email" placeholder="email: example@domain.com">
+            </div>
+            <br/>
+            <input type="submit" value="Enter" id="enter"/>
+            <br/>
+            <button type="button" id="GetAll">Get All Clients</button>
+        </form>
+
+        <div id="clients"></div>
+
+    </div>
+
+
+    <script src="./script.js"></script>
+
+</body>
+</html>
