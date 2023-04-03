@@ -1,0 +1,9 @@
+div.component {
+  border: 2px solid black;
+  width: 50rem;
+  margin: auto;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 1rem;
+  margin-top: 3rem;
+}
