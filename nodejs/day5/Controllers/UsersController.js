@@ -1,3 +1,4 @@
+const UsersModel = require("../Models/UsersModel");
 const userModel = require("../Models/UsersModel");
 const bcrypt = require("bcrypt");
 
@@ -51,6 +52,12 @@ let LoginUser = async (req,res)=>{
     }
 }
 
+let GetAllUsers = async (req, res) => {  
+    UsersModel.find({}, '-password').exec().then((AllUsers) => {          
+        res.status(200).json(AllUsers);
+    });
+}
+
 let EditUser = async (req,res)=>{
     let ID = req.params.id;
     let newUser = req.body;
@@ -93,6 +100,7 @@ let DeleteUser = (req, res) => {
 module.exports = {
     AddNewUser,
     LoginUser,
+    GetAllUsers,
     EditUser,
     DeleteUser
 }

@@ -15,8 +15,7 @@ patientsSchema = new mongoose.Schema({
     doctors: {
         type: [{ 
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'doctors',
-            unique: true
+            ref: 'doctors'
         }],
         required: true
     }
