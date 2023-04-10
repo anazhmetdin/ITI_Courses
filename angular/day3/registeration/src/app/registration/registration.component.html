@@ -1,0 +1,28 @@
+
+<div class="component row gy-4 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+  <h1 class="text-center">Registration</h1>
+
+  <div class="form-group">
+    <p class="form-label">Name</p>
+    <input class="form-control" type="text"
+    placeholder="Name" [(ngModel)]="name">
+  </div>
+
+  <div *ngIf="nameNotValid" class="alert alert-danger" role="alert">
+    <strong>Invalid name:</strong> Name length must be larger than 3 charachters
+  </div>
+
+  <div class="form-group">
+    <p class="form-label">Age</p>
+    <input class="form-control" type="text"
+    placeholder="Age"[(ngModel)]="age">
+  </div>
+
+  <div *ngIf="ageNotValid" class="alert alert-danger" role="alert">
+    <strong>Invalid age:</strong> age must be in range [18-30]
+  </div>
+
+
+  <input [ngClass]="{'disabled':!valid}" class="btn btn-primary col-3 mx-auto"
+  type="button" value="Register" (click)="add()">
+</div>

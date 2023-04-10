@@ -1,0 +1,8 @@
+.component {
+  /* width: fit-content; */
+  margin: auto;
+  border: 2px solid black;
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
