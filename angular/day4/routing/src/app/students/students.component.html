@@ -1,0 +1,30 @@
+
+<div class="col-8 mx-auto">
+
+  <div class="table-responsive-md">
+    <table class="table table-striped
+    table-hover
+    table-borderless
+    table-dark
+    align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr class="table-dark" *ngFor="let student of students">
+          <td scope="row">{{student.name}}</td>
+          <td>{{student.age}}</td>
+          <td>{{student.email}}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+
+      </tfoot>
+    </table>
+  </div>
+
+</div>

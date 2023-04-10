@@ -1,0 +1,37 @@
+<div class="row">
+
+
+  <form [formGroup]="formValidation" (ngSubmit)="check()" class="form col-6 mx-auto d-flex flex-column">
+
+    <div *ngIf="submitted" class="alert alert-success alert-dismissible fade show" role="alert">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+      <strong>Success:</strong> Your form has been submitted.
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Name</label>
+      <input #name formControlName="name" type="text"
+      class="form-control form-control-sm" aria-describedby="HelpName" placeholder="First Last">
+      <small *ngIf="name.value && !nameValid" id="HelpName" class="text-danger">Name length must be larger than 3</small>
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Age</label>
+      <input #age formControlName="age" type="number"
+      class="form-control form-control-sm" aria-describedby="HelpAge" placeholder="00">
+      <small *ngIf="age.value && !ageValid" id="HelpAge" class="text-danger">Age must be in range [20-40]</small>
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Email</label>
+      <input #email formControlName="email" type="email"
+      class="form-control form-control-sm" aria-describedby="HelpEmail" placeholder="example@example.com">
+      <small *ngIf="email.value && !emailValid" id="HelpEmail" class="text-danger">Enter a valid email</small>
+    </div>
+
+    <input type="submit" value="submit" class="btn btn-dark ms-auto"
+    [ngClass]="{'disabled': !emailValid || !ageValid || !nameValid}">
+  </form>
+
+</div>
