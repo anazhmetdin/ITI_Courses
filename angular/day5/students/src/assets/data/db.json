@@ -1,0 +1,16 @@
+{
+  "Students": [
+    {
+      "name": "John Doe",
+      "age": 30,
+      "email": "john.doe@example.com",
+      "phone": "01111111111",
+      "courses": [
+        1,
+        2,
+        3
+      ],
+      "id": 1
+    }
+  ]
+}

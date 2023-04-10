@@ -1,0 +1,44 @@
+<div class="row">
+
+  <form [formGroup]="formValidation" (ngSubmit)="check()" class="form col-6 mx-auto d-flex flex-column">
+
+    <div class="mb-3">
+      <label for="" class="form-label">Name</label>
+      <input #name formControlName="name" type="text"
+      class="form-control form-control-sm" aria-describedby="HelpName" placeholder="First Last">
+      <small *ngIf="name.value && !nameValid" id="HelpName" class="text-danger">Name length must be larger than 3</small>
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Age</label>
+      <input #age formControlName="age" type="number"
+      class="form-control form-control-sm" aria-describedby="HelpAge" placeholder="00">
+      <small *ngIf="age.value && !ageValid" id="HelpAge" class="text-danger">Age must be in range [20-40]</small>
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Email</label>
+      <input #email formControlName="email" type="email"
+      class="form-control form-control-sm" aria-describedby="HelpEmail" placeholder="example@example.com">
+      <small *ngIf="email.value && !emailValid" id="HelpEmail" class="text-danger">Enter a valid email</small>
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Phone</label>
+      <input #phone formControlName="phone" type="phone"
+      class="form-control form-control-sm" aria-describedby="Helpphone" placeholder="01111111111">
+      <small *ngIf="phone.value && !phoneValid" id="Helpphone" class="text-danger">Enter a valid phone number</small>
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Courses</label>
+      <input #courses formControlName="courses" type="courses"
+      class="form-control form-control-sm" aria-describedby="Helpcourses" placeholder="1,2,3,4">
+      <small *ngIf="courses.value && !coursesValid" id="Helpcourses" class="text-danger">Enter a valid course Ids list</small>
+    </div>
+
+    <input type="submit" value="submit" class="btn btn-dark ms-auto"
+    [ngClass]="{'disabled': !formValidation.valid}">
+  </form>
+
+</div>
