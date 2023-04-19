@@ -407,3 +407,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 DOTNET/MVC/day6/tasks/AutoIdentity/App_Start/Startup.Auth.cs
+DOTNET/Azure/agent/*
+angular/project/SeetourDataSeeding/*
