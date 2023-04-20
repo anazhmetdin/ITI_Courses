@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using Microsoft.CodeAnalysis;
 using ProductNotification.Data;
+using ProductNotification.Models;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace ProductNotification.Hubs
@@ -17,7 +19,7 @@ namespace ProductNotification.Hubs
         {
             try
             {
-                _context.Comment.Add(new Models.Comment { ProductId = productId, Text = text, Username = name });
+                _context.Comment.Add(new Comment { ProductId = productId, Text = text, Username = name });
 
                 if  (_context.SaveChanges() > 0)
                 {
@@ -41,6 +43,7 @@ namespace ProductNotification.Hubs
 
                 _context.SaveChanges();
 
+                Clients.Caller.SendAsync("BuySuccess");
                 Clients.All.SendAsync("NotifyNewBuy", productId, product.Quantity);
             }
             catch { }

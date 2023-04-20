@@ -38,6 +38,9 @@ connection.on("NotifyNewComment", function (n, t, pid) {
 connection.on("NotifyNewBuy", function (pid, quantity) {
     if (pid == productId) {
         document.getElementById("quantity").innerHTML = quantity
-        alert('Success')
     }
+});
+//4- recive info come from hub server
+connection.on("BuySuccess", function () {
+    alert('Success')
 });

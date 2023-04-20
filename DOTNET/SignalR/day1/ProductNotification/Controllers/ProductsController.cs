@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using ProductNotification.Data;
+using ProductNotification.Hubs;
 using ProductNotification.Models;
 
 namespace ProductNotification.Controllers
@@ -13,10 +15,12 @@ namespace ProductNotification.Controllers
     public class ProductsController : Controller
     {
         private readonly ProductsContext _context;
+        private readonly IHubContext<ProductsHub> _productsHub;
 
-        public ProductsController(ProductsContext context)
+        public ProductsController(ProductsContext context, IHubContext<ProductsHub> productsHub)
         {
             _context = context;
+            _productsHub = productsHub;
         }
 
         // GET: Products
@@ -62,6 +66,9 @@ namespace ProductNotification.Controllers
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
+
+                await _productsHub.Clients.All.SendAsync("NotifyNewProduct", product);
+
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
