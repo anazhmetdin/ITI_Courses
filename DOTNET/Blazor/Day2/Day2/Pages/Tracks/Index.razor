@@ -1,0 +1,48 @@
+﻿@page "/tracks"
+@page "/tracks/index"
+@using Day2.Services;
+
+<h3>Tracks Index</h3>
+
+@code {
+
+    [Inject]
+    protected TrackService _trackService { get; set; }
+
+    public Track[] Tracks = Array.Empty<Track>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Tracks = await _trackService.GetTracksAsync() ?? Array.Empty<Track>();
+
+        await base.OnInitializedAsync();
+    }
+}
+
+<a class="btn btn-primary" href="tracks/new">Create new</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var track in Tracks)
+        {
+            <tr>
+                <td>@track.Id</td>
+                <td>@track.Name</td>
+                <td>@track.Description</td>
+                <td>
+                    <a href="@($"tracks/{track.Id}")" class="btn btn-primary">Details</a>
+                    <a href="@($"tracks/{track.Id}/edit")" class="btn btn-info">Edit</a>
+                    <a href="@($"tracks/{track.Id}/delete")" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

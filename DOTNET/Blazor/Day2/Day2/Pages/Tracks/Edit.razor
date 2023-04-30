@@ -1,0 +1,40 @@
+﻿@page "/tracks/{Id:int}/edit"
+
+@if (!(Track is null))
+{
+    
+    <h3>Edit @Track.Name</h3>
+
+    @if (!Saved)
+    {
+        <EditForm Model="@Track" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+
+            <ValidationSummary></ValidationSummary>
+
+            <div class="form-group row">
+                <label for="Name" class="col-form-label">Name</label>
+                <InputText id="Name" class="form-control" @bind-Value="@Track.Name" placeholder="Track Name"></InputText>
+                <ValidationMessage For="@(() => Track.Name)" />
+            </div>
+
+            <div class="form-group row">
+                <label for="Description" class="col-form-label">Description</label>
+                <InputText id="Description" class="form-control" @bind-Value="@Track.Description" placeholder="Track Description"></InputText>
+                <ValidationMessage For="@(() => Track.Description)" />
+            </div>
+
+            <button type="submit" class="btn btn-info">Save track</button>
+
+        </EditForm>
+    }
+    else
+    {
+        <div class="alert-success">
+            Track Saved Successfully......
+        </div>
+    }
+}
+
+<a class="btn btn-primary" href="tracks">Back to list</a>

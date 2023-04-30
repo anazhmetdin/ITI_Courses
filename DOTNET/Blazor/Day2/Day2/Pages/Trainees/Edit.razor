@@ -1,0 +1,78 @@
+﻿@page "/trainees/{Id:int}/edit"
+
+@if (!(Trainee is null))
+{
+    
+    <h3>Edit @Trainee.Name</h3>
+
+    @if (!Saved)
+    {
+        <EditForm Model="@Trainee" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+
+            <ValidationSummary></ValidationSummary>
+
+            <div class="form-group row">
+                <label for="Name" class="col-form-label">Name</label>
+                <InputText id="Name" class="form-control" @bind-Value="@Trainee.Name" placeholder="Trainee Name"></InputText>
+                <ValidationMessage For="@(() => Trainee.Name)" />
+            </div>
+
+            <div class="form-group row">
+                <label for="Gender" class="col-form-label">Gender</label>
+                <InputSelect id="Gender" class="form-control" @bind-Value="@Trainee.Gender">
+                    <option value="@Gender.Male">Male</option>
+                    <option value="@Gender.Female">Female</option>
+                </InputSelect>
+                <ValidationMessage For="@(() => Trainee.Gender)" />
+            </div>
+
+            <div class="form-group row">
+                <label for="Email" class="col-form-label">Email</label>
+                <InputText id="Email" class="form-control" @bind-Value="@Trainee.Email" placeholder="Trainee Email"></InputText>
+                <ValidationMessage For="@(() => Trainee.Email)" />
+            </div>
+
+            <div class="form-group row">
+                <label for="MobileNo" class="col-form-label">Mobile Number</label>
+                <InputText id="MobileNo" class="form-control" @bind-Value="@Trainee.MobileNo" placeholder="Trainee Mobile Number"></InputText>
+                <ValidationMessage For="@(() => Trainee.MobileNo)" />
+            </div>
+
+            <div class="form-group row">
+                <label for="Birthdate" class="col-form-label">Birthdate</label>
+                <InputDate id="Birthdate" class="form-control" @bind-Value="@Trainee.Birthdate"></InputDate>
+                <ValidationMessage For="@(() => Trainee.Birthdate)" />
+            </div>
+
+            <div class="form-group row">
+                <label for="IsGraduated" class="col-form-label d-inline">Is Graduated?</label>
+                <InputCheckbox id="IsGraduated" class="form-check form-check-input form-check-inline" @bind-Value="@Trainee.IsGraduated"></InputCheckbox>
+                <ValidationMessage For="@(() => Trainee.IsGraduated)" />
+            </div>
+
+            <div class="form-group row">
+                <label for="Track" class="col-form-label">Track</label>
+                <InputSelect id="Track" class="form-control" @bind-Value="@Trainee.TrackId">
+                    @foreach (var track in Tracks)
+                    {
+                        <option value="@track.Id">@track.Name</option>                    
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(() => Trainee.TrackId)" />
+            </div>
+
+            <button type="submit" class="btn btn-info">Save Trainee</button>
+
+        </EditForm>
+    }
+    else
+    {
+        <div class="alert-success">
+            Trainee Saved Successfully......
+        </div>
+    }
+}
+
+<a class="btn btn-primary" href="Trainees">Back to list</a>

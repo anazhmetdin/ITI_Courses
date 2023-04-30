@@ -1,0 +1,58 @@
+﻿@page "/trainees"
+@page "/trainees/index"
+@using Day2.Services
+
+<h3>Trainees Index</h3>
+
+<a href="/trainees/new" class="btn btn-primary">Create new</a>
+
+@code {
+    [Inject]
+    protected TraineeService _traineeService { get; set; }
+
+    public Trainee[] Trainees = Array.Empty<Trainee>();
+
+    [Inject]
+    protected TrackService _trackService { get; set; }
+
+    public Track[] Tracks = Array.Empty<Track>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Trainees = await _traineeService.GetTraineesAsync() ?? Array.Empty<Trainee>();
+
+        Tracks = await _trackService.GetTracksAsync() ?? Array.Empty<Track>();
+
+        await base.OnInitializedAsync();
+    }
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile No</th>
+            <th>Track</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var trainee in Trainees)
+        {
+            <tr>
+                <td>@trainee.Id</td>
+                <td>@trainee.Name</td>
+                <td>@trainee.Email</td>
+                <td>@trainee.MobileNo</td>
+                <td>@Tracks.FirstOrDefault(t=>t.Id==trainee.TrackId)?.Name</td>
+                <td>
+                    <a href="@($"trainees/{trainee.Id}")" class="btn btn-primary">Details</a>
+                    <a href="@($"trainees/{trainee.Id}/edit")" class="btn btn-info">Edit</a>
+                    <a href="@($"trainees/{trainee.Id}/delete")" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
