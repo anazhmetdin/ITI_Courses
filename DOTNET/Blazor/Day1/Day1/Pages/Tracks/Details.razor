@@ -1,0 +1,38 @@
+﻿@page "/tracks/{Id:int}"
+
+@if (Track != null) {
+	
+	<h3>@Track.Name Details</h3>
+
+    <div class="form-group row">
+        <label class="col-form-label"> ID</label>
+        <label class="form-control"> @Track.Id </label>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label"> Name </label>
+        <label class="form-control"> @Track.Name </label>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label"> Description </label>
+        <label class="form-control"> @Track.Description </label>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label"> Students </label>
+        <ul class="form-control">
+
+            @foreach (var trainee in Trainees)
+            {
+                <li>
+                    @trainee.Name - @trainee.Email
+                </li>
+            }
+        </ul>
+
+    </div>    
+
+}
+
+<a class="btn btn-primary" href="tracks">Back to list</a>

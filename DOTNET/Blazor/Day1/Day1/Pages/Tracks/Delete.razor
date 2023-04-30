@@ -1,0 +1,36 @@
+﻿@page "/tracks/{Id:int}/delete"
+
+<h3>Delete</h3>
+
+@if (Track != null)
+{
+	<div class="alert alert-danger">
+		Are you sure you want to delete this track?
+	</div>
+
+    <div class="form-group row">
+        <label class="col-form-label"> ID</label>
+        <label class="form-control"> @Track.Id </label>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label"> Name </label>
+        <label class="form-control"> @Track.Name </label>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label"> Description </label>
+        <label class="form-control"> @Track.Description </label>
+    </div>
+
+    <a href="tracks" class="btn btn-primary">Cancel</a>
+    <button @onclick="ConfirmDelete" class="btn btn-outline-danger">Delete</button>
+}
+else
+{
+    <div class="alert alert-success">
+        Track deleted successfully
+    </div>
+
+    <a class="btn btn-primary" href="tracks">Back to list</a>
+}

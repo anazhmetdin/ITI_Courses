@@ -1,0 +1,49 @@
+﻿@page "/trainees/{Id:int}"
+
+@if (Trainee != null) {
+	
+	<h3>@Trainee.Name Details</h3>
+
+    <div class="form-group row">
+        <label class="col-form-label"> ID</label>
+        <label class="form-control"> @Trainee.Id </label>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label"> Name </label>
+        <label class="form-control"> @Trainee.Name </label>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label"> Phone </label>
+        <label class="form-control"> @Trainee.MobileNo </label>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label"> Email </label>
+        <label class="form-control"> @Trainee.Email </label>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label"> Gender </label>
+        <label class="form-control"> @Trainee.Gender.ToString() </label>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label"> Graduated </label>
+        <label class="form-control"> @Trainee.IsGraduated </label>
+    </div>
+
+    @if (Track != null)
+    {
+        <a href="@($"tracks/{Track.Id}")">
+            <div class="form-group row">
+                <label class="col-form-label"> Track </label>
+                <label class="form-control"> @Track.Name </label>
+            </div>
+        </a>
+    }
+
+}
+
+<a class="btn btn-primary" href="trainees">Back to list</a>

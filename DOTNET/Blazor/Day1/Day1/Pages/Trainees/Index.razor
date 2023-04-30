@@ -1,0 +1,37 @@
+﻿@page "/trainees"
+@page "/trainees/index"
+
+<h3>Trainees Index</h3>
+
+@code {
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile No</th>
+            <th>Track</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var trainee in Context.Trainees)
+        {
+            <tr>
+                <td>@trainee.Id</td>
+                <td>@trainee.Name</td>
+                <td>@trainee.Email</td>
+                <td>@trainee.MobileNo</td>
+                <td>@Context.Tracks.Where(t => t.Id == trainee.TrackId).Select(t => t.Name).FirstOrDefault()</td>
+                <td>
+                    <a href="@($"trainees/{trainee.Id}")" class="btn btn-primary">Details</a>
+                    <a href="@($"trainees/{trainee.Id}/edit")" class="btn btn-info">Edit</a>
+                    <a href="@($"trainees/{trainee.Id}/delete")" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

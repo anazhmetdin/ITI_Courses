@@ -1,0 +1,34 @@
+﻿@page "/tracks"
+@page "/tracks/index"
+
+<h3>Tracks Index</h3>
+
+@code {
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var track in Context.Tracks)
+        {
+            <tr>
+                <td>@track.Id</td>
+                <td>@track.Name</td>
+                <td>@track.Description</td>
+                <td>
+                    <a href="@($"tracks/{track.Id}")" class="btn btn-primary">Details</a>
+                    <a href="@($"tracks/{track.Id}/edit")" class="btn btn-info">Edit</a>
+                    <a href="@($"tracks/{track.Id}/delete")" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

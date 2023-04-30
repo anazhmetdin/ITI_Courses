@@ -1,0 +1,41 @@
+﻿@page "/trainees/{Id:int}/delete"
+
+<h3>Delete</h3>
+
+@if (Trainee != null)
+{
+	<div class="alert alert-danger">
+		Are you sure you want to delete this trainee?
+	</div>
+
+    <div class="form-group row">
+        <label class="col-form-label"> ID</label>
+        <label class="form-control"> @Trainee.Id </label>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label"> Name </label>
+        <label class="form-control"> @Trainee.Name </label>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label"> Phone </label>
+        <label class="form-control"> @Trainee.MobileNo </label>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label"> Email </label>
+        <label class="form-control"> @Trainee.Email </label>
+    </div>
+
+    <a href="Trainees" class="btn btn-primary">Cancel</a>
+    <button @onclick="ConfirmDelete" class="btn btn-outline-danger">Delete</button>
+}
+else
+{
+    <div class="alert alert-success">
+        Trainee deleted successfully
+    </div>
+
+    <a class="btn btn-primary" href="Trainees">Back to list</a>
+}
