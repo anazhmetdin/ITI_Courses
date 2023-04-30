@@ -1,0 +1,30 @@
+﻿@code {
+    string train = "[]-[]-[]-[]>";
+    bool running = false;
+
+    private readonly PeriodicTimer _periodicTimer = new(TimeSpan.FromMilliseconds(200));
+
+    public async void Go()
+    {
+        if (running) return;
+        running = true;
+        while (await _periodicTimer.WaitForNextTickAsync())
+        {
+            if (!running)
+                break;
+            train = "." + train;
+            StateHasChanged();
+        }
+    }
+
+    public void Reset()
+    {
+        running = false;
+        train = "[]-[]-[]-[]>";
+    }
+}
+
+
+<p>@train</p>
+<button class="btn btn-primary" @onclick="Go">Go</button>
+<button class="btn btn-primary" @onclick="Reset">Reset</button>

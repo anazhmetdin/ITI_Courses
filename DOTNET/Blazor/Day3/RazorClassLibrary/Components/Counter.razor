@@ -1,0 +1,7 @@
+﻿@using Microsoft.JSInterop;
+@inject IJSRuntime JSRuntime
+
+
+<button onclick="decrement()">-</button>
+<input id="count" @bind-value="count" />
+<button @onclick="increment">+</button>
