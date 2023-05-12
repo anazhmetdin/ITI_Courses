@@ -33,11 +33,11 @@
                 <Button Content="Save"
                     Width="100"
                     Height="40"
-                    Command="{Binding SaveCommand}"></Button>
+                    Command="{Binding SaveDataCommand}"></Button>
                 <Button Content="Cancel"
                     Width="100"
                     Height="40"
-                    Command="{Binding ResetCommand}"></Button>
+                    Command="{Binding RestDataCommand}"></Button>
             </StackPanel>
         </StackPanel>
 
@@ -64,7 +64,7 @@
                         <DataTemplate>
                             <Button Content="Delete" 
                                     CommandParameter="{Binding Id}"
-                                    Command="{Binding Path=DataContext.DeleteCommand,
+                                    Command="{Binding Path=DataContext.DeleteStudentCommand,
                                 RelativeSource={RelativeSource FindAncestor,AncestorType=Window} }"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -74,7 +74,7 @@
                         <DataTemplate>
                             <Button Content="Select" 
                                     CommandParameter="{Binding }"
-                                    Command="{Binding Path=DataContext.SelectCommand,
+                                    Command="{Binding Path=DataContext.EditeStudentCommand,
                                 RelativeSource={RelativeSource FindAncestor,AncestorType=Window} }"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
