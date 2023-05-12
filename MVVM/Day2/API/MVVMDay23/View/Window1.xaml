@@ -1,0 +1,86 @@
+﻿<Window x:Class="MVVMDay23.View.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVMDay23.View" xmlns:viewmodel="clr-namespace:MVVMDay23.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:Window1ViewModel}"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800">
+    <StackPanel>
+
+        <StackPanel>
+            <GroupBox>
+                <StackPanel DataContext="{Binding CarData}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Color"></TextBlock>
+                        <TextBox Width="100" Text="{Binding Color}" Height="30"></TextBox>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Manufacture"></TextBlock>
+                        <TextBox Width="100" Text="{Binding Manufacture}"  Height="30"></TextBox>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Model"></TextBlock>
+                        <TextBox Width="100" Text="{Binding Model}"  Height="30"></TextBox>
+
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+            <StackPanel Orientation="Horizontal">
+
+                <Button Content="Save"
+                    Width="100"
+                    Height="40"
+                    Command="{Binding SaveCommand}"></Button>
+                <Button Content="Cancel"
+                    Width="100"
+                    Height="40"
+                    Command="{Binding ResetCommand}"></Button>
+            </StackPanel>
+        </StackPanel>
+
+
+
+        <DataGrid
+            CanUserAddRows="False"
+            ItemsSource="{Binding CarList}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Num" Binding="{Binding Num}" Visibility="Hidden">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Color" Binding="{Binding Color}">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Manufacture" Binding="{Binding Manufacture}">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Model" Binding="{Binding Model}">
+
+                </DataGridTextColumn>
+                <DataGridTemplateColumn Width="50">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Delete" 
+                                    CommandParameter="{Binding Num}"
+                                    Command="{Binding Path=DataContext.DeleteCommand,
+                                RelativeSource={RelativeSource FindAncestor,AncestorType=Window} }"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="50">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Select" 
+                                    CommandParameter="{Binding }"
+                                    Command="{Binding Path=DataContext.SelectCommand,
+                                RelativeSource={RelativeSource FindAncestor,AncestorType=Window} }"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </StackPanel>
+</Window>
