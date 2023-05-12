@@ -1,0 +1,74 @@
+﻿@*@page "/counter/{id}"*@
+@attribute [Route(Paths.counter + Paths.id + Paths.text)]
+
+@inject NavigationManager Navigation
+@inject IJSRuntime JSRuntime
+
+@*<NavigationLock ConfirmExternalNavigation="true"
+                OnBeforeInternalNavigation="OnBeforeInternalNavigation" />*@
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<button class="btn btn-primary" @onclick="GoHome">Home</button>
+
+<p>@id</p>
+<p>@text</p>
+<p>@q2</p>
+
+<p>@Navigation.BaseUri</p>
+<p>@Navigation.GetUriWithQueryParameter("newQuery", "someValue")</p>
+<p>@Navigation.GetUriWithQueryParameters(new Dictionary<string,object?>{{"q1", "test1"},{"q2", "test2"}})</p>
+<p>@Navigation.GetUriWithQueryParameters(new Dictionary<string,object?>{ {"q1", "test1"}, {"q2", null} })</p>
+<p>@Navigation.GetUriWithQueryParameters(Navigation.BaseUri, new Dictionary<string,object?>{ {"arr", new int[] {1,2,3} } })</p>
+
+@code {
+
+    [Parameter] 
+    public int id { get; set; }
+    [Parameter]
+    public string? text { get; set; }
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "q2")]
+    public string? q2 { get; set; }
+
+    //Type? pagetype;
+
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+    private void GoHome()
+    {
+        Navigation.NavigateTo(Paths.component1, new NavigationOptions
+            {
+                HistoryEntryState = "some data",
+                //ForceLoad = true,
+                //ReplaceHistoryEntry = true
+            });
+    }
+
+    protected override void OnParametersSet()
+    {
+        text = text ?? "fantastic";
+    }
+
+    private async Task OnBeforeInternalNavigation(LocationChangingContext context)
+    {
+        var isConfirmed = await JSRuntime.InvokeAsync<bool>("confirm",
+            "Are you sure you want to navigate to the Index page?");
+
+        if (!isConfirmed)
+        {
+            context.PreventNavigation();
+        }
+    }
+}
