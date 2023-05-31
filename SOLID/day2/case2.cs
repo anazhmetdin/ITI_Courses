@@ -4,7 +4,7 @@ public abstract class SqlFile
     public string FileText { get; set; }
     public string LoadText()
     {
-        /* Code to read text from sql file */
+        //load text from sql file
     }
 }
 

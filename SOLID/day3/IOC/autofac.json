@@ -1,0 +1,15 @@
+{
+  "components": [
+    {
+      "type": "Shopping.MasterCard, IOC",
+      "services": [
+        {
+          "type": "Shopping.ICreditCard, IOC"
+        }
+      ]
+    },
+    {
+      "type": "Shopping.Shopper, IOC"
+    }
+  ]
+}
